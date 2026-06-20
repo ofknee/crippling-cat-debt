@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cofh27rs2ua7i"]
+
+[ext_resource type="Script" uid="uid://iam7i4reha3f" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_yqjtg"]
+
+[node name="Game" type="Control" unique_id=1894770430]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqjtg")
+script = ExtResource("1_uwrxv")
+metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=1495770062]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Test"

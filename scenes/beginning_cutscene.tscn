@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dfpb1ipm31d1k"]
+
+[ext_resource type="Script" uid="uid://cxcy6i058sv3l" path="res://scenes/beginning_cutscene.gd" id="1_va6ap"]
+[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/icon.svg" id="2_krvce"]
+
+[node name="BeginningCutscene" type="Control" unique_id=1332369975]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_va6ap")
+metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
+
+[node name="test" type="TextureRect" parent="." unique_id=1109300068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_krvce")
