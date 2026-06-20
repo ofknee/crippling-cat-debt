@@ -31,7 +31,16 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TowerManager/Placeable/Area2D" unique_id=712845828]
-polygon = PackedVector2Array(19, 165, 655, 38, 2, -3)
+position = Vector2(1, 0)
+polygon = PackedVector2Array(23, 43, 111, 187, 668, 37, 706, 404, 389, 335, 252, 483, 669, 552, 922, 362, 837, 117, 1144, 92, 1147, 7)
+
+[node name="Area2D2" type="Area2D" parent="TowerManager/Placeable" unique_id=1627877069]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TowerManager/Placeable/Area2D2" unique_id=4055783]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(1113, 202, 956, 189, 1040, 366, 733, 649, 119, 545, 354, 229, 624, 329, 610, 120, 354, 215, 96, 276, 3, 169, 3, 641, 735, 660, 1135, 636)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=659363911]
 script = ExtResource("5_p57ef")
@@ -41,6 +50,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
