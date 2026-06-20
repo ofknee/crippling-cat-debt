@@ -2,7 +2,9 @@ extends PixelMenu
 class_name BeginningCutscene
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var odds_text: RichTextLabel = $OddsText
 @onready var debt_text: RichTextLabel = $DebtText
+@onready var debt_text_2: RichTextLabel = $DebtText2
 const GAME = preload("res://scenes/game.tscn")
 var ts : Array[Tweenable]
 var t : Tween
@@ -14,8 +16,12 @@ func end_cutscene() -> void:
 
 func start_anim():
 	anim.animation = "cut_scene"
-	anim.position = Vector2(576, 324)
+	anim.position = Vector2(520, 350)
+	odds_text.modulate.a = 0.0
+	odds_text.offset_transform_enabled = true
+	odds_text.offset_transform_position = Vector2.ZERO
 	debt_text.modulate.a = 0.0
+	debt_text_2.modulate.a = 0.0
 	anim.scale = Vector2.ZERO
 	await get_tree().create_timer(1.0).timeout
 	t = default_tween().set_ease(Tween.EASE_IN)
@@ -25,6 +31,7 @@ func start_anim():
 	await _anim_slots()
 	await get_tree().create_timer(1.0).timeout
 	await _turning_cat()
+	end_anim()
 
 func _anim_slots():
 	anim.play("cut_scene")
@@ -35,7 +42,11 @@ func _anim_slots():
 	debt_text.modulate.a = 1.0
 	t.tween_property(debt_text, "offset_transform_position:y", -50., 0.7)
 	t.tween_property(debt_text, "modulate:a", 0.0, 0.3).set_delay(0.4)
-	await get_tree().create_timer(1.5).timeout
+	await t.finished
+	t = default_tween()
+	t.tween_property(odds_text, "modulate:a", 1., 0.7)
+	t.tween_property(odds_text, "offset_transform_position:x", 150., 0.7)
+	await t.finished
 	anim.play("cut_scene")
 	await anim.animation_finished
 	if t and t.is_running(): t.kill()
@@ -44,6 +55,30 @@ func _anim_slots():
 	debt_text.modulate.a = 1.0
 	t.tween_property(debt_text, "offset_transform_position:y", -50., 0.7)
 	t.tween_property(debt_text, "modulate:a", 0.0, 0.3).set_delay(0.4)
-	
+	t.tween_property(odds_text, "modulate:a", 0.0, 0.3).set_delay(0.4)
 
+func _turning_cat():
+	anim.scale = Vector2.ONE * 0.3
+	anim.position = Vector2(576, 324)
+	anim.play("turning_cat")
+	await anim.animation_finished
+	if t and t.is_running(): t.kill()
+	t = default_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property(anim, "scale", Vector2.ONE, 1.7)
+	t.tween_property(anim, "position", Vector2(624, 840), 1.7)
+	await t.finished
+	# Debt text final
+	if t and t.is_running(): t.kill()
+	t = default_tween()
+	debt_text_2.offset_transform_position.y = 0.0
+	debt_text_2.modulate.a = 1.0
+	t.tween_property(debt_text_2, "offset_transform_position:y", -50., 0.7)
+	t.tween_property(debt_text_2, "modulate:a", 0.0, 0.3).set_delay(0.4)
+	await t.finished
+	await get_tree().create_timer(1.0).timeout
+
+func end_anim():
+	if t and t.is_running(): t.kill()
+	t = default_tween()
+	t.tween_property(self, "modulate:a", 0.0, 0.7)
 	

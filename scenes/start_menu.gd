@@ -28,6 +28,7 @@ func start_anim():
 
 func end_anim():
 	if t and t.is_running(): t.kill()
-	t = default_tween().set_ease(Tween.EASE_OUT)
+	t = create_tween().set_parallel(true)
+	t.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	t.tween_property(self, "offset_transform_scale", Vector2.ONE * 10., 1.0)
 	t.tween_property(self, "modulate:a", 0.0, 1.0)
