@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7uajkq0c2ssf"]
 
-[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/icon.svg" id="1_hwkrt"]
+[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/placeholders/icon.svg" id="1_hwkrt"]
 [ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/path_2d.gd" id="2_l8quq"]
 [ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="3_okf3d"]
 
@@ -26,6 +26,7 @@ script = ExtResource("2_l8quq")
 enemy_scene = ExtResource("3_okf3d")
 
 [node name="Enemy" parent="Path2D" unique_id=358111541 instance=ExtResource("3_okf3d")]
+visible = false
 position = Vector2(1149, 190)
 rotation = 0.8312376
 scale = Vector2(0.99999994, 1)

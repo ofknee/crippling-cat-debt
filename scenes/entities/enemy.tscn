@@ -2,7 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cu2rmirswj7bb" path="res://scenes/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="Script" uid="uid://fj7ykktocnh6" path="res://utilities/health_component.gd" id="2_67neu"]
-[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/icon.svg" id="3_ktqfp"]
+[ext_resource type="Texture2D" uid="uid://d212jgwvaduna" path="res://assets/placeholders/Screenshot 2026-06-20 at 9.02.16 AM.png" id="3_defa4"]
+[ext_resource type="Texture2D" uid="uid://hbofcbwguypm" path="res://assets/placeholders/Screenshot 2026-06-20 at 9.03.35 AM.png" id="4_jr1g6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_43hlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_defa4")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jr1g6")
+}],
+"loop": 1,
+"name": &"mosquito",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D" unique_id=358111541]
 script = ExtResource("1_d7j71")
@@ -11,7 +31,8 @@ script = ExtResource("1_d7j71")
 script = ExtResource("2_67neu")
 metadata/_custom_type_script = "uid://fj7ykktocnh6"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1088205264]
-modulate = Color(1.9556652, 1.7047894, 0.95139205, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_ktqfp")
+[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=1045301312]
+position = Vector2(0, -1)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_43hlm")
+animation = &"mosquito"
