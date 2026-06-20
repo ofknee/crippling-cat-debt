@@ -2,68 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_o7wu3"]
 [ext_resource type="Script" uid="uid://cxcy6i058sv3l" path="res://scenes/beginning_cutscene.gd" id="1_va6ap"]
-[ext_resource type="Texture2D" uid="uid://b1u7li77mxxjn" path="res://assets/scene_1_cat_slotting/1.png" id="2_wfyyr"]
-[ext_resource type="Texture2D" uid="uid://d3vj7nt3hvygf" path="res://assets/scene_1_cat_slotting/2.png" id="3_o7wu3"]
-[ext_resource type="Texture2D" uid="uid://d11aingrhck66" path="res://assets/scene_1_cat_slotting/3.png" id="4_0surc"]
-[ext_resource type="Texture2D" uid="uid://dwmpylx2r5y3r" path="res://assets/scene_1_cat_slotting/4.png" id="5_fytgl"]
-[ext_resource type="Texture2D" uid="uid://cx5ycq3mdkrjr" path="res://assets/scene_1_cat_slotting/5.png" id="6_man86"]
-[ext_resource type="Texture2D" uid="uid://xr8koma4kisi" path="res://assets/scene_1_cat_slotting/6.png" id="7_l42u8"]
-[ext_resource type="Texture2D" uid="uid://co1v1g3wa2142" path="res://assets/scene_1_cat_slotting/7.png" id="8_k55hh"]
-[ext_resource type="Texture2D" uid="uid://cme5nqdb4t1k6" path="res://assets/scene_1_cat_slotting/8.png" id="9_ol2dx"]
-[ext_resource type="Texture2D" uid="uid://cnqbgs7dn2kff" path="res://assets/scene_1_cat_slotting/9.png" id="10_tnbwr"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0ixk7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_wfyyr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_o7wu3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_0surc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_fytgl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_man86")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_l42u8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_k55hh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_o7wu3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_0surc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_fytgl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_man86")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_l42u8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_k55hh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_ol2dx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_tnbwr")
-}],
-"loop": 0,
-"name": &"cut_scene",
-"speed": 14.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://b72483g1q5yy6" path="res://assets/cat_sprite_frames.tres" id="3_rb0yt"]
 
 [node name="BeginningCutscene" type="Control" unique_id=1332369975]
 layout_mode = 3
@@ -77,10 +16,11 @@ script = ExtResource("1_va6ap")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=287460350]
-position = Vector2(605, 418)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_0ixk7")
-animation = &"cut_scene"
+position = Vector2(624, 840)
+sprite_frames = ExtResource("3_rb0yt")
+animation = &"turning_cat"
+frame = 38
+frame_progress = 1.0
 
 [node name="DebtText" type="RichTextLabel" parent="." unique_id=307731193]
 layout_mode = 1

@@ -13,6 +13,8 @@ func end_cutscene() -> void:
 	Global.menu_manager.transition_to_scene(GAME)
 
 func start_anim():
+	anim.animation = "cut_scene"
+	anim.position = Vector2(576, 324)
 	debt_text.modulate.a = 0.0
 	anim.scale = Vector2.ZERO
 	await get_tree().create_timer(1.0).timeout
@@ -21,6 +23,8 @@ func start_anim():
 	await t.finished
 	await get_tree().create_timer(0.5).timeout
 	await _anim_slots()
+	await get_tree().create_timer(1.0).timeout
+	await _turning_cat()
 
 func _anim_slots():
 	anim.play("cut_scene")
@@ -41,7 +45,16 @@ func _anim_slots():
 	t.tween_property(debt_text, "offset_transform_position:y", -50., 0.7)
 	t.tween_property(debt_text, "modulate:a", 0.0, 0.3).set_delay(0.4)
 	
-	
+func _turning_cat():
+	anim.scale = Vector2.ONE * 0.3
+	anim.position = Vector2(576, 324)
+	anim.play("turning_cat")
+	await anim.animation_finished
+	if t and t.is_running(): t.kill()
+	t = default_tween()
+	t.tween_property(anim, "scale", Vector2.ONE, 2)
+	t.tween_property(anim, "position", Vector2(624, 840), 2)
+	pass
 	
 func end_anim():
 	pass
