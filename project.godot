@@ -20,6 +20,12 @@ config/icon="res://assets/placeholders/icon.svg"
 Global="*uid://cw2cid6mippjr"
 SignalBus="*uid://76heinnvc1fe"
 
+[display]
+
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
@@ -30,6 +36,7 @@ folder_colors={
 "res://addons/": "gray",
 "res://assets/": "pink",
 "res://assets/fonts/": "teal",
+"res://assets/lil_guys/": "purple",
 "res://assets/placeholders/": "orange",
 "res://scenes/": "blue",
 "res://shaders/": "purple",

@@ -13,6 +13,7 @@ point_count = 10
 [node name="map" type="Node2D" unique_id=807509426]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=149770163]
+visible = false
 modulate = Color(4.551715, 0, 2.6200616, 1)
 position = Vector2(575.5, 327)
 scale = Vector2(8.9609375, 5.140625)

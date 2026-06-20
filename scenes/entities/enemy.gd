@@ -5,8 +5,10 @@ class_name Enemy
 @onready var INFO = EnemyInfo.stats
 
 @export var type := "fly"
+@export var offset := 0.0
 
-var speed := 80.0
+
+var speed := 500.0
 var path: Path2D
 var progression := 0.0
 
@@ -26,7 +28,7 @@ func _process(delta):
 		return
 
 	progression += speed * delta
-	global_position = path.curve.sample_baked(progression)
+	global_position = path.curve.sample_baked(progression) + Vector2(0, offset)
 	
 	if progression >= path.curve.get_baked_length():
 		queue_free()

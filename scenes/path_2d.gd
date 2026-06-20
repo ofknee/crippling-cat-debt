@@ -12,8 +12,10 @@ func spawn_enemy(enemy_type: String = "fly") -> void:
 	inst.type = enemy_type
 	inst.path = self
 	inst.progression = 0.0
+	inst.scale *= randf_range(0.7,1.3)
+	inst.offset += randf_range(-20.0,20.0)
 	add_child(inst)
-
+	
 	
 	
 func follow_path() -> void:
@@ -21,7 +23,7 @@ func follow_path() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if randf() < 0.5:
+	if randf() < 0.05:
 		spawn_enemy()
-	else:
+	elif randf() < 0.01:
 		spawn_enemy("mosquito")
