@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://7uajkq0c2ssf"]
+
+[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/icon.svg" id="1_4xfga"]
+
+[sub_resource type="Curve2D" id="Curve2D_paxxb"]
+_data = {
+"points": PackedVector2Array(19.862019, -252.78934, -19.862019, 252.78934, 74, 135, 0, 0, 0, 0, 655, 73, 0, 0, 0, 0, 676, 381, 0, 0, 0, 0, 376, 263, 0, 0, 0, 0, 199, 508, 0, 0, 0, 0, 697, 604, 0, 0, 0, 0, 992, 369, 0, 0, 0, 0, 903, 158, 0, 0, 0, 0, 1097, 133, 0, 0, 0, 0, 1149, 190)
+}
+point_count = 10
+
+[node name="map" type="Node2D" unique_id=807509426]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=149770163]
+modulate = Color(4.551715, 0, 2.6200616, 1)
+position = Vector2(575.5, 327)
+scale = Vector2(8.9609375, 5.140625)
+texture = ExtResource("1_4xfga")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=160292919]
+position = Vector2(-19.239075, 0)
+scale = Vector2(1.0167441, 1)
+curve = SubResource("Curve2D_paxxb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1320414523]
+position = Vector2(74, 135)
+rotation = 1.6492066
+
+[node name="enemi" type="Node" parent="Path2D/PathFollow2D" unique_id=138539026]
