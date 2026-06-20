@@ -44,6 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("1_yqjtg")
 
 [node name="GridContainer" type="GridContainer" parent="UI/PlaceTowerUI" unique_id=420836559]
 layout_mode = 1
