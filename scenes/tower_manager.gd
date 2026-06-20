@@ -12,6 +12,14 @@ func _ready() -> void:
 		if not area: continue
 		all_areas.append(area)
 
+func place_tower(tower:Tower):
+	if tower.placeable:
+		tower.placed = true
+		tower.freeze = true
+		Global.selected_tower = null
+	else:
+		push_warning("Tower not placeable!! notif todo")
+
 func _on_tower_selected(new_tower:Tower):
 	add_child(new_tower)
 	register_tower(new_tower)
@@ -25,6 +33,8 @@ func _process(_delta: float) -> void:
 			Global.selected_tower.apply_central_force(dir.normalized() * 1000 * sqrt(dir.length()))
 		else:
 			Global.selected_tower.global_position = lerp(pos, target, 0.3)
+	if Input.is_action_just_pressed("l_click") and Global.selected_tower:
+		self.place_tower(Global.selected_tower)
 func register_tower(tower:Tower):
 	if all_towers.find(tower) >= 0: return
 	all_towers.append(tower)

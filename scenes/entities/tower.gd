@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Tower
 
 var placeable := false
+var placed := false
 
 func _ready() -> void:
 	self.lock_rotation = true
