@@ -17,6 +17,7 @@ buttons = [NodePath("VBoxContainer/Play")]
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="BG" type="ColorRect" parent="." unique_id=134580661]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Title" type="RichTextLabel" parent="VBoxContainer" unique_id=1697583201]
 layout_mode = 2

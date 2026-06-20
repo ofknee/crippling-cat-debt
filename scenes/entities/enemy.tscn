@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dj16vkhwrn5to"]
+
+[ext_resource type="Script" uid="uid://cu2rmirswj7bb" path="res://scenes/entities/enemy.gd" id="1_d7j71"]
+[ext_resource type="Script" uid="uid://fj7ykktocnh6" path="res://utilities/health_component.gd" id="2_67neu"]
+
+[node name="Enemy" type="Node2D" unique_id=358111541]
+script = ExtResource("1_d7j71")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1050180712]
+script = ExtResource("2_67neu")
+metadata/_custom_type_script = "uid://fj7ykktocnh6"

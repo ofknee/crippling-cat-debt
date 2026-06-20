@@ -26,25 +26,7 @@ func _on_button_pressed(button_name:String) -> void:
 			pass
 
 func start_anim():
-	ts = get_all_tweenables(self)
-	if t != null and t.is_running(): t.kill()
-	t = default_tween()
-	for _t in ts:
-		var f = _t.get_final_offset()
-		_t.par.offset_transform_position = f
-		t.tween_property(_t.par, "offset_transform_position", Vector2.ZERO, 3.)
-
+	pass
 
 func end_anim():
-	ts = get_all_tweenables(self)
-	if t != null and t.is_running(): t.kill()
-	t = default_tween()
-	for _t in ts:
-		var f = _t.get_final_offset()
-		_t.par.offset_transform_position = Vector2.ZERO
-		t.tween_property(_t.par, "offset_transform_position", f, .7)
-	t.chain()
-	t.tween_property(self, "modulate:a", 0.0, 0.7)
-	t.chain()
-
-	
+	pass
