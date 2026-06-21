@@ -15,9 +15,15 @@ func _ready():
 	sad_text.modulate.a = 0
 	start_anim()
 
+const START_MENU = preload("res://scenes/start_menu.tscn")
 func start_anim():
 	anim.scale = Vector2.ONE * 0.3
 	await _anim_pain()
+	Global.menu_manager.transition_to_scene(START_MENU)
+
+func end_anim():
+	Global.menu_manager.toggle_music(true)
+	queue_free()
 
 func _anim_pain():
 	anim.play("cut_scene")
@@ -26,6 +32,8 @@ func _anim_pain():
 	await get_tree().create_timer(3).timeout
 	t = default_tween()
 	t.tween_property(sad_text, "modulate:a", 1, 0.5) 
+	await anim.animation_finished
+	await get_tree().create_timer(1.0).timeout
 	
 
 func sfx_tween_in(ap: int, duration: float, volume: int):
