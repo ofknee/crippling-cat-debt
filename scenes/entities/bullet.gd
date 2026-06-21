@@ -14,7 +14,6 @@ func _ready() -> void:
 func bullet_init(enemy:Enemy, spd:float, dmg:float, initial_push:float=0.0):
 	speed = spd
 	damage = dmg
-	print("Enemey name: %s" % enemy.name)
 	last_dir = enemy.global_position - self.global_position
 	last_dir = last_dir.normalized()
 	target = enemy

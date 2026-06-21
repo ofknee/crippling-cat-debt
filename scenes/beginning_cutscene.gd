@@ -17,6 +17,7 @@ var t : Tween
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("space"):
 		if cutscene_state != States.MAIN: return
+		if Global.state == Global.States.GAME: return
 		# now its defo main
 		if t and t.is_running(): t.kill()
 		Global.menu_manager.transition_to_scene(GAME)
@@ -93,5 +94,5 @@ func end_anim():
 	if t and t.is_running(): t.kill()
 	t = default_tween()
 	t.tween_property(self, "modulate:a", 0.0, 0.7)
-	await t.finished
+	await get_tree().create_timer(0.7).timeout
 	queue_free()
