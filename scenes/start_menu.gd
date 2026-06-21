@@ -7,11 +7,15 @@ const BEGINNING_CUTSCENE = preload("res://scenes/beginning_cutscene.tscn")
 var ts : Array[Tweenable]
 var t : Tween
 
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+var audio_players: Array[AudioStreamPlayer]=[]
 @export var gary_meow: AudioStreamMP3
+@export var miau: AudioStreamMP3
 
 func _ready() -> void:
-	audio_player.stream = gary_meow
+	for i in 4:
+		var ap = AudioStreamPlayer.new()
+		add_child(ap)
+		audio_players.append(ap)
 	self.offset_transform_enabled = true
 	for button in buttons:
 		button.pressed.connect(Callable(_on_button_pressed)\
@@ -19,7 +23,7 @@ func _ready() -> void:
 
 
 func _on_button_pressed(button_name:String) -> void:
-	audio_player.play()
+	play_sfx(gary_meow)
 	match button_name.to_lower():
 		"play":
 			pass
@@ -37,3 +41,13 @@ func end_anim():
 	t.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	t.tween_property(self, "offset_transform_scale", Vector2.ONE * 10., 1.0)
 	t.tween_property(self, "modulate:a", 0.0, 1.0)
+	
+func play_miau():
+	play_sfx(miau)
+	
+func play_sfx(stream: AudioStream):
+	for p in audio_players:
+		if !p.playing:
+			p.stream = stream
+			p.play()
+			return

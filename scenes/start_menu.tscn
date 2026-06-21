@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c0u7qfxc13dqh" path="res://scenes/start_menu.gd" id="2_h61rw"]
 [ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="3_fcv5n"]
 [ext_resource type="AudioStream" uid="uid://b8ynlni27xkmy" path="res://assets/sfx/gary_meow.mp3" id="3_h61rw"]
+[ext_resource type="AudioStream" uid="uid://bhwaoei8gucor" path="res://assets/sfx/miau.mp3" id="4_fcv5n"]
 
 [node name="StartMenu" type="Control" unique_id=1864635507 node_paths=PackedStringArray("buttons")]
 layout_mode = 3
@@ -16,6 +17,7 @@ theme = ExtResource("1_m7x51")
 script = ExtResource("2_h61rw")
 buttons = [NodePath("VBoxContainer/Control/VBoxContainer/Play")]
 gary_meow = ExtResource("3_h61rw")
+miau = ExtResource("4_fcv5n")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="Stamp" type="RichTextLabel" parent="." unique_id=1516455773]
