@@ -7,22 +7,25 @@ static var stats := {
 	"fly" : {
 		"strength" : 1.0,
 		"health" : 1.0,
-		"drop_price" : 1000.0,
-		"offset" : Vector2.ZERO
+		"speed" : 1.0,
+		"drop_price" : 300.0,
+		"offset" : Vector2.ZERO,
 	},
 	
 	"beetle" : {
 		"strength" : 2.0,
 		"health" : 2.0,
-		"drop_price" : 3000.0,
-		"offset" : Vector2.ZERO
+		"speed" : 1.2,
+		"drop_price" : 1000.0,
+		"offset" : Vector2.ZERO,
 	},
 	
 	"blob" : {
 		"strength" : 4.0,
 		"health" : 5.0,
-		"drop_price" : 10000.0,
-		"offset" : Vector2.ZERO
+		"speed" : 0.6,
+		"drop_price" : 5000.0,
+		"offset" : Vector2.ZERO,
 	}
 	
 	

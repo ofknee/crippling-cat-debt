@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bkk13dbfc3wqc" path="res://utilities/ui/menus/pay_button.gd" id="14_bhx41"]
 [ext_resource type="Script" uid="uid://c08501tuym1uv" path="res://scenes/wheels/wheelies.gd" id="14_pl11u"]
 [ext_resource type="Texture2D" uid="uid://du6uav32idug1" path="res://assets/wheels/popup/kaboomkablowripmygrannyshegothitbyabazooka.png" id="15_bhx41"]
+[ext_resource type="Script" uid="uid://blin1iuh35frg" path="res://scenes/wheel_price_text.gd" id="15_qnb83"]
 [ext_resource type="Texture2D" uid="uid://ctsbvloq15oue" path="res://assets/wheels/popup/spin.png" id="16_qnb83"]
 [ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/wheels/popup/that.png" id="17_sww3w"]
 [ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/wheels/popup/wheel.png" id="18_suyxu"]
@@ -287,6 +288,7 @@ text = "[font top=-40 bt=-5]WHEEL
 [font top=-30 bt=-5][font_size=50]COSTS r1000
 "
 vertical_alignment = 1
+script = ExtResource("15_qnb83")
 
 [node name="WheelCont" type="Control" parent="UI" unique_id=1703027372]
 layout_mode = 3

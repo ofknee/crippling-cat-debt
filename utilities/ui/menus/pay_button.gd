@@ -2,7 +2,12 @@ extends DefaultButton
 class_name PayButton
 
 signal paid
-@export var price := 1000
+signal price_changed(new_price:int)
+@export var price : int = 1000 :
+	set(val):
+		if val == price: return
+		price = val
+		price_changed.emit(val)
 
 func _can_pay() -> bool:
 	var p = Global.game_scene_ref.purrency

@@ -9,6 +9,7 @@ class_name Enemy
 
 
 var speed := 500.0
+var drop_price := 0.0
 var path: Path2D
 var progression := 0.0
 
@@ -24,12 +25,17 @@ func _ready() -> void:
 	#print(type)
 
 func _on_death() -> void:
+	SignalBus.killed_enemy.emit(self.drop_price)
 	self.queue_free()
 
 
 func set_type() -> void:
-	health_component.max_health = INFO[type]["health"]
+	var stats = INFO[type]
+	health_component.max_health = stats["health"]
 	health_component.health = health_component.max_health
+	self.speed = 150. * stats["speed"]
+	self.drop_price = randfn(stats["drop_price"], 200)
+	$Anim.position = stats["offset"] as Vector2
 	$Anim.play(type)
 
 
