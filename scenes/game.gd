@@ -17,8 +17,9 @@ var weights = {
 
 func _ready() -> void:
 	Global.game_scene_ref = self
-	if OS.is_debug_build():
-		add_towers_to_place(2)
+	tower_inventory = [TowerInfo.TowerType.LOW]
+	#if OS.is_debug_build():
+		#add_towers_to_place(2)
 
 func picked_at_index(idx:int) -> void:
 	if tower_inventory.size() == 0: return
@@ -26,8 +27,10 @@ func picked_at_index(idx:int) -> void:
 	tower_inventory.remove_at(idx)
 
 func add_towers_to_place(num:int) -> void:
-	num = clampi(num, 1, 2)
+	num = clampi(num, 0, 2)
 	tower_inventory.clear()
+	if num == 0: return
+		
 	for i in range(num):
 		tower_inventory.append(get_random_tower_type(i))
 	print("Towers: %s" % str(tower_inventory))

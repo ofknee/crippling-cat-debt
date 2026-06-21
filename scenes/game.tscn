@@ -13,7 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://dw345li7k5rae" path="res://scenes/game/selection_popup.tscn" id="11_kvuet"]
 [ext_resource type="Script" uid="uid://c4bg1pvcgpkom" path="res://scenes/tower_selection.gd" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/mappy/odds.gd" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://bsj6q8ckbm5ql" path="res://scenes/wheel/wheelies_canvas.tscn" id="14_trtic"]
+[ext_resource type="Script" uid="uid://c08501tuym1uv" path="res://scenes/wheels/wheelies.gd" id="14_pl11u"]
+[ext_resource type="Texture2D" uid="uid://du6uav32idug1" path="res://assets/wheels/popup/kaboomkablowripmygrannyshegothitbyabazooka.png" id="15_bhx41"]
+[ext_resource type="Texture2D" uid="uid://ctsbvloq15oue" path="res://assets/wheels/popup/spin.png" id="16_qnb83"]
+[ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/wheels/popup/that.png" id="17_sww3w"]
+[ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/wheels/popup/wheel.png" id="18_suyxu"]
+[ext_resource type="AudioStream" uid="uid://dvjj4ktdpnf6x" path="res://assets/wheels/popup/jetspraysfx.mp3" id="19_sgl2t"]
+[ext_resource type="Texture2D" uid="uid://on5v7naay6cf" path="res://assets/wheels/tower_wheel.png" id="20_qouja"]
+[ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/wheels/pointer.png" id="21_wljb1"]
+[ext_resource type="AudioStream" uid="uid://doxcbkrxpv2yf" path="res://assets/sfx/kenney_interface-sounds/Audio/tick_002.ogg" id="22_v2yb1"]
+[ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/wheels/info_popup/panel1.png" id="23_js0lu"]
+[ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/wheels/info_popup/panel2.png" id="24_gxtfn"]
+[ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/wheels/info_popup/duolingo-correct.mp3" id="25_twgab"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -39,6 +50,32 @@ func set_curve_action() -> void:
 	for point in self.points:
 		target_path.curve.add_point(point)
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl11u"]
+bg_color = Color(1, 1, 1, 0.9137255)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02fa5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_js0lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gxtfn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Game" type="Control" unique_id=1894770430]
 layout_mode = 3
@@ -111,29 +148,36 @@ theme = ExtResource("1_yqjtg")
 script = ExtResource("12_dinhu")
 
 [node name="Popup" parent="UI/TowerSelection" unique_id=1696633443 instance=ExtResource("11_kvuet")]
+visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 120.0
 
-[node name="TowerButtonCont" type="HBoxContainer" parent="UI" unique_id=790972568]
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=385707356]
 anchors_preset = -1
-anchor_left = 0.02
-anchor_top = 0.85
-anchor_right = 0.32
-anchor_bottom = 0.95
+anchor_top = 0.844
+anchor_right = 0.321
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="TowerButtonCont" type="HBoxContainer" parent="UI/MarginContainer" unique_id=790972568]
+layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_yqjtg")
 theme_override_constants/separation = 15
 
-[node name="Tower1" parent="UI/TowerButtonCont" unique_id=418678843 instance=ExtResource("5_iywne")]
+[node name="Tower1" parent="UI/MarginContainer/TowerButtonCont" unique_id=418678843 instance=ExtResource("5_iywne")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="Tower2" parent="UI/TowerButtonCont" unique_id=1483575337 instance=ExtResource("5_iywne")]
+[node name="Tower2" parent="UI/MarginContainer/TowerButtonCont" unique_id=1483575337 instance=ExtResource("5_iywne")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -185,12 +229,139 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="wheelies_canvas" parent="UI" unique_id=1826509710 instance=ExtResource("14_trtic")]
+[node name="Wheel" type="Control" parent="UI" unique_id=2006010629]
+layout_mode = 3
+anchor_left = 0.781
+anchor_top = 0.852
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Wheel" unique_id=711968835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="WheelButton" parent="UI/Wheel/MarginContainer" unique_id=1152125449 instance=ExtResource("5_iywne")]
+layout_mode = 2
+
+[node name="Panel" parent="UI/Wheel/MarginContainer/WheelButton" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
+
+[node name="Text" parent="UI/Wheel/MarginContainer/WheelButton" index="1" unique_id=1745176857]
+anchors_preset = 15
+anchor_bottom = 1.0
+text = "[font top=-40 bt=-5]WHEEL
+[font top=-30 bt=-5][font_size=50]COSTS f1000
+"
+vertical_alignment = 1
+
+[node name="WheelCont" type="Control" parent="UI" unique_id=1703027372]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="overlay" type="ColorRect" parent="UI/WheelCont" unique_id=1644620310]
 visible = false
-offset = Vector2(576, 324)
-scale = Vector2(0.8, 0.8)
-transform = Transform2D(0.8, 0, 0, 0.8, 576, 324)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(1, 1, 1, 0.627451)
+
+[node name="wheelies" type="Node2D" parent="UI/WheelCont" unique_id=809728694]
+visible = false
+script = ExtResource("14_pl11u")
+
+[node name="spikey" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1227185140]
+position = Vector2(26, 0)
+scale = Vector2(0.52, 0.52)
+
+[node name="bg" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey" unique_id=123775071]
+texture = ExtResource("15_bhx41")
+
+[node name="words" type="Node2D" parent="UI/WheelCont/wheelies/spikey" unique_id=710590603]
+
+[node name="spin" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=734851753]
+texture = ExtResource("16_qnb83")
+
+[node name="that" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=735096681]
+texture = ExtResource("17_sww3w")
+
+[node name="wheel" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=2052698666]
+texture = ExtResource("18_suyxu")
+
+[node name="jetspray" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/spikey" unique_id=1508169248]
+stream = ExtResource("19_sgl2t")
+volume_db = 1.21
+
+[node name="gambler" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1431440185]
+scale = Vector2(0.23999876, 0.23999876)
+
+[node name="wheelfr" type="Sprite2D" parent="UI/WheelCont/wheelies/gambler" unique_id=333527502]
+texture = ExtResource("20_qouja")
+
+[node name="pointer" type="Sprite2D" parent="UI/WheelCont/wheelies/gambler" unique_id=1174370362]
+position = Vector2(-8.333376, -1020.8387)
+rotation = 0.112182245
+texture = ExtResource("21_wljb1")
+
+[node name="tick" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/gambler" unique_id=1376411349]
+stream = ExtResource("22_v2yb1")
+
+[node name="ResultInfo" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1929040020]
+scale = Vector2(0.6, 0.6)
+
+[node name="ResultPanel" type="AnimatedSprite2D" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1833328917]
+sprite_frames = SubResource("SpriteFrames_02fa5")
+autoplay = "default"
+
+[node name="ResultLabel" type="RichTextLabel" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=790917366]
+custom_minimum_size = Vector2(500, 60)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -101.66666
+offset_right = 250.0
+offset_bottom = 50.333344
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme = ExtResource("1_yqjtg")
+theme_override_constants/line_separation = -50
+bbcode_enabled = true
+text = "text
+ihgvu"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DuoCorrect" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1430934771]
+stream = ExtResource("25_twgab")
+
+[node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
+stream = ExtResource("25_twgab")
 
 [connection signal="win_rate_changed" from="." to="UI/WinRateCont/WinRateText" method="_on_game_win_rate_changed"]
 
-[editable path="UI/wheelies_canvas"]
+[editable path="UI/Wheel/MarginContainer/WheelButton"]

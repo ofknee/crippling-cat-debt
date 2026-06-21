@@ -5,3 +5,4 @@ signal wave_finished(num:int)
 
 signal lose_tower()
 signal upgrade_selected_tower(new_level:int, price:int)
+signal wheel_time()

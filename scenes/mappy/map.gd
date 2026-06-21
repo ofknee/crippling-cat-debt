@@ -12,4 +12,8 @@ func _exit_tree() -> void: Global.map = null
 
 func _on_lose_tower() -> void:
 	var tm := Global.tower_manager
-	tm.deregister_tower(tm.all_towers.pick_random())
+	if tm.all_towers.size() == 0: 
+		push_warning("No towers to delete")
+		return
+	tm.all_towers.pick_random().queue_free()
+	#tm.deregister_tower()

@@ -13,7 +13,7 @@ func spawn_enemy(enemy_type: String = "fly") -> void:
 	inst.type = enemy_type
 	inst.path = self
 	inst.progression = 0.0
-	inst.scale *= randf_range(0.7,1.3)
+	inst.scale *= randf_range(1.8,2.5)
 	inst.offset += randf_range(-20.0,20.0)
 	inst.speed = speed
 	add_child(inst)
