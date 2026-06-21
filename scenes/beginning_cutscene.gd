@@ -54,7 +54,7 @@ func _anim_slots():
 	await t.finished
 	t = default_tween()
 	t.tween_property(odds_text, "modulate:a", 1., 0.7)
-	t.tween_property(odds_text, "offset_transform_position:x", 150., 0.7)
+	t.tween_property(odds_text, "offset_transform_position:x", 200., 0.7)
 	await t.finished
 	anim.play("cut_scene")
 	await anim.animation_finished

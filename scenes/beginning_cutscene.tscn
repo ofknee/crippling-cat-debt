@@ -21,7 +21,7 @@ anchors_preset = -1
 anchor_left = 0.642
 anchor_top = 0.251
 anchor_right = 0.765
-anchor_bottom = 0.65
+anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
@@ -73,6 +73,7 @@ fit_content = true
 scroll_active = false
 
 [node name="SkipText" type="RichTextLabel" parent="." unique_id=499819240]
+modulate = Color(1, 1, 1, 0.1882353)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
