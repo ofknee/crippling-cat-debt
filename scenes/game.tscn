@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" uid="uid://iam7i4reha3f" path="res://scenes/game.gd" id="1_uwrxv"]
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://cd66jvv5sslkr" path="res://assets/path/path1.png" id="3_gee14"]
 [ext_resource type="PackedScene" uid="uid://7uajkq0c2ssf" path="res://scenes/mappy/map.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://4a7tecqbkr2m" path="res://assets/path/path2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://dwt0hrviivxvr" path="res://scenes/tower_manager.gd" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="5_iywne"]
 [ext_resource type="Script" uid="uid://d3phsvh5opaxu" path="res://scenes/ui.gd" id="5_p57ef"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
+frames = 2
+frame_0/texture = ExtResource("3_gee14")
+frame_1/texture = ExtResource("4_0tnpc")
+frame_1/duration = 1.0
 
 [node name="Game" type="Control" unique_id=1894770430]
 layout_mode = 3
@@ -18,6 +26,20 @@ mouse_filter = 1
 theme = ExtResource("1_yqjtg")
 script = ExtResource("1_uwrxv")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
+
+[node name="bg" type="TextureRect" parent="." unique_id=1381358444]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -30.0
+offset_right = -2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_snxfc")
+expand_mode = 2
 
 [node name="map" parent="." unique_id=807509426 instance=ExtResource("3_lnu2h")]
 
