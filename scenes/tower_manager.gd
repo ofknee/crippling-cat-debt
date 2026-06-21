@@ -22,6 +22,7 @@ func place_tower(tower:Tower):
 
 func _on_tower_selected(new_tower:Tower):
 	add_child(new_tower)
+	new_tower.global_position = get_global_mouse_position()
 	register_tower(new_tower)
 
 func _process(_delta: float) -> void:

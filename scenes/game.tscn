@@ -3,17 +3,39 @@
 [ext_resource type="Script" uid="uid://iam7i4reha3f" path="res://scenes/game.gd" id="1_uwrxv"]
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cd66jvv5sslkr" path="res://assets/path/path1.png" id="3_gee14"]
-[ext_resource type="PackedScene" uid="uid://7uajkq0c2ssf" path="res://scenes/mappy/map.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://4a7tecqbkr2m" path="res://assets/path/path2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://dwt0hrviivxvr" path="res://scenes/tower_manager.gd" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="5_iywne"]
 [ext_resource type="Script" uid="uid://d3phsvh5opaxu" path="res://scenes/ui.gd" id="5_p57ef"]
+[ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="5_vtaks"]
+[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/path_2d.gd" id="6_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="7_dinhu"]
+[ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/mappy/odds.gd" id="12_kvuet"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
 frame_0/texture = ExtResource("3_gee14")
 frame_1/texture = ExtResource("4_0tnpc")
 frame_1/duration = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_kvuet"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -28, 189, 0, 0, 0, 0, 61, 106, 0, 0, 0, 0, 137, 57, 0, 0, 0, 0, 234, 61, 0, 0, 0, 0, 304, 109, 0, 0, 0, 0, 321, 225, 0, 0, 0, 0, 295, 321, 0, 0, 0, 0, 275, 403, 0, 0, 0, 0, 315, 436, 0, 0, 0, 0, 393, 481, 0, 0, 0, 0, 478, 548, 0, 0, 0, 0, 571, 556, 0, 0, 0, 0, 653, 534, 0, 0, 0, 0, 703, 477, 0, 0, 0, 0, 704, 418, 0, 0, 0, 0, 648, 377, 0, 0, 0, 0, 578, 334, 0, 0, 0, 0, 565, 262, 0, 0, 0, 0, 616, 196, 0, 0, 0, 0, 737, 165, 0, 0, 0, 0, 831, 181, 0, 0, 0, 0, 910, 248, 0, 0, 0, 0, 927, 330, 0, 0, 0, 0, 932, 419, 0, 0, 0, 0, 948, 479, 0, 0, 0, 0, 999, 525, 0, 0, 0, 0, 1066, 545, 0, 0, 0, 0, 1147, 533)
+}
+point_count = 28
+
+[sub_resource type="GDScript" id="GDScript_gkedh"]
+script/source = "@tool
+extends Line2D
+## Only made to copy over line points to path
+@export var target_path: Path2D
+@export_tool_button(\"set curve\") var set_curve = set_curve_action
+
+func set_curve_action() -> void:
+	target_path.curve.clear_points()
+	for point in self.points:
+		target_path.curve.add_point(point)
+"
 
 [node name="Game" type="Control" unique_id=1894770430]
 layout_mode = 3
@@ -41,7 +63,28 @@ grow_vertical = 2
 texture = SubResource("AnimatedTexture_snxfc")
 expand_mode = 2
 
-[node name="map" parent="." unique_id=807509426 instance=ExtResource("3_lnu2h")]
+[node name="Map" type="Node2D" parent="." unique_id=1184898053]
+script = ExtResource("5_vtaks")
+metadata/_custom_type_script = "uid://dc8pj8afuhk7n"
+
+[node name="Path2D" type="Path2D" parent="Map" unique_id=1602443772]
+position = Vector2(-19.239075, 0)
+scale = Vector2(1.0167441, 1)
+curve = SubResource("Curve2D_kvuet")
+script = ExtResource("6_kvpfn")
+enemy_scene = ExtResource("7_dinhu")
+
+[node name="Enemy" parent="Map/Path2D" unique_id=1336611517 instance=ExtResource("7_dinhu")]
+visible = false
+position = Vector2(1149, 190)
+rotation = 0.8312376
+scale = Vector2(0.99999994, 1)
+
+[node name="Line2D" type="Line2D" parent="Map" unique_id=784722599 node_paths=PackedStringArray("target_path")]
+visible = false
+points = PackedVector2Array(-28, 189, 61, 106, 137, 57, 234, 61, 304, 109, 321, 225, 295, 321, 275, 403, 315, 436, 393, 481, 478, 548, 571, 556, 653, 534, 703, 477, 704, 418, 648, 377, 578, 334, 565, 262, 616, 196, 737, 165, 831, 181, 910, 248, 927, 330, 932, 419, 948, 479, 999, 525, 1066, 545, 1147, 533)
+script = SubResource("GDScript_gkedh")
+target_path = NodePath("../Path2D")
 
 [node name="TowerManager" type="Node2D" parent="." unique_id=273477013]
 script = ExtResource("4_lbhrr")
@@ -54,12 +97,13 @@ collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TowerManager/Placeable/Area2D" unique_id=712845828]
 position = Vector2(1, 0)
-polygon = PackedVector2Array(63, 92, 130, 196, 653, 43, 684, 390, 366, 298, 232, 485, 678, 571, 941, 365, 862, 130, 1096, 96, 1202, 184, 1196, 311, 1086, 173, 950, 184, 1022, 369, 701, 638, 122, 532, 349, 228, 637, 330, 624, 111, 240, 259, 99, 272, 34, 230, 10, 157, -81, 165, -59, 58)
+polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 371, 548, 367, 657, -9, 663, -4, 537, 356, 534, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=659363911]
 script = ExtResource("5_p57ef")
 
 [node name="PlaceTowerUI" type="Control" parent="UI" unique_id=1497147418]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,27 +125,72 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="Tower" parent="UI/PlaceTowerUI/GridContainer" unique_id=418678843 instance=ExtResource("5_iywne")]
+[node name="TowerButtonCont" type="HBoxContainer" parent="UI" unique_id=790972568]
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.85
+anchor_right = 0.32
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqjtg")
+theme_override_constants/separation = 15
+
+[node name="Tower1" parent="UI/TowerButtonCont" unique_id=418678843 instance=ExtResource("5_iywne")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Text" parent="UI/PlaceTowerUI/GridContainer/Tower" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/TowerButtonCont/Tower1" index="1" unique_id=1745176857]
 text = "Tower"
 
-[node name="DefaultButton2" parent="UI/PlaceTowerUI/GridContainer" unique_id=1483575337 instance=ExtResource("5_iywne")]
+[node name="Tower2" parent="UI/TowerButtonCont" unique_id=1483575337 instance=ExtResource("5_iywne")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DefaultButton3" parent="UI/PlaceTowerUI/GridContainer" unique_id=1701215580 instance=ExtResource("5_iywne")]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1658304679]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.12
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqjtg")
+
+[node name="Control" type="Control" parent="UI/HBoxContainer" unique_id=1687099238]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="DefaultButton4" parent="UI/PlaceTowerUI/GridContainer" unique_id=1415291898 instance=ExtResource("5_iywne")]
+[node name="WinRateText" type="RichTextLabel" parent="UI/HBoxContainer" unique_id=2072861405]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+offset_transform_enabled = true
+mouse_filter = 2
+theme = ExtResource("1_yqjtg")
+bbcode_enabled = true
+text = "[color=red][font top=-30]0j WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_kvuet")
 
-[editable path="UI/PlaceTowerUI/GridContainer/Tower"]
+[node name="Center" type="HBoxContainer" parent="UI" unique_id=275133146]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.12
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqjtg")
+alignment = 1
+
+[node name="WaveLabel" type="RichTextLabel" parent="UI/Center" unique_id=1009730594]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font top=-20]WAVE ?"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="win_rate_changed" from="." to="UI/HBoxContainer/WinRateText" method="_on_game_win_rate_changed"]
+
+[editable path="UI/TowerButtonCont/Tower1"]

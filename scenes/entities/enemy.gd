@@ -40,6 +40,7 @@ func _process(delta):
 	progression += speed * delta
 	global_position = path.curve.sample_baked(progression) + Vector2(0, offset)
 	
+	
 	if progression >= path.curve.get_baked_length():
 		queue_free()
 		
