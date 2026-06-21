@@ -15,6 +15,10 @@ run/main_scene="uid://q0esenm26lh6"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/placeholders/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://c4m8tvfjhus10"
+
 [autoload]
 
 Global="*uid://cw2cid6mippjr"
@@ -24,6 +28,7 @@ SignalBus="*uid://76heinnvc1fe"
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
