@@ -3,6 +3,9 @@ extends Control
 class_name PixelMenuManager
 
 @export var first_scene : PackedScene
+@export var bgm: AudioStreamMP3
+
+@onready var bgm_player: AudioStreamPlayer = $AudioStreamPlayer
 
 enum MenuManagerState {
 	## There is a single menu existing
@@ -30,5 +33,7 @@ func transition_to_scene(new_scene:PackedScene):
 
 func _ready() -> void:
 	Global.menu_manager = self
+	bgm_player.stream = bgm
+	bgm_player.play()
 	if first_scene:
 		transition_to_scene(first_scene)
