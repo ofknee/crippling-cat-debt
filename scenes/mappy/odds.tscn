@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bv3y0ee6q3fcy"]
+
+[ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_iwfan"]
+[ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/mappy/odds.gd" id="2_dx48l"]
+
+[node name="Odds" type="Control" unique_id=1552162676]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iwfan")
+script = ExtResource("2_dx48l")
+
+[node name="OddsValue" type="RichTextLabel" parent="." unique_id=885325306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1013.0
+offset_top = 544.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0%"
+
+[node name="OddsLabel" type="RichTextLabel" parent="." unique_id=971371405]
+layout_mode = 0
+offset_left = 1003.0
+offset_top = 473.0
+offset_right = 1168.0
+offset_bottom = 547.0
+text = "odds:"
