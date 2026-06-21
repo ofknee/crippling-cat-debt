@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dw345li7k5rae" path="res://scenes/game/selection_popup.tscn" id="11_kvuet"]
 [ext_resource type="Script" uid="uid://c4bg1pvcgpkom" path="res://scenes/tower_selection.gd" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/mappy/odds.gd" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://bsj6q8ckbm5ql" path="res://scenes/wheels/wheelies_canvas.tscn" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://bsj6q8ckbm5ql" path="res://scenes/wheel/wheelies_canvas.tscn" id="14_trtic"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
