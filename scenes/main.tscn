@@ -18,3 +18,8 @@ bgm = ExtResource("3_sugp2")
 metadata/_custom_type_script = "uid://bpo0dsawpb3qj"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2087558817]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1763991929]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

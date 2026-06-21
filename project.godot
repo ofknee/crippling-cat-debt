@@ -13,7 +13,10 @@ config_version=5
 config/name="Cat Debt"
 run/main_scene="uid://q0esenm26lh6"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://assets/placeholders/icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="uid://bjdmdajxcytfv"
+config/icon="uid://g1nvtilf2ttr"
+boot_splash/minimum_display_time=200
 
 [audio]
 
@@ -26,7 +29,6 @@ SignalBus="*uid://76heinnvc1fe"
 
 [display]
 
-window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

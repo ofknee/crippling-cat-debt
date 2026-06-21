@@ -138,6 +138,21 @@ text = "s QUIT  "
 dir = Vector2(0, 0)
 speed = 0.0
 
+[node name="Loading" type="RichTextLabel" parent="VBoxContainer/Control" unique_id=582358564]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "LOADING..."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556415708]
 
 [editable path="VBoxContainer/Control/VBoxContainer/Play"]
