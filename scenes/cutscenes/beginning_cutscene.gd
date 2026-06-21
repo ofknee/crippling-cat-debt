@@ -115,6 +115,8 @@ func _turning_cat():
 	await anim.animation_finished
 	await sfx_tween_out(0.05, 0)
 	anim.play("lever_cat")
+	audio_player.stream = lever_sfx
+	sfx_tween_in(0.2, 0)
 	await anim.animation_finished
 	sfx_tween_out(0.05, 0)
 	if t and t.is_running(): t.kill()
