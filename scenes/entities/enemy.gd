@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 class_name Enemy
 
 @onready var health_component: HealthComponent = $HealthComponent
@@ -14,9 +14,19 @@ var progression := 0.0
 
 
 func _ready() -> void:
+	Global.register_enemy(self)
+	self.set_collision_layer_value(1, false)
+	self.set_collision_layer_value(2, true)
+	self.set_collision_mask_value(1, false)
+	self.set_collision_mask_value(2, true)
 	set_type()
-	print(type)
-	
+	health_component.death.connect(_on_death)
+	#print(type)
+
+func _on_death() -> void:
+	self.queue_free()
+
+
 func set_type() -> void:
 	health_component.max_health = INFO[type]["health"]
 	health_component.health = health_component.max_health

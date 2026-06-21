@@ -31,4 +31,12 @@ var selected_tower : Tower = null :
 		if val: 
 			selected_tower = val
 			tower_selected.emit(val)
+
+var all_enemies: Array[Enemy]
+func register_enemy(enemy:Enemy):
+	if all_enemies.find(enemy) != -1: return
+	all_enemies.append(enemy)
+	enemy.tree_exiting.connect(func():
+		all_enemies.erase(enemy)
+	)
 	

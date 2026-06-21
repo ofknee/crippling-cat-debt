@@ -33,8 +33,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="Node2D" unique_id=358111541]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkedh"]
+radius = 15.0
+
+[node name="Enemy" type="RigidBody2D" unique_id=1336611517]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = -8.0
+lock_rotation = true
+freeze = true
 script = ExtResource("1_d7j71")
+metadata/_custom_type_script = "uid://cu2rmirswj7bb"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1050180712]
 script = ExtResource("2_67neu")
@@ -45,3 +54,6 @@ position = Vector2(0, -1)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_43hlm")
 animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1358334586]
+shape = SubResource("CircleShape2D_gkedh")
