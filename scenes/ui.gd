@@ -1,13 +1,18 @@
 extends CanvasLayer
 class_name UI
 const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
-@onready var tower_button_cont: HBoxContainer = $TowerButtonCont
-@onready var tower_1: DefaultButton = $TowerButtonCont/Tower1
-@onready var tower_2: DefaultButton = $TowerButtonCont/Tower2
+@onready var tower_button_cont: HBoxContainer = $MarginContainer/TowerButtonCont
+#@onready var tower_button_cont: MarginContainer = $TowerButtonCont
+@onready var wheel_button: DefaultButton = $Wheel/MarginContainer/WheelButton
+@onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
+@onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
 var map_ref : Map
 
 func _ready() -> void:
 	#Global.map_state_changed.connect(_on_map_state_changed)
+	wheel_button.pressed.connect(func():
+		SignalBus.wheel_time.emit()
+	)
 	for but in tower_button_cont.get_children():
 		var button = but as DefaultButton
 		if not button: continue
