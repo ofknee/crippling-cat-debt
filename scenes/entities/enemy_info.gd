@@ -9,7 +9,7 @@ static var stats := {
 		"health" : 1.0,
 		"speed" : 1.0,
 		"drop_price" : 300.0,
-		"offset" : Vector2.ZERO,
+		"offset" : Vector2(-158, 134),
 	},
 	
 	"beetle" : {
@@ -17,7 +17,7 @@ static var stats := {
 		"health" : 2.0,
 		"speed" : 1.2,
 		"drop_price" : 1000.0,
-		"offset" : Vector2.ZERO,
+		"offset" : Vector2(0, 52),
 	},
 	
 	"blob" : {
@@ -25,7 +25,7 @@ static var stats := {
 		"health" : 5.0,
 		"speed" : 0.6,
 		"drop_price" : 5000.0,
-		"offset" : Vector2.ZERO,
+		"offset" : Vector2(241, 41),
 	}
 	
 	

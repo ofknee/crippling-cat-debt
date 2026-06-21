@@ -35,8 +35,9 @@ func set_type() -> void:
 	health_component.health = health_component.max_health
 	self.speed = 150. * stats["speed"]
 	self.drop_price = randfn(stats["drop_price"], 200)
-	$Anim.position = stats["offset"] as Vector2
-	$Anim.play(type)
+	var anim = $Anim as AnimatedSprite2D
+	anim.offset = stats["offset"] as Vector2
+	anim.play(type)
 
 
 func _process(delta):
