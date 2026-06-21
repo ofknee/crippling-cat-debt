@@ -1,12 +1,12 @@
 extends PixelMenu
-class_name LoseCutscene
+class_name WinCutscene
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sad_text: RichTextLabel = $SadText
 @onready var audio_player1: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_player2: AudioStreamPlayer = $AudioStreamPlayer2
 
-@export var sad_meow: AudioStreamMP3
+@export var happy: AudioStreamMP3
 @export var vine_boom: AudioStreamMP3
 var ts : Array[Tweenable]
 var t : Tween
@@ -16,34 +16,14 @@ func _ready():
 	start_anim()
 
 func start_anim():
-	anim.scale = Vector2.ONE * 0.2
-	anim.position = Vector2(605, 350)
+	anim.scale = Vector2.ONE * 0.3
 	await _anim_pain()
 
 func _anim_pain():
 	anim.play("cut_scene")
-	audio_player1.stream = sad_meow
+	audio_player1.stream = happy
 	sfx_tween_in(1, 0.05, -10)
 	
-	await anim.animation_finished
-	if t and t.is_running(): t.kill()
-	t = default_tween()
-	t.tween_property(anim, "scale", Vector2.ONE * 0.4, 2)
-	t.tween_property(anim, "position", Vector2(770, 300), 2)
-	anim.play("cat_down2")
-	#vine boom
-	audio_player2.stream = vine_boom
-	audio_player2.volume_db = 0
-	audio_player2.play()
-	t = default_tween()
-	t.tween_property(sad_text, "modulate:a", 1, 0.5) 
-	
-	await anim.animation_finished
-	anim.play("cat_down3")
-	#vine boom
-	audio_player2.stream = vine_boom
-	audio_player2.volume_db = 0
-	audio_player2.play()
 	
 
 func sfx_tween_in(ap: int, duration: float, volume: int):
