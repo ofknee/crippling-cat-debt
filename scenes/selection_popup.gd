@@ -1,13 +1,13 @@
 class_name SelectionPopup
 extends Panel
 
-@export var but: DefaultButton
+@export var but: PayButton
 @onready var title: RichTextLabel = $VBoxContainer/Title
 @onready var price: RichTextLabel = $VBoxContainer/ButtonCont/DefaultButton/Text
 var t : Tower
 
 func _ready() -> void:
-	but.pressed.connect(_on_upgrade_pressed)
+	but.paid.connect(_on_upgrade_pressed)
 
 func open_popup() -> void:
 	self.show()
@@ -48,7 +48,9 @@ func _update_ui() -> void:
 	#var t = Global.selected_tower
 	if not t: return
 	var stats = TowerInfo.get_level_stats(t.type, t.level)
+	var up_price = int(roundf(stats["upgrade_price"]))
 	title.text = "[font top=-15 bt=-5]LEVEL %s" % (t.level+1)
-	price.text = "[font top=-20 bt=-20]UPGRADE\n%s COINS" % str(int(roundf(stats["upgrade_price"])))
+	price.text = "[font top=-20 bt=-20]UPGRADE\n%s COINS" % str(up_price)
+	but.price = up_price
 	
 	# update level, price, and the availability of the button

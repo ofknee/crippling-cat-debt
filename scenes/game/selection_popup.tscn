@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c428dkggiordt" path="res://scenes/selection_popup.gd" id="1_f10om"]
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_qae8y"]
 [ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="3_mxn1s"]
+[ext_resource type="Script" uid="uid://bkk13dbfc3wqc" path="res://utilities/ui/menus/pay_button.gd" id="4_mgqa1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dinhu"]
 bg_color = Color(1, 1, 1, 0.7607843)
@@ -50,6 +51,8 @@ theme_override_constants/margin_right = 10
 [node name="DefaultButton" parent="VBoxContainer/ButtonCont" unique_id=418678843 instance=ExtResource("3_mxn1s")]
 custom_minimum_size = Vector2(120, 65)
 layout_mode = 2
+script = ExtResource("4_mgqa1")
+price = 1000
 
 [node name="Text" parent="VBoxContainer/ButtonCont/DefaultButton" index="1" unique_id=1745176857]
 anchors_preset = 15

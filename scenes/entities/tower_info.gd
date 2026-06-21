@@ -42,7 +42,7 @@ static var stats := {
 }
 
 static func get_level_stats(type:TowerType, level:int) -> Dictionary:
-	level = clampi(level, 0, 1e9)
+	level = clampi(level, 0, 1000000000)
 	return {
 		"name": stats[type]["name"],
 		"damage": stats[type]["damage"] *\
