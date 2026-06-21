@@ -1,6 +1,10 @@
 extends PixelMenu
 class_name BeginningCutscene
-
+enum States {
+	START,
+	MAIN,
+	END,
+}
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var odds_text: RichTextLabel = $OddsText
 @onready var debt_text: RichTextLabel = $DebtText
@@ -10,6 +14,7 @@ class_name BeginningCutscene
 @export var slot_sfx: AudioStreamMP3
 @export var vine_boom: AudioStreamMP3
 
+var cutscene_state : States = States.START
 const GAME = preload("res://scenes/game.tscn")
 var ts : Array[Tweenable]
 var t : Tween
@@ -21,8 +26,16 @@ func _ready():
 func end_cutscene() -> void:
 	print("To game")
 	Global.menu_manager.transition_to_scene(GAME)
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("space"):
+		if cutscene_state != States.MAIN: return
+		if Global.state == Global.States.GAME: return
+		# now its defo main
+		if t and t.is_running(): t.kill()
+		Global.menu_manager.transition_to_scene(GAME)
 
 func start_anim():
+	self.cutscene_state = States.START
 	anim.animation = "cut_scene"
 	anim.position = Vector2(520, 350)
 	odds_text.modulate.a = 0.0
@@ -42,6 +55,7 @@ func start_anim():
 	Global.menu_manager.transition_to_scene(GAME)
 
 func _anim_slots():
+	self.cutscene_state = States.MAIN
 	anim.play("cut_scene")
 	audio_player.stream = slot_sfx
 	sfx_tween_in(0.2)
@@ -57,7 +71,7 @@ func _anim_slots():
 	
 	t = default_tween()
 	t.tween_property(odds_text, "modulate:a", 1., 0.7)
-	t.tween_property(odds_text, "offset_transform_position:x", 150., 0.7)
+	t.tween_property(odds_text, "offset_transform_position:x", 200., 0.7)
 	await t.finished
 	
 	anim.play("cut_scene")
@@ -73,6 +87,7 @@ func _anim_slots():
 	t.tween_property(odds_text, "modulate:a", 0.0, 0.3).set_delay(0.4)
 
 func _turning_cat():
+	self.cutscene_state = States.MAIN
 	anim.scale = Vector2.ONE * 0.3
 	anim.position = Vector2(576, 324)
 	anim.play("turning_cat")
@@ -96,9 +111,12 @@ func _turning_cat():
 	await get_tree().create_timer(1.0).timeout
 
 func end_anim():
+	self.cutscene_state = States.END
 	if t and t.is_running(): t.kill()
 	t = default_tween()
 	t.tween_property(self, "modulate:a", 0.0, 0.7)
+	await get_tree().create_timer(0.7).timeout
+	queue_free()
 	
 func sfx_tween_in(duration: float):
 	var sfx_t: Tween = create_tween()

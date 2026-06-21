@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://djxds56cenfds"]
 
-[ext_resource type="FontFile" uid="uid://cojtsxp45s3wp" path="res://assets/fonts/Sprinklescolors-njrJ.ttf" id="1_qew4h"]
+[ext_resource type="FontFile" uid="uid://bclh3m7ad0y3b" path="res://assets/fonts/CatDebt.ttf" id="1_qew4h"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vkpim"]
 
@@ -23,7 +23,7 @@ border_color = Color(0, 0, 0, 1)
 
 [resource]
 default_font = ExtResource("1_qew4h")
-default_font_size = 50
+default_font_size = 100
 Button/styles/disabled = SubResource("StyleBoxEmpty_vkpim")
 Button/styles/focus = SubResource("StyleBoxEmpty_o54fn")
 Button/styles/hover = SubResource("StyleBoxEmpty_qew4h")

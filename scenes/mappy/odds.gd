@@ -1,31 +1,36 @@
-extends PixelMenu
-
-@onready var odds_text: RichTextLabel = $OddsValue
+extends RichTextLabel
 @export var odds: int = 0
 var t: Tween
 
 func _ready():
-	odds_text.scale = Vector2.ONE
-	odds_text.text = "0%"
+	scale = Vector2.ONE
+	text = "[color=red][font top=-30]0j WIN"
+	await get_tree().create_timer(1).timeout
+	inc_odds(10)
 
 func get_odds():
 	return odds
 	
 func set_odds(amount: int):
 	odds = amount
-	odds_text.text = str(odds) + "%"
+	self.text = "[color=red][font top=-30]" + str(odds) + "j WIN"
 
 func inc_odds(amount: int):
-	odds_text.scale = Vector2.ONE
+	self.scale = Vector2.ONE
 	if t and t.running(): t.kill()
-	t = default_tween()
-	t.tween_property(odds_text, "scale", Vector2.ONE * 0.05, 0.2)
-	t.tween_property(odds_text, "position", Vector2(1062, 593), 0.2)
+	t = create_tween().set_ease(Tween.EASE_OUT)
+	t.set_parallel(true).set_trans(Tween.TRANS_QUINT)
+	t.tween_property(self, "scale", Vector2.ONE * 0.05, 0.2)
+	t.tween_property(self, "offset_transform_position", Vector2(-50, -50), 0.2)
 	await t.finished
-	t = default_tween()
-	odds += amount
-	odds_text.text = str(odds) + "%"
-	t.tween_property(odds_text, "scale", Vector2.ONE, 0.2)
-	t.tween_property(odds_text, "position", Vector2(1012, 543), 0.2)
+	t = create_tween().set_ease(Tween.EASE_OUT)
+	t.set_parallel(true).set_trans(Tween.TRANS_QUINT)
+	set_odds(odds+amount)
+	t.tween_property(self, "scale", Vector2.ONE, 0.2)
+	t.tween_property(self, "offset_transform_position", Vector2.ZERO, 0.2)
 	await t.finished
 	
+
+func _on_game_win_rate_changed(new_rate: float) -> void:
+	if new_rate > odds: inc_odds(new_rate-odds)
+	else: set_odds(new_rate)

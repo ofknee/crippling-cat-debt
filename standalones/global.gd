@@ -1,5 +1,6 @@
 extends Node
 
+
 enum States {
 	START,
 	GAME,
@@ -13,7 +14,7 @@ var state: States = States.START :
 
 var menu_manager : PixelMenuManager
 
-var map : Map 
+var map : Map
 signal map_state_changed(new_state:States)
 enum MapStates {
 	PLAY,
@@ -28,7 +29,7 @@ var map_state : MapStates = MapStates.PLAY :
 signal tower_selected(tower:Tower)
 var selected_tower : Tower = null :
 	set(val):
-		if val: 
+		if val:
 			selected_tower = val
 			tower_selected.emit(val)
 
@@ -39,4 +40,5 @@ func register_enemy(enemy:Enemy):
 	enemy.tree_exiting.connect(func():
 		all_enemies.erase(enemy)
 	)
-	
+
+var game_scene_ref: Game

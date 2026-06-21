@@ -2,6 +2,10 @@ extends Button
 class_name DefaultButton
 
 var t : Tween
+@onready var text_label: RichTextLabel = $Text
+
+func set_text_label(_str:String):
+	text_label.text = _str
 
 func _ready() -> void:
 	self.pivot_offset_ratio = Vector2(0.5, 0.5)

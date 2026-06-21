@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://7uajkq0c2ssf"]
 
+[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/placeholders/icon.svg" id="1_hwkrt"]
 [ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="1_l8quq"]
 [ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/path_2d.gd" id="2_l8quq"]
 [ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="3_okf3d"]
