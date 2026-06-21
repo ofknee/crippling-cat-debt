@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/wheels/info_popup/panel1.png" id="23_js0lu"]
 [ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/wheels/info_popup/panel2.png" id="24_gxtfn"]
 [ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/wheels/info_popup/duolingo-correct.mp3" id="25_twgab"]
+[ext_resource type="Texture2D" uid="uid://bi3prre3jeahv" path="res://assets/map/inventorylabel.png" id="29_suyxu"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -386,6 +387,12 @@ stream = ExtResource("25_twgab")
 
 [node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
 stream = ExtResource("25_twgab")
+
+[node name="Inventorylabel" type="Sprite2D" parent="." unique_id=54512464]
+position = Vector2(120, 561)
+rotation = -0.06898295
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("29_suyxu")
 
 [connection signal="win_rate_changed" from="." to="UI/WinRateCont/WinRateText" method="_on_game_win_rate_changed"]
 
