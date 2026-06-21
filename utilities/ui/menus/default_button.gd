@@ -26,7 +26,8 @@ func _notification(what: int) -> void:
 			_unhover()
 
 func _hover() -> void:
-	owner.play_miau()
+	if owner and owner.has_method("play_miau"):
+		owner.play_miau()
 	if t and t.is_running(): t.kill()
 	t = create_tween().set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_QUINT).set_parallel(true)
