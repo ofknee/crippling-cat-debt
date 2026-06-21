@@ -38,7 +38,9 @@ func babang() -> void:
 	for part in segments:
 		await pop_in_tween(part)
 		await get_tree().create_timer(0.05).timeout
-		
+	
+	await get_tree().create_timer(1.0).timeout
+	$spikey.hide()
 func pop_in_tween(part: Node2D, duration : float = 0.8) -> void:
 	var final_pos := part.position
 
@@ -57,3 +59,28 @@ func pop_in_tween(part: Node2D, duration : float = 0.8) -> void:
 		#tween.set_trans(Tween.TRANS_ELASTIC)
 		#tween.set_ease(Tween.EASE_OUT)
 		#tween.tween_property(part, "scale", Vector2.ONE, duration)
+	
+	
+func spin_to_win():
+	var to_be_rotated = randf()*360*2 + 360*2
+	var to_be_finally = wheelfr.rotation_degrees + to_be_rotated
+	$gambler.show()	
+
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(wheelfr, "rotation_degrees", to_be_finally, 2.0)
+
+	await tween.finished
+
+	print("landed on: ", get_landed_slot())
+
+
+func get_landed_slot() -> String:
+	var angle = 360%wheelfr.rotation_degrees
+
+	for slot in slots:
+		if angle >= slot["start"] and angle < slot["end"]:
+			return slot["name"]
+
+	return "unknown"
