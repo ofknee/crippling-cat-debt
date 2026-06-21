@@ -25,4 +25,5 @@ shape = SubResource("CircleShape2D_gkedh")
 position = Vector2(-90, 136)
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("2_lq4cm")
-animation = &"mid"
+animation = &"high"
+frame_progress = 0.89719397

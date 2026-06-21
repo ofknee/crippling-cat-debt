@@ -17,6 +17,7 @@ func _ready():
 
 const START_MENU = preload("res://scenes/start_menu.tscn")
 func start_anim():
+	Global.menu_manager.toggle_music(false)
 	anim.scale = Vector2.ONE * 0.3
 	await _anim_pain()
 	Global.menu_manager.transition_to_scene(START_MENU)
