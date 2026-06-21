@@ -66,20 +66,26 @@ scale = Vector2(0.6, 0.6)
 [node name="ResultPanel" type="AnimatedSprite2D" parent="wheelies/ResultInfo" unique_id=889915940]
 sprite_frames = SubResource("SpriteFrames_43hlm")
 autoplay = "default"
-frame_progress = 0.87584805
+frame_progress = 0.85039586
 
 [node name="ResultLabel" type="RichTextLabel" parent="wheelies/ResultInfo" unique_id=1462719978]
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(500, 60)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -101.66666
+offset_right = 250.0
+offset_bottom = 50.333344
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme = ExtResource("10_sfmmq")
+theme_override_constants/line_separation = -50
 bbcode_enabled = true
-text = "[font top=-30]text"
+text = "text
+ihgvu"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
