@@ -7,6 +7,10 @@ var all_towers: Array[Tower] = []
 
 func _ready() -> void:
 	Global.tower_selected.connect(_on_tower_selected)
+	Global.tower_manager = self
+	self.tree_exiting.connect(func():
+		Global.tower_manager = null
+	)
 	for child in placeable.get_children():
 		var area = child as Area2D
 		if not area: continue

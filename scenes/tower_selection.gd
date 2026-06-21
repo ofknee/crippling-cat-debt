@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 func _on_tower_selected(tower:Tower, type:Global.SelectionType) -> void:
 	if type != Global.SelectionType.INFO: return
+	#TODO Move the popup so its not outside the viewport
 	var target = tower.global_position
 	var rect = get_viewport_rect()
 	popup.open_popup()
