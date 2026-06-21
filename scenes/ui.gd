@@ -41,7 +41,6 @@ func _update_text() -> void:
 	var spins = Global.game_scene_ref.wheel_spins
 	var p = exp(spins * .2) * 1000
 	wheel_button.price = p
-	print("Spins: %s" % spins)
 	
 
 func format_number(n: int) -> String:

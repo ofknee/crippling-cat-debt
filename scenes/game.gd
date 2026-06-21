@@ -31,11 +31,12 @@ func _ready() -> void:
 	#if OS.is_debug_build():
 		#add_towers_to_place(2)
 
+const WIN_CUTSCENE = preload("res://scenes/cutscenes/win_cutscene.tscn")
 func _on_win() -> void:
-	pass
-
+	Global.menu_manager.transition_to_scene(WIN_CUTSCENE)
+const LOSE_CUTSCENE = preload("res://scenes/cutscenes/lose_cutscene.tscn")
 func _on_lose() -> void:
-	pass
+	Global.menu_manager.transition_to_scene(LOSE_CUTSCENE)
 
 func pay(amount:int) -> void:
 	#TODO deferred for race conditions?
@@ -74,4 +75,6 @@ func get_towers_to_place() -> Array[TowerInfo.TowerType]:
 func start_anim(): 
 	Global.state = Global.States.GAME
 
-func end_anim(): self.hide()
+func end_anim(): 
+	self.hide()
+	queue_free()

@@ -36,5 +36,9 @@ func _ready() -> void:
 	Global.menu_manager = self
 	bgm_player.stream = bgm
 	bgm_player.play()
+	#SignalBus.toggle_music.connect(_on_toggle_music)
 	if first_scene:
 		transition_to_scene(first_scene)
+func toggle_music(on:bool):
+	if on: bgm_player.play()
+	else: bgm_player.stop()
