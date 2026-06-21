@@ -28,8 +28,10 @@ func wave_yo_hand():
 		
 func spawn_wave() -> void:
 	for i in range(5+ceil(wave*1.67)):
-		if randf() < 0.1:
-			spawn_enemy("mosquito")
+		if randf() < 0.05:
+			spawn_enemy("blob")
+		elif randf() < 0.15:
+			spawn_enemy("beetle")
 		else:
 			spawn_enemy("fly")
 
