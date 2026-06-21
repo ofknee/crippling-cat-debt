@@ -318,6 +318,11 @@ animations = [{
 "loop": 0,
 "name": &"cut_scene",
 "speed": 15.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"test",
+"speed": 5.0
 }]
 
 [node name="WinScene" type="Control" unique_id=1867390076]
@@ -334,7 +339,7 @@ happy = ExtResource("2_02aqd")
 position = Vector2(578, 325.99997)
 scale = Vector2(0.30572915, 0.30555552)
 sprite_frames = SubResource("SpriteFrames_s2r6h")
-animation = &"cut_scene"
+animation = &"test"
 
 [node name="SadText" type="RichTextLabel" parent="." unique_id=237223183]
 custom_minimum_size = Vector2(250, 0)
