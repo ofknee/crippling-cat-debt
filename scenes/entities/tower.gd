@@ -15,6 +15,9 @@ func _ready() -> void:
 func _get_stats() -> Dictionary:
 	return INFO.get(type)
 
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, 40, Color.AQUAMARINE)
+
 func _process(delta: float) -> void:
 	_update_range()
 	if not placed:
