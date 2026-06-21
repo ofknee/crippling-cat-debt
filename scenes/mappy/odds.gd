@@ -7,8 +7,6 @@ var t: Tween
 func _ready():
 	odds_text.scale = Vector2.ONE
 	odds_text.text = "0%"
-	await get_tree().create_timer(1).timeout
-	inc_odds(10)
 
 func get_odds():
 	return odds

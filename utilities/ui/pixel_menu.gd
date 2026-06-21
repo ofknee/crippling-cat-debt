@@ -32,3 +32,4 @@ static func _dfs_collect(node: Node, out: Array[Tweenable]) -> void:
 
 		if child.get_child_count() > 0:
 			_dfs_collect(child, out)
+	
