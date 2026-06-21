@@ -12,7 +12,7 @@ static var stats := {
 	
 	TowerType.LOW : {
 		"damage": 1.0,
-		"attack_cooldown": 0.1,
+		"attack_cooldown": 0.5,
 		"bullet_speed": 10.,
 		"range": 200.0,
 		#"icon" : preload,
@@ -21,7 +21,7 @@ static var stats := {
 	TowerType.MID : {
 		"damage": 1.0,
 		"attack_cooldown": 0.1,
-		"bullet_speed": 10.,
+		"bullet_speed": 15.,
 		"range": 200.0,
 		#"icon" : preload,
 	},
