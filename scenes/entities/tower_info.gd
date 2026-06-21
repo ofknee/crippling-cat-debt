@@ -9,32 +9,47 @@ enum TowerType {
 
 
 static var stats := {
-	
 	TowerType.LOW : {
 		"name": "Low Tier",
 		"damage": 1.0,
 		"attack_cooldown": 0.5,
 		"bullet_speed": 10.,
 		"range": 200.0,
+		"upgrade_price": 3
 		#"icon" : preload,
 	},
-	
 	TowerType.MID : {
 		"name": "Mid Tier",
-		"damage": 1.0,
-		"attack_cooldown": 0.1,
+		"damage": 1.5,
+		"attack_cooldown": 0.3,
 		"bullet_speed": 15.,
-		"range": 200.0,
+		"range": 250.0,
+		"upgrade_price": 10
 		#"icon" : preload,
 	},
-	
 	TowerType.HIGH : {
 		"name": "High Tier",
-		"damage": 1.0,
-		"attack_cooldown": 0.1,
-		"bullet_speed": 10.,
-		"range": 200.0,
+		"damage": 2.0,
+		"attack_cooldown": 0.2,
+		"bullet_speed": 20.,
+		"range": 400.0,
+		"upgrade_price": 25
 		#"icon" : preload,
 	}
-	
 }
+
+static func get_level_stats(type:TowerType, level:int) -> Dictionary:
+	level = clampi(level, 0, 1e9)
+	return {
+		"name": stats[type]["name"],
+		"damage": stats[type]["damage"] *\
+			exp(level * .3),
+		"attack_cooldown": stats[type]["attack_cooldown"] /\
+			exp(level * .3),
+		"bullet_speed": stats[type]["bullet_speed"] *\
+			exp(level * .3),
+		"range": stats[type]["range"] *\
+			exp(level * .3),
+		"upgrade_price": stats[type]["upgrade_price"] *\
+			exp(level * .3),
+	}

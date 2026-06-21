@@ -11,12 +11,13 @@ var enemies_in_range: Array[Enemy] = []
 var INFO = TowerInfo.stats
 var type : TowerInfo.TowerType = TowerInfo.TowerType.LOW
 var cumulative_timer := 0.0
+var level : int = 0
 
 func _ready() -> void:
 	self.lock_rotation = true
 
 func _get_stats() -> Dictionary:
-	return INFO.get(type)
+	return TowerInfo.get_level_stats(type, level)
 
 func _draw() -> void:
 	#TODO tween the range radius :D
@@ -31,6 +32,11 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 	#print(event.to_string())
 	if event.is_action_pressed("l_click") and Input.is_action_just_pressed("l_click"):
 		Global.select_tower(self, Global.SelectionType.INFO)
+		print("YAYAYA SELECTED%s" % Global.selected_tower)
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
+		print("YAYAYA SELECTED%s" % Global.selected_tower)
 		pass
 
 func _process(delta: float) -> void:

@@ -16,7 +16,7 @@ func place_tower(tower:Tower):
 	if tower.placeable:
 		tower.placed = true
 		tower.freeze = true
-		Global.selected_tower = null
+		Global.clear_selected_tower()
 	else:
 		push_warning("Tower not placeable!! notif todo")
 

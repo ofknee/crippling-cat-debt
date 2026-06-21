@@ -35,6 +35,7 @@ func _on_button_pressed(_name:String):
 		"tower1":
 			if Global.selected_tower and not Global.selected_tower.placed:
 				Global.selected_tower.queue_free()
+				Global.clear_selected_tower()
 			var inst = TOWER_SCENE.instantiate()
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[0]
@@ -42,6 +43,7 @@ func _on_button_pressed(_name:String):
 		"tower2":
 			if Global.selected_tower and not Global.selected_tower.placed:
 				Global.selected_tower.queue_free()
+				Global.clear_selected_tower()
 			var inst = TOWER_SCENE.instantiate()
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[1]

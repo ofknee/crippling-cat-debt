@@ -33,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1785461987]
+[node name="Title" type="RichTextLabel" parent="VBoxContainer" unique_id=1785461987]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
