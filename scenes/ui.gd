@@ -15,11 +15,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var ts = Global.game_scene_ref.get_towers_to_place()
+	print("Towers: %s" % str(ts))
 	if ts.size() >= 2:
 		tower_1.show()
 		tower_1.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[0])["name"].to_upper())
 		tower_2.show()
-		tower_2.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[0])["name"].to_upper())
+		tower_2.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[1])["name"].to_upper())
 	elif ts.size() == 1:
 		tower_1.show()
 		tower_1.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[0])["name"].to_upper())
