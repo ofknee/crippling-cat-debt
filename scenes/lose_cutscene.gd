@@ -16,9 +16,6 @@ func start_anim():
 func _anim_pain():
 	anim.play("cut_scene")
 	await anim.animation_finished
-	await get_tree().create_timer(1.5).timeout
-	anim.play("cut_scene")
-	await anim.animation_finished
 	if t and t.is_running(): t.kill()
 	t = default_tween()
 	t.tween_property(anim, "scale", Vector2.ONE * 0.4, 2)

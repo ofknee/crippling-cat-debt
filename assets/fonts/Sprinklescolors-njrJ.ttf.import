@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cojtsxp45s3wp"
-path="res://.godot/imported/Sprinklescolors-njrJ.ttf-89d884283d49ac842b40802f68d61705.fontdata"
+path="res://.godot/imported/Sprinklescolors-njrJ.ttf-9f8d49846d93d3acbbed0951819d3f30.fontdata"
 
 [deps]
 
-source_file="res://assets/folder/Sprinklescolors-njrJ.ttf"
-dest_files=["res://.godot/imported/Sprinklescolors-njrJ.ttf-89d884283d49ac842b40802f68d61705.fontdata"]
+source_file="res://assets/fonts/Sprinklescolors-njrJ.ttf"
+dest_files=["res://.godot/imported/Sprinklescolors-njrJ.ttf-9f8d49846d93d3acbbed0951819d3f30.fontdata"]
 
 [params]
 

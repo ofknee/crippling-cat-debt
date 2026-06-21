@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://djxds56cenfds"]
 
-[ext_resource type="FontFile" uid="uid://cojtsxp45s3wp" path="res://assets/folder/Sprinklescolors-njrJ.ttf" id="1_qew4h"]
+[ext_resource type="FontFile" uid="uid://cojtsxp45s3wp" path="res://assets/fonts/Sprinklescolors-njrJ.ttf" id="1_qew4h"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vkpim"]
 
