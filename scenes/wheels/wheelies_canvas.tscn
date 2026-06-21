@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/wheels/popup/that.png" id="3_lhhr3"]
 [ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/wheels/popup/wheel.png" id="4_2f8t5"]
 [ext_resource type="Texture2D" uid="uid://on5v7naay6cf" path="res://assets/wheels/tower_wheel.png" id="5_41rmo"]
-[ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/pointer.png" id="7_lhhr3"]
+[ext_resource type="AudioStream" uid="uid://dvjj4ktdpnf6x" path="res://assets/wheels/popup/jetspraysfx.mp3" id="6_q0l6i"]
+[ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/wheels/pointer.png" id="7_lhhr3"]
 [ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/wheels/info_popup/panel1.png" id="8_41rmo"]
+[ext_resource type="AudioStream" uid="uid://doxcbkrxpv2yf" path="res://assets/sfx/kenney_interface-sounds/Audio/tick_002.ogg" id="8_u3rlo"]
 [ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/wheels/info_popup/panel2.png" id="9_sfmmq"]
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="10_sfmmq"]
+[ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/wheels/info_popup/duolingo-correct.mp3" id="13_5pd3e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_43hlm"]
 animations = [{
@@ -32,7 +35,7 @@ position = Vector2(537, 351)
 script = ExtResource("1_0x057")
 
 [node name="spikey" type="Node2D" parent="wheelies" unique_id=789617537]
-position = Vector2(25, 0)
+position = Vector2(26, 0)
 scale = Vector2(0.52, 0.52)
 
 [node name="bg" type="Sprite2D" parent="wheelies/spikey" unique_id=1725758351]
@@ -49,6 +52,10 @@ texture = ExtResource("3_lhhr3")
 [node name="wheel" type="Sprite2D" parent="wheelies/spikey/words" unique_id=1520757222]
 texture = ExtResource("4_2f8t5")
 
+[node name="jetspray" type="AudioStreamPlayer" parent="wheelies/spikey" unique_id=269496166]
+stream = ExtResource("6_q0l6i")
+volume_db = 1.21
+
 [node name="gambler" type="Node2D" parent="wheelies" unique_id=2054052840]
 scale = Vector2(0.23999876, 0.23999876)
 
@@ -59,6 +66,9 @@ texture = ExtResource("5_41rmo")
 position = Vector2(-8.333376, -1020.8387)
 rotation = 0.112182245
 texture = ExtResource("7_lhhr3")
+
+[node name="tick" type="AudioStreamPlayer" parent="wheelies/gambler" unique_id=852003200]
+stream = ExtResource("8_u3rlo")
 
 [node name="ResultInfo" type="Node2D" parent="wheelies" unique_id=441039270]
 scale = Vector2(0.6, 0.6)
@@ -90,3 +100,9 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DuoCorrect" type="AudioStreamPlayer" parent="wheelies/ResultInfo" unique_id=1816199812]
+stream = ExtResource("13_5pd3e")
+
+[node name="DuoWrong" type="AudioStreamPlayer" parent="wheelies/ResultInfo" unique_id=603097244]
+stream = ExtResource("13_5pd3e")
