@@ -30,6 +30,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("s"):
 		SignalBus.wheel_time.emit()
+	if Input.is_action_just_pressed("d"):
+		SignalBus.lose_tower.emit()
 
 func _reset():
 	#if prev_map_state: Global.map_state = prev_map_state

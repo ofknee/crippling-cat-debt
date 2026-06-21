@@ -15,4 +15,5 @@ func _on_lose_tower() -> void:
 	if tm.all_towers.size() == 0: 
 		push_warning("No towers to delete")
 		return
-	tm.deregister_tower(tm.all_towers.pick_random())
+	tm.all_towers.pick_random().queue_free()
+	#tm.deregister_tower()

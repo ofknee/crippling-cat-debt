@@ -17,8 +17,9 @@ var weights = {
 
 func _ready() -> void:
 	Global.game_scene_ref = self
-	if OS.is_debug_build():
-		add_towers_to_place(2)
+	tower_inventory = [TowerInfo.TowerType.LOW]
+	#if OS.is_debug_build():
+		#add_towers_to_place(2)
 
 func picked_at_index(idx:int) -> void:
 	if tower_inventory.size() == 0: return
