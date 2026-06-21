@@ -20,6 +20,11 @@ func _ready() -> void:
 	if OS.is_debug_build():
 		add_towers_to_place(2)
 
+func picked_at_index(idx:int) -> void:
+	if tower_inventory.size() == 0: return
+	idx = clampi(idx, 0, tower_inventory.size()-1)
+	tower_inventory.remove_at(idx)
+
 func add_towers_to_place(num:int) -> void:
 	num = clampi(num, 1, 2)
 	tower_inventory.clear()

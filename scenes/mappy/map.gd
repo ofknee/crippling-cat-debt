@@ -1,7 +1,6 @@
 extends Node2D
 class_name Map
 
-
 func _ready() -> void: 
 	Global.map = self
 	SignalBus.lose_tower.connect(_on_lose_tower)
