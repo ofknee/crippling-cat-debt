@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_m7x51"]
 [ext_resource type="Script" uid="uid://c0u7qfxc13dqh" path="res://scenes/start_menu.gd" id="2_h61rw"]
 [ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="3_fcv5n"]
+[ext_resource type="AudioStream" uid="uid://b8ynlni27xkmy" path="res://assets/sfx/gary_meow.mp3" id="3_h61rw"]
 
 [node name="StartMenu" type="Control" unique_id=1864635507 node_paths=PackedStringArray("buttons")]
 layout_mode = 3
@@ -14,6 +15,7 @@ grow_vertical = 2
 theme = ExtResource("1_m7x51")
 script = ExtResource("2_h61rw")
 buttons = [NodePath("VBoxContainer/Control/VBoxContainer/Play")]
+gary_meow = ExtResource("3_h61rw")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="Stamp" type="RichTextLabel" parent="." unique_id=1516455773]
@@ -117,6 +119,9 @@ text = "s QUIT  "
 [node name="Tweenable" parent="VBoxContainer/Control/VBoxContainer/Quit" index="2" unique_id=348270875]
 dir = Vector2(0, 0)
 speed = 0.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556415708]
+bus = &"SFX"
 
 [editable path="VBoxContainer/Control/VBoxContainer/Play"]
 [editable path="VBoxContainer/Control/VBoxContainer/Quit"]

@@ -7,7 +7,11 @@ const BEGINNING_CUTSCENE = preload("res://scenes/beginning_cutscene.tscn")
 var ts : Array[Tweenable]
 var t : Tween
 
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@export var gary_meow: AudioStreamMP3
+
 func _ready() -> void:
+	audio_player.stream = gary_meow
 	self.offset_transform_enabled = true
 	for button in buttons:
 		button.pressed.connect(Callable(_on_button_pressed)\
@@ -15,6 +19,7 @@ func _ready() -> void:
 
 
 func _on_button_pressed(button_name:String) -> void:
+	audio_player.play()
 	match button_name.to_lower():
 		"play":
 			pass

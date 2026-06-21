@@ -5,7 +5,6 @@ class_name PixelMenu
 
 var is_animating = false
 
-
 func start_anim():
 	push_error("Pixel Menu anim functions unfulfilled")
 
