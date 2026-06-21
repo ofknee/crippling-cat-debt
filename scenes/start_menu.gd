@@ -1,7 +1,7 @@
 extends PixelMenu
 class_name StartMenu
 
-const BEGINNING_CUTSCENE = preload("res://scenes/beginning_cutscene.tscn")
+const BEGINNING_CUTSCENE = preload("res://scenes/cutscenes/beginning_cutscene.tscn")
 @onready var declined := $QuitText
 
 @export var buttons : Array[Button]

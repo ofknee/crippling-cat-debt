@@ -38,6 +38,11 @@ func _process(_delta: float) -> void:
 
 func _update_text() -> void:
 	purrency_text.text = "[font top=-50 bt=-30]d%s" % format_number(Global.game_scene_ref.purrency)
+	var spins = Global.game_scene_ref.wheel_spins
+	var p = exp(spins * .2) * 1000
+	wheel_button.price = p
+	print("Spins: %s" % spins)
+	
 
 func format_number(n: int) -> String:
 	var s := str(n)

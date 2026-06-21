@@ -60,7 +60,8 @@ func _process(delta: float) -> void:
 				inst.bullet_init(
 					enemies_in_range[0], 
 					stats["bullet_speed"], 
-					stats["damage"]
+					stats["damage"],
+					cumulative_timer,
 				)
 		else:
 			#cumulative_timer = 0.0

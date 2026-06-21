@@ -15,7 +15,7 @@ static var stats := {
 		"attack_cooldown": 0.5,
 		"bullet_speed": 10.,
 		"range": 200.0,
-		"upgrade_price": 3,
+		"upgrade_price": 1000,
 		"animation": "low",
 		"offset": Vector2(27, 146),
 	},
@@ -25,7 +25,7 @@ static var stats := {
 		"attack_cooldown": 0.3,
 		"bullet_speed": 15.,
 		"range": 250.0,
-		"upgrade_price": 10,
+		"upgrade_price": 2500,
 		"animation": "mid",
 		"offset": Vector2(149, 146),
 	},
@@ -35,7 +35,7 @@ static var stats := {
 		"attack_cooldown": 0.2,
 		"bullet_speed": 20.,
 		"range": 400.0,
-		"upgrade_price": 25,
+		"upgrade_price": 5200,
 		"animation": "high",
 		"offset": Vector2(-90, 136),
 	}
@@ -46,15 +46,15 @@ static func get_level_stats(type:TowerType, level:int) -> Dictionary:
 	return {
 		"name": stats[type]["name"],
 		"damage": stats[type]["damage"] *\
-			exp(level * .3),
+			exp(level * .15),
 		"attack_cooldown": stats[type]["attack_cooldown"] /\
-			exp(level * .3),
+			exp(level * .05),
 		"bullet_speed": stats[type]["bullet_speed"] *\
-			exp(level * .3),
+			exp(level * .15),
 		"range": stats[type]["range"] *\
-			exp(level * .3),
+			exp(level * .1),
 		"upgrade_price": stats[type]["upgrade_price"] *\
-			exp(level * .3),
+			exp(level * .15),
 		"animation": stats[type]["animation"],
 		"offset": stats[type]["offset"],
 	}

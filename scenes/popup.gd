@@ -24,7 +24,7 @@ func _ready() -> void:
 	Global.map_state = Global.MapStates.TUTORIAL	#SignalBus.state_changed.connect(_on_state_changed)
 
 func _process(_delta: float) -> void:
-	print(Global.map_state)
+	#print(Global.map_state)
 
 	if Global.map_state == Global.MapStates.TUTORIAL and not tutorial_already_shown:
 		show_tutorial()

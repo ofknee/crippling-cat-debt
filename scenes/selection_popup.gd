@@ -15,7 +15,8 @@ func open_popup() -> void:
 	t.popupped = true
 func close_popup() -> void:
 	self.hide()
-	t.popupped = false
+	if t:
+		t.popupped = false
 	t = null
 	
 

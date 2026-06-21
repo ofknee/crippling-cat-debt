@@ -1,5 +1,7 @@
 extends Node
 
+var odds : int = 0
+var wave : int = 0
 
 enum States {
 	START,

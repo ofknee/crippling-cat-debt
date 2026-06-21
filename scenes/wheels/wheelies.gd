@@ -98,7 +98,7 @@ func pop_in_tween(part: Node2D, duration : float = 0.8) -> void:
 	
 func spin_to_win():
 	
-	var to_be_rotated = randf()*360*2 + 360*2
+	var to_be_rotated = randf()*360*2 + 360*3
 	var to_be_finally = wheelfr.rotation_degrees + to_be_rotated
 	#position.y+=1000
 	$gambler.show()
@@ -110,7 +110,7 @@ func spin_to_win():
 	#await bounce.finished
 
 	var tween := create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_OUT)
 
 	last_tick_index = get_slot_index()
@@ -121,7 +121,7 @@ func spin_to_win():
 			check_tick(),
 		wheelfr.rotation_degrees,
 		to_be_finally,
-		3.0
+		4.0
 	)
 
 	await tween.finished

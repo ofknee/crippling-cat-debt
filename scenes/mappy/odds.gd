@@ -1,12 +1,15 @@
 extends RichTextLabel
-@export var odds: int = 0
+@export var odds = Global.odds
 var t: Tween
+
 
 func _ready():
 	scale = Vector2.ONE
 	text = "[color=red][font top=-30]0j WIN"
 	await get_tree().create_timer(1).timeout
 	inc_odds(10)
+	SignalBus.change_odds.connect(inc_odds)
+
 
 func get_odds():
 	return odds
@@ -17,7 +20,7 @@ func set_odds(amount: int):
 
 func inc_odds(amount: int):
 	self.scale = Vector2.ONE
-	if t and t.running(): t.kill()
+	if t and t.is_running(): t.kill()
 	t = create_tween().set_ease(Tween.EASE_OUT)
 	t.set_parallel(true).set_trans(Tween.TRANS_QUINT)
 	t.tween_property(self, "scale", Vector2.ONE * 0.05, 0.2)
@@ -31,6 +34,6 @@ func inc_odds(amount: int):
 	await t.finished
 	
 
-func _on_game_win_rate_changed(new_rate: float) -> void:
+func _on_game_win_rate_changed(new_rate: int) -> void:
 	if new_rate > odds: inc_odds(new_rate-odds)
 	else: set_odds(new_rate)

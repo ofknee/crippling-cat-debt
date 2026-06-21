@@ -23,6 +23,9 @@ func _ready() -> void:
 	SignalBus.wheel_time.connect(func():
 		wheel_spins += 1
 	)
+	SignalBus.killed_enemy.connect(func(drop_price:int):
+		self.purrency += abs(drop_price)
+	)
 	#if OS.is_debug_build():
 		#add_towers_to_place(2)
 

@@ -19,23 +19,6 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_wqw0c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_onntj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_h7bdk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_1kl1a")
-}],
-"loop": 1,
-"name": &"fly",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("7_14tws")
 }, {
 "duration": 1.0,
@@ -48,7 +31,7 @@ animations = [{
 "texture": ExtResource("10_pt174")
 }],
 "loop": 1,
-"name": &"mosquito",
+"name": &"beetle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -65,7 +48,24 @@ animations = [{
 "texture": ExtResource("14_2wkw8")
 }],
 "loop": 1,
-"name": &"spidey",
+"name": &"blob",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wqw0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_onntj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h7bdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1kl1a")
+}],
+"loop": 1,
+"name": &"fly",
 "speed": 5.0
 }]
 
@@ -86,10 +86,10 @@ script = ExtResource("2_67neu")
 metadata/_custom_type_script = "uid://fj7ykktocnh6"
 
 [node name="Anim" type="AnimatedSprite2D" parent="." unique_id=1045301312]
-position = Vector2(1.1368684e-13, 3)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_43hlm")
-animation = &"mosquito"
+animation = &"beetle"
+offset = Vector2(0, 52)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1358334586]
 shape = SubResource("CircleShape2D_gkedh")
