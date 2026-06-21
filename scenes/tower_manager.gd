@@ -20,12 +20,13 @@ func place_tower(tower:Tower):
 	else:
 		push_warning("Tower not placeable!! notif todo")
 
-func _on_tower_selected(new_tower:Tower):
-	add_child(new_tower)
-	new_tower.global_position = get_global_mouse_position()
-	register_tower(new_tower)
+func _on_tower_selected(new_tower:Tower, type:Global.SelectionType):
+	if type == Global.SelectionType.SPAWN:
+		add_child(new_tower)
+		new_tower.global_position = get_global_mouse_position()
+		register_tower(new_tower)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Global.selected_tower != null:
 		var target = get_global_mouse_position()
 		var pos = Global.selected_tower.global_position
@@ -33,7 +34,7 @@ func _process(_delta: float) -> void:
 		if dir.length() > 1:
 			Global.selected_tower.apply_central_force(dir.normalized() * 1000 * sqrt(dir.length()))
 		else:
-			Global.selected_tower.global_position = lerp(pos, target, 0.3)
+			Global.selected_tower.global_position = lerp(pos, target, delta * 3)
 	if Input.is_action_just_pressed("l_click") and Global.selected_tower:
 		self.place_tower(Global.selected_tower)
 func register_tower(tower:Tower):

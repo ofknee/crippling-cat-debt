@@ -26,12 +26,16 @@ var map_state : MapStates = MapStates.PLAY :
 		if val == map_state: return
 		map_state = val
 		map_state_changed.emit(val)
-signal tower_selected(tower:Tower)
-var selected_tower : Tower = null :
-	set(val):
-		if val:
-			selected_tower = val
-			tower_selected.emit(val)
+enum SelectionType {
+	SPAWN,
+	INFO,
+	NULL,
+}
+signal tower_selected(tower:Tower, selection_type:SelectionType)
+var selected_tower : Tower = null 
+func select_tower(tower:Tower, selection_type:SelectionType=SelectionType.NULL):
+	selected_tower = tower
+	tower_selected.emit(tower, selection_type)
 
 var all_enemies: Array[Enemy]
 func register_enemy(enemy:Enemy):

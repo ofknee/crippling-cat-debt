@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cecb5i5yt2g0g"]
 
 [ext_resource type="Script" uid="uid://s0ohv87eh72w" path="res://scenes/entities/tower.gd" id="1_6ini6"]
-[ext_resource type="Texture2D" uid="uid://b2oese3sm7bus" path="res://assets/placeholders/icon.svg" id="2_lq4cm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gkedh"]
 radius = 40.0
@@ -9,17 +8,16 @@ radius = 40.0
 [node name="Tower" type="RigidBody2D" unique_id=1538694119]
 collision_layer = 8
 collision_mask = 0
+collision_priority = 2.0
+input_pickable = true
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
 linear_damp = 20.0
 script = ExtResource("1_6ini6")
+range_color = null
+range_color_error = null
 metadata/_custom_type_script = "uid://s0ohv87eh72w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=76641218]
 shape = SubResource("CircleShape2D_gkedh")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1774553143]
-visible = false
-scale = Vector2(0.71875, 0.71875)
-texture = ExtResource("2_lq4cm")
