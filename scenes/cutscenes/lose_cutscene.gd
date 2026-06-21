@@ -15,6 +15,7 @@ func _ready():
 	sad_text.modulate.a = 0
 	start_anim()
 
+
 const START_MENU = preload("res://scenes/start_menu.tscn")
 func start_anim():
 	Global.menu_manager.toggle_music(false)
@@ -51,6 +52,8 @@ func _anim_pain():
 	audio_player2.stream = vine_boom
 	audio_player2.volume_db = 0
 	audio_player2.play()
+	await anim.animation_finished
+	await get_tree().create_timer(1.0).timeout
 	
 
 func sfx_tween_in(ap: int, duration: float, volume: int):

@@ -6,7 +6,7 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @onready var wheel_button: DefaultButton = $Wheel/MarginContainer/WheelButton
 @onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
 @onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
-@onready var purrency_text: RichTextLabel = $Center/PurrencyText
+@onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
 var map_ref : Map
 
 func _ready() -> void:

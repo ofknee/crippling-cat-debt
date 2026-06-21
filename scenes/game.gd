@@ -16,7 +16,10 @@ var weights = {
 	Type.HIGH : 0.1,
 }
 var purrency: int = 1000
-
+#DEBUG 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("s") and OS.is_debug_build():
+		SignalBus.lose.emit()
 func _ready() -> void:
 	Global.game_scene_ref = self
 	tower_inventory = [TowerInfo.TowerType.LOW]
