@@ -188,18 +188,20 @@ size_flags_vertical = 3
 mouse_filter = 1
 
 [node name="WinRateCont" type="HBoxContainer" parent="UI" unique_id=1658304679]
-anchors_preset = -1
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.12
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -543.0
+offset_top = 8.0
+offset_bottom = 89.0
+grow_horizontal = 0
 mouse_filter = 2
 theme = ExtResource("1_yqjtg")
 
 [node name="Control2" type="Control" parent="UI/WinRateCont" unique_id=2140586493]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.15
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 20.0
 mouse_filter = 2
 
 [node name="WaveLabel" type="RichTextLabel" parent="UI/WinRateCont" unique_id=1009730594]
@@ -213,22 +215,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("16_sww3w")
 
-[node name="Control" type="Control" parent="UI/WinRateCont" unique_id=1687099238]
+[node name="VSeparator2" type="VSeparator" parent="UI/WinRateCont" unique_id=1144717883]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
+theme_override_constants/separation = 130
 
 [node name="WinRateText" type="RichTextLabel" parent="UI/WinRateCont" unique_id=2072861405]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 offset_transform_enabled = true
 mouse_filter = 2
 theme = ExtResource("1_yqjtg")
 bbcode_enabled = true
 text = "[color=red][font top=-30]0j WIN"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("12_kvuet")
+
+[node name="VSeparator" type="VSeparator" parent="UI/WinRateCont" unique_id=1498359931]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 27
 
 [node name="Center" type="Control" parent="UI" unique_id=453235562]
 layout_mode = 3
@@ -236,24 +243,36 @@ anchor_left = 0.786
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.2
+offset_top = 19.199997
+offset_bottom = 19.199997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_yqjtg")
 
-[node name="PurrencyText" type="RichTextLabel" parent="UI/Center" unique_id=2007252013]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Center" unique_id=2001009230]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PurrencyText" type="RichTextLabel" parent="UI/Center/HBoxContainer" unique_id=2007252013]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
 text = "[font top=-50 bt=-30]d100"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="UI/Center/HBoxContainer" unique_id=868322142]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 27
 
 [node name="Wheel" type="Control" parent="UI" unique_id=2006010629]
 layout_mode = 3

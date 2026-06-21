@@ -15,10 +15,18 @@ func _ready():
 	sad_text.modulate.a = 0
 	start_anim()
 
+
+const START_MENU = preload("res://scenes/start_menu.tscn")
 func start_anim():
+	Global.menu_manager.toggle_music(false)
 	anim.scale = Vector2.ONE * 0.2
 	anim.position = Vector2(605, 350)
 	await _anim_pain()
+	Global.menu_manager.transition_to_scene(START_MENU)
+
+func end_anim():
+	Global.menu_manager.toggle_music(true)
+	queue_free()
 
 func _anim_pain():
 	anim.play("cut_scene")
@@ -44,6 +52,8 @@ func _anim_pain():
 	audio_player2.stream = vine_boom
 	audio_player2.volume_db = 0
 	audio_player2.play()
+	await anim.animation_finished
+	await get_tree().create_timer(1.0).timeout
 	
 
 func sfx_tween_in(ap: int, duration: float, volume: int):

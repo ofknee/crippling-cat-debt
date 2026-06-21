@@ -6,7 +6,7 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @onready var wheel_button: DefaultButton = $Wheel/MarginContainer/WheelButton
 @onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
 @onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
-@onready var purrency_text: RichTextLabel = $Center/PurrencyText
+@onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
 var map_ref : Map
 
 func _ready() -> void:
@@ -41,7 +41,6 @@ func _update_text() -> void:
 	var spins = Global.game_scene_ref.wheel_spins
 	var p = exp(spins * .2) * 1000
 	wheel_button.price = p
-	print("Spins: %s" % spins)
 	
 
 func format_number(n: int) -> String:

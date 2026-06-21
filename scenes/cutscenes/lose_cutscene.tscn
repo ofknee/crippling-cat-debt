@@ -241,7 +241,7 @@ sad_meow = ExtResource("2_mxkxl")
 vine_boom = ExtResource("3_4c0st")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91319889]
-position = Vector2(805.49994, 372.99994)
+position = Vector2(730, 373)
 scale = Vector2(0.39661455, 0.39999995)
 sprite_frames = SubResource("SpriteFrames_beg7u")
 animation = &"cat_down2"

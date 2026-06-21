@@ -16,7 +16,10 @@ var weights = {
 	Type.HIGH : 0.1,
 }
 var purrency: int = 1000
-
+#DEBUG 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("s") and OS.is_debug_build():
+		SignalBus.killed_enemy.emit(10000)
 func _ready() -> void:
 	Global.game_scene_ref = self
 	tower_inventory = [TowerInfo.TowerType.LOW]
@@ -26,8 +29,17 @@ func _ready() -> void:
 	SignalBus.killed_enemy.connect(func(drop_price:int):
 		self.purrency += abs(drop_price)
 	)
+	SignalBus.win.connect(_on_win)
+	SignalBus.lose.connect(_on_lose)
 	#if OS.is_debug_build():
 		#add_towers_to_place(2)
+
+const WIN_CUTSCENE = preload("res://scenes/cutscenes/win_cutscene.tscn")
+func _on_win() -> void:
+	Global.menu_manager.transition_to_scene(WIN_CUTSCENE)
+const LOSE_CUTSCENE = preload("res://scenes/cutscenes/lose_cutscene.tscn")
+func _on_lose() -> void:
+	Global.menu_manager.transition_to_scene(LOSE_CUTSCENE)
 
 func pay(amount:int) -> void:
 	#TODO deferred for race conditions?
@@ -66,4 +78,6 @@ func get_towers_to_place() -> Array[TowerInfo.TowerType]:
 func start_anim(): 
 	Global.state = Global.States.GAME
 
-func end_anim(): self.hide()
+func end_anim(): 
+	self.hide()
+	queue_free()
