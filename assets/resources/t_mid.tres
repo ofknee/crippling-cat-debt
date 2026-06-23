@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TowerInfoResource" format=3 uid="uid://dbeikmjs7nhnp"]
+
+[ext_resource type="Script" uid="uid://i3161rhqglaq" path="res://scenes/entities/tower_info_res.gd" id="1_3k4j1"]
+
+[resource]
+script = ExtResource("1_3k4j1")
+name = "Mid Tier"
+type = 1
+damage = 1.5
+attack_cooldown = 0.3
+bullet_speed = 15.0
+range = 250.0
+upgrade_proce = 2500
+animation = "mid"
+offset = Vector2i(149, 146)
+metadata/_custom_type_script = "uid://i3161rhqglaq"

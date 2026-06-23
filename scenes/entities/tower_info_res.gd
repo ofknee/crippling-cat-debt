@@ -10,6 +10,7 @@ enum TowerType {
 
 @export var name := "Low Tier"
 @export var type := TowerType.LOW
+@export var damage := 1.0
 @export var attack_cooldown := 0.5
 @export var bullet_speed := 10.0
 @export var range := 200.0
