@@ -7,7 +7,7 @@
 	<li><a href="#play">Play</a></li>
 	<li><a href="#screenshots">Screenshots</a></li>
 	<li><a href="#built-with">Built With</a></li>
-	<li><a href="#ai-usage">AI Usage</a></li>
+	<li><a href="#roadmap">Roadmap</a></li>
 	<li><a href="#license">License</a></li>
 	<li><a href="#contact">Contact</a></li>
 	<li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -61,12 +61,13 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
 <!-- SCREENSHOTS →
 
 <!-- AI Usage -->
-## AI Usage
+## Roadmap
 
-This project has used Generative Artificial Intelligence in the debugging process, and for some boilerplate code across the project.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+ - [ ] make tower inventory arrow disappear when no towers
+ - [ ] fix wheel ui
+ - [ ] indicate what teh winrate is
+ - [ ] tutorial to tel people to click tower
+ - [ ] tower hover change color to indicate YOU CAN CLICK THEM
 
 <!-- CONTACT -->
 ## Contact
