@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://c4m8tvfjhus10"
 
 Global="*uid://cw2cid6mippjr"
 SignalBus="*uid://76heinnvc1fe"
+EntityDatabase="*uid://brw6h55i78e0m"
 
 [display]
 
@@ -43,6 +44,7 @@ folder_colors={
 "res://assets/fonts/": "teal",
 "res://assets/lil_guys/": "purple",
 "res://assets/placeholders/": "orange",
+"res://assets/resources/": "yellow",
 "res://scenes/": "blue",
 "res://shaders/": "purple",
 "res://standalones/": "green",

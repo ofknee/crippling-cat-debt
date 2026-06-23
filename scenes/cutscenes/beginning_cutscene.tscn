@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://tsb37paepjjn" path="res://assets/sfx/vine-boom.mp3" id="4_gs5sn"]
 [ext_resource type="AudioStream" uid="uid://dbgqtcqy68v3p" path="res://assets/sfx/lever-pull-sound-effect.mp3" id="5_y4ydt"]
 [ext_resource type="AudioStream" uid="uid://kd0c02xbdc8k" path="res://assets/sfx/angel.mp3" id="6_cbpof"]
-[ext_resource type="Texture2D" uid="uid://dvv487bqceewp" path="res://assets/scene_1_cat_slotting/jackpawt.png" id="7_5ruw7"]
+[ext_resource type="Texture2D" uid="uid://dvv487bqceewp" path="res://assets/cutscenes/scene_1_cat_slotting/jackpawt.png" id="7_5ruw7"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_j3pel"]
 

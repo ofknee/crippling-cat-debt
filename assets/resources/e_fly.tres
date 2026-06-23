@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyInfoResource" format=3 uid="uid://jwblx1cla8um"]
+
+[ext_resource type="Script" uid="uid://bx0ce47i0lw6" path="res://scenes/entities/enemy_info_res.gd" id="1_bdst3"]
+
+[resource]
+script = ExtResource("1_bdst3")
+offset = Vector2i(-158, 134)
+metadata/_custom_type_script = "uid://bx0ce47i0lw6"

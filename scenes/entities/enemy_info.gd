@@ -1,6 +1,8 @@
 extends Node
 class_name EnemyInfo
 
+
+
 ## strength is hwo much it affects odds once hit home base
 static var stats := {
 	
@@ -29,15 +31,3 @@ static var stats := {
 	}
 	
 }
-
-
-#
-#
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#pass # Replace with function body.
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass

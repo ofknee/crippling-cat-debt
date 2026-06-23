@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyInfoResource" format=3 uid="uid://cqxis7jwullbc"]
+
+[ext_resource type="Script" uid="uid://bx0ce47i0lw6" path="res://scenes/entities/enemy_info_res.gd" id="1_bdvfq"]
+
+[resource]
+script = ExtResource("1_bdvfq")
+type = 1
+name = "Beetle"
+strength = 10.0
+health = 4.0
+speed = 1.2
+drop_price = 400
+offset = Vector2i(0, 52)
+metadata/_custom_type_script = "uid://bx0ce47i0lw6"

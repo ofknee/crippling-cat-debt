@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TowerInfoResource" format=3 uid="uid://buh7nxmru87ba"]
+
+[ext_resource type="Script" uid="uid://i3161rhqglaq" path="res://scenes/entities/tower_info_res.gd" id="1_glbke"]
+
+[resource]
+script = ExtResource("1_glbke")
+metadata/_custom_type_script = "uid://i3161rhqglaq"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyInfoResource" format=3 uid="uid://byye7eknxkbwl"]
+
+[ext_resource type="Script" uid="uid://bx0ce47i0lw6" path="res://scenes/entities/enemy_info_res.gd" id="1_4mxhq"]
+
+[resource]
+script = ExtResource("1_4mxhq")
+type = 2
+name = "Blob"
+strength = 15.0
+health = 10.0
+speed = 0.6
+drop_price = 700
+offset = Vector2i(241, 41)
+metadata/_custom_type_script = "uid://bx0ce47i0lw6"
