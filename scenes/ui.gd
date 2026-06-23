@@ -3,7 +3,8 @@ class_name UI
 const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @onready var tower_button_cont: HBoxContainer = $MarginContainer/TowerButtonCont
 #@onready var tower_button_cont: MarginContainer = $TowerButtonCont
-@onready var wheel_button: DefaultButton = $Wheel/MarginContainer/WheelButton
+@onready var wheel_button: DefaultButton = $Shop/HBoxContainer/Wheel/MarginContainer/WheelButton
+@onready var odds_button: DefaultButton = $Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton
 @onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
 @onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
 @onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
@@ -13,6 +14,9 @@ func _ready() -> void:
 	#Global.map_state_changed.connect(_on_map_state_changed)
 	wheel_button.paid.connect(func():
 		SignalBus.wheel_time.emit()
+	)
+	odds_button.paid.connect(func():
+		SignalBus.change_odds.emit(5)
 	)
 	for but in tower_button_cont.get_children():
 		var button = but as DefaultButton
