@@ -3,8 +3,8 @@ class_name UI
 const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @onready var tower_button_cont: HBoxContainer = $MarginContainer/TowerButtonCont
 #@onready var tower_button_cont: MarginContainer = $TowerButtonCont
-@onready var wheel_button: DefaultButton = $Shop/HBoxContainer/Wheel/MarginContainer/WheelButton
-@onready var odds_button: DefaultButton = $Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton
+@onready var wheel_button: DefaultButton = $"../Shop/HBoxContainer/Wheel/MarginContainer/WheelButton"
+@onready var odds_button: DefaultButton = $"../Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton"
 @onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
 @onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
 @onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
