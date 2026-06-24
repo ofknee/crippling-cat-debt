@@ -30,7 +30,7 @@ func get_tower(type:T) -> TowerInfoResource:
 		return towers.get(T.LOW)
 
 ## Function that gets the stats of a given tower at the given level
-static func get_leveled_tower(type:T, level:int) -> TowerInfoResource:
+func get_leveled_tower(type:T, level:int) -> TowerInfoResource:
 	level = clampi(level, 0, 1000000000)
 	var stats = EntityDatabase.get_tower(type)
 	var t = TowerInfoResource.new()
@@ -51,7 +51,7 @@ static func get_leveled_tower(type:T, level:int) -> TowerInfoResource:
 
 #TODO Level enemies
 ## Function that gets the stats of a given enemy at the given level
-static func get_leveled_enemy(type:E, level:int) -> EnemyInfoResource:
+func get_leveled_enemy(type:E, level:int) -> EnemyInfoResource:
 	level = clampi(level, 0, 1000000000)
 	var stats = EntityDatabase.get_enemy(type)
 	var e = EnemyInfoResource.new()

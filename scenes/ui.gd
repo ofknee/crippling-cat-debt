@@ -67,7 +67,7 @@ func _on_button_pressed(_name:String):
 			var inst = TOWER_SCENE.instantiate()
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[0]
-			tower_1.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower._get_stats()["name"].to_upper())
+			tower_1.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(0)
 		"tower2":
 			if Global.selected_tower and not Global.selected_tower.placed:
@@ -76,7 +76,7 @@ func _on_button_pressed(_name:String):
 			var inst = TOWER_SCENE.instantiate()
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[1]
-			tower_2.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower._get_stats()["name"].to_upper())
+			tower_2.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(1)
 #func _on_map_state_changed(new_state:Global.MapStates) -> void:
 	#match new_state:

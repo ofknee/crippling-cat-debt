@@ -20,12 +20,14 @@ var type : T = T.LOW
 var cumulative_timer := 0.0
 var level : int = 0
 
+
+
 func _ready() -> void:
 	self.lock_rotation = true
 	_stats = EntityDatabase.get_tower(self.type)
 
-#func _get_stats() -> Dictionary:
-	#return TowerInfo.get_level_stats(type, level)
+func get_stats() -> TowerInfoResource:
+	return _stats
 
 func _draw() -> void:
 	#TODO tween the range radius :D
