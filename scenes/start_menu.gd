@@ -30,7 +30,6 @@ func _on_button_pressed(button_name:String) -> void:
 			pass
 			Global.menu_manager.transition_to_scene(BEGINNING_CUTSCENE)
 		"quit":
-			var y := -100
 			var tween := create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_property(declined, "position:y", 60, 0.3)

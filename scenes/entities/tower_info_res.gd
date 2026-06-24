@@ -13,6 +13,7 @@ enum TowerType {
 @export var damage := 1.0
 @export var attack_cooldown := 0.5
 @export var bullet_speed := 10.0
+@warning_ignore("shadowed_global_identifier")
 @export var range := 200.0
 @export var upgrade_price := 1000
 @export var animation := "low"

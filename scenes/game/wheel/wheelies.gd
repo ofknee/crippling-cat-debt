@@ -77,7 +77,7 @@ func babang() -> void:
 	await get_tree().create_timer(1.0).timeout
 	$spikey.hide()
 func pop_in_tween(part: Node2D, duration : float = 0.8) -> void:
-	var final_pos := part.position
+	#var final_pos := part.position
 
 	#part.scale = Vector2.ZERO
 	#part.show()

@@ -49,7 +49,8 @@ script/source = "@tool
 extends Line2D
 ## Only made to copy over line points to path
 @export var target_path: Path2D
-@export_tool_button(\"set curve\") var set_curve = set_curve_action
+@warning_ignore(\"unused_private_class_variable\")
+@export_tool_button(\"set curve\") var _set_curve = set_curve_action
 
 func set_curve_action() -> void:
 	target_path.curve.clear_points()
@@ -262,12 +263,14 @@ stream = ExtResource("28_qn4tv")
 [node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
 stream = ExtResource("28_qn4tv")
 
-[node name="Inventorylabel" type="Sprite2D" parent="UI" unique_id=54512464]
+[node name="Inventorylabel" type="Sprite2D" parent="UI" unique_id=54512464 node_paths=PackedStringArray("tower_button1", "tower_button2")]
 position = Vector2(120, 561)
 rotation = -0.06898296
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("12_t5owt")
 script = ExtResource("13_8krtj")
+tower_button1 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower1")
+tower_button2 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower2")
 
 [node name="TopBar" type="HBoxContainer" parent="UI" unique_id=725220614]
 anchors_preset = -1

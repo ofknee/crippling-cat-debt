@@ -20,7 +20,7 @@ var weights = {
 var purrency: int = 1000
 var pay_queue: Array[int] = []
 #DEBUG 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("w") and OS.is_debug_build():
 		SignalBus.win.emit()
 	if Input.is_action_just_pressed("s") and OS.is_debug_build():
