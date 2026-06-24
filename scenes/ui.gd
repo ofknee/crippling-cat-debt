@@ -75,5 +75,6 @@ func _on_button_pressed(_name:String):
 			var inst = TOWER_SCENE.instantiate()
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[1]
+			print("Tower type: %s" % Global.selected_tower.type)
 			tower_2.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(1)

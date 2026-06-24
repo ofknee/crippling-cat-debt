@@ -128,7 +128,7 @@ func spin_to_win():
 	
 	$gambler/pointer.hide()
 	var result = get_landed_slot()
-	print("landed on: ", result)
+	print("Wheel spin landed on: ", result)
 	
 	match result:
 		"+2":

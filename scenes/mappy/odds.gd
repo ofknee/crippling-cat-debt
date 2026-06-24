@@ -16,10 +16,10 @@ func _set_odds(amount: int):
 	odds = clampi(amount, -100, 100)
 	self.text = "[color=red][font top=-30]" + str(odds) + "j WIN"
 	if odds <= -50:
-		print("LOST")
+		print("GAME LOST")
 		SignalBus.lose.emit()
 	elif odds == 100:
-		print("WON")
+		print("GAME WON")
 		SignalBus.win.emit()
 
 ## Adds the amount to the queue, and calls the inc_odds to tally everything up per frame

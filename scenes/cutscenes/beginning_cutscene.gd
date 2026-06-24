@@ -29,7 +29,6 @@ func _ready():
 
 ## Call when the cutscene is finished and go to the game
 func end_cutscene() -> void:
-	print("To game")
 	Global.menu_manager.transition_to_scene(GAME)
 	Global.map_state = Global.MapStates.TUTORIAL 
 func _process(_delta: float) -> void:

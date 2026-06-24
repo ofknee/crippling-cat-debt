@@ -59,7 +59,6 @@ func add_towers_to_place(num:int) -> void:
 		
 	for i in range(num):
 		tower_inventory.append(get_random_tower_type(i))
-	print("Towers: %s" % str(tower_inventory))
 	
 func get_random_tower_type(_seed:int) -> T:
 	var rng = RandomNumberGenerator.new()

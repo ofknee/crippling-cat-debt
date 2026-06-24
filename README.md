@@ -68,6 +68,11 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
  - [ ] indicate what teh winrate is
  - [ ] tutorial to tel people to click tower
  - [ ] tower hover change color to indicate YOU CAN CLICK THEM
+ - [ ] Deleting towers animation so you know which one died!
+ - [ ] Sounds
+	 - [ ] Enemy death
+	 - [ ] Tower shoot
+	 - [ ] Tower deletion
  - [ ] Make the wheel spin even longer
  - [ ] Paws (Pause) menu in gamme
 	 - [ ] Volume

@@ -28,18 +28,14 @@ func _on_button_pressed(button_name:String) -> void:
 	match button_name.to_lower():
 		"play":
 			pass
-			print("play")
 			Global.menu_manager.transition_to_scene(BEGINNING_CUTSCENE)
 		"quit":
-			print("quit")
 			var y := -100
-			print(y)
 			var tween := create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_property(declined, "position:y", 60, 0.3)
 			tween.tween_interval(1.0)
 			tween.tween_property(declined, "position:y", -100, 0.3)
-			print(y)
 
 			
 

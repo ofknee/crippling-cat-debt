@@ -45,10 +45,9 @@ func _draw() -> void:
 	#draw_circle(Vector2.ZERO, 40, Color.AQUAMARINE)
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	#print(event.to_string())
 	if event.is_action_pressed("l_click") and Input.is_action_just_pressed("l_click"):
 		Global.select_tower(self, Global.SelectionType.INFO)
-		print("YAYAYA SELECTED%s" % Global.selected_tower)
+		print("Tower selected: %s" % Global.selected_tower)
 		pass
 
 func _process(delta: float) -> void:
@@ -95,11 +94,9 @@ func register_areas(arr:Array[Area2D]):
 	for area in arr:
 		area.body_entered.connect(func(body:Node2D):
 			if body == self:
-				print("not Placeable")
 				placeable = false
 		)
 		area.body_exited.connect(func(body:Node2D):
 			if body == self:
-				print("placeable")
 				placeable = true
 		)

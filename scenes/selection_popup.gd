@@ -29,20 +29,19 @@ func _unhandled_input(event: InputEvent):
 			close_popup()
 
 func _process(_delta: float) -> void:
-	#print("Global seelcted: %s" % Global.selected_tower)
+	#TODO event based ui updates
 	_update_ui()
 
 func _can_buy() -> bool: return true
 
 func _on_upgrade_pressed() -> void:
 	print("clicked: %s" % t)
-	#var t = Global.selected_tower
 	if not t: return
 	var stats = EntityDatabase.get_leveled_tower(t.type, t.level)
 	SignalBus.upgrade_selected_tower.emit(t.level, stats["upgrade_price"])
 	if _can_buy() or true:
-		print("Leveling up")
 		t.level += 1
+		print("Leveling up, new level: %s" % t.level)
 	pass
 
 func _update_ui() -> void:
