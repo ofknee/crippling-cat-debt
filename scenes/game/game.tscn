@@ -137,16 +137,16 @@ collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TowerManager/Placeable/Area2D" unique_id=712845828]
 position = Vector2(1, 0)
-polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 371, 548, 367, 657, -9, 663, -4, 537, 356, 534, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
+polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 360, 539, 360, 659, -9, 663, -5, 529, 347, 528, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button")]
 script = ExtResource("9_5q2xh")
-purrency_text = NodePath("WinRateCont/WinRateText")
-tower_button_cont = NodePath("MarginContainer/TowerButtonCont")
-tower_1 = NodePath("MarginContainer/TowerButtonCont/Tower1")
-tower_2 = NodePath("MarginContainer/TowerButtonCont/Tower2")
-odds_button = NodePath("Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton")
-wheel_button = NodePath("Shop/HBoxContainer/Wheel/MarginContainer/WheelButton")
+purrency_text = NodePath("TopBar/MarginContainer2/VBoxContainer/PurrencyText")
+tower_button_cont = NodePath("BottomBar/LeftCorner/TowerButtonCont")
+tower_1 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower1")
+tower_2 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower2")
+odds_button = NodePath("BottomBar/RightCorner/ShopContainer/OddsButton")
+wheel_button = NodePath("BottomBar/RightCorner/ShopContainer/WheelButton")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
@@ -164,130 +164,6 @@ visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 120.0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=385707356]
-anchors_preset = -1
-anchor_top = 0.844
-anchor_right = 0.321
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 30
-
-[node name="Inventorylabel" type="Sprite2D" parent="UI/MarginContainer" unique_id=54512464]
-position = Vector2(120, 33.544006)
-rotation = -0.06898296
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("12_t5owt")
-script = ExtResource("13_8krtj")
-
-[node name="TowerButtonCont" type="HBoxContainer" parent="UI/MarginContainer" unique_id=790972568]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("1_8krtj")
-theme_override_constants/separation = 15
-
-[node name="Tower1" parent="UI/MarginContainer/TowerButtonCont" unique_id=418678843 instance=ExtResource("14_fba2n")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 1
-
-[node name="Tower2" parent="UI/MarginContainer/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 1
-
-[node name="WinRateCont" type="HBoxContainer" parent="UI" unique_id=1658304679]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -543.0
-offset_top = 8.0
-offset_bottom = 89.0
-grow_horizontal = 0
-mouse_filter = 2
-theme = ExtResource("1_8krtj")
-
-[node name="Control2" type="Control" parent="UI/WinRateCont" unique_id=2140586493]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_stretch_ratio = 20.0
-mouse_filter = 2
-
-[node name="WaveLabel" type="RichTextLabel" parent="UI/WinRateCont" unique_id=1009730594]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[font top=-20]WAVE ?"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("15_8krtj")
-
-[node name="VSeparator2" type="VSeparator" parent="UI/WinRateCont" unique_id=1144717883]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 130
-
-[node name="WinRateText" type="RichTextLabel" parent="UI/WinRateCont" unique_id=2072861405]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-offset_transform_enabled = true
-mouse_filter = 2
-theme = ExtResource("1_8krtj")
-bbcode_enabled = true
-text = "[color=red][font top=-30]0j WIN"
-horizontal_alignment = 2
-vertical_alignment = 1
-script = ExtResource("16_8krtj")
-
-[node name="VSeparator" type="VSeparator" parent="UI/WinRateCont" unique_id=1498359931]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 27
-
-[node name="Center" type="Control" parent="UI" unique_id=453235562]
-layout_mode = 3
-anchor_left = 0.786
-anchor_top = 0.1
-anchor_right = 1.0
-anchor_bottom = 0.2
-offset_top = 19.199997
-offset_bottom = 19.199997
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("1_8krtj")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Center" unique_id=2001009230]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PurrencyText" type="RichTextLabel" parent="UI/Center/HBoxContainer" unique_id=2007252013]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 74
-bbcode_enabled = true
-text = "[font top=-50 bt=-30]d100"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="UI/Center/HBoxContainer" unique_id=868322142]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 27
 
 [node name="WheelCont" type="Control" parent="UI" unique_id=1703027372]
 layout_mode = 3
@@ -387,55 +263,134 @@ stream = ExtResource("28_qn4tv")
 [node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
 stream = ExtResource("28_qn4tv")
 
-[node name="Shop" type="MarginContainer" parent="UI" unique_id=1263594923]
-anchors_preset = 15
+[node name="Inventorylabel" type="Sprite2D" parent="UI" unique_id=54512464]
+position = Vector2(120, 561)
+rotation = -0.06898296
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("12_t5owt")
+script = ExtResource("13_8krtj")
+
+[node name="TopBar" type="HBoxContainer" parent="UI" unique_id=725220614]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TopBar" unique_id=2033805679]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer" unique_id=621789245]
+layout_mode = 2
+
+[node name="WaveLabel" type="RichTextLabel" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1702195054]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-60 bt=-1000]WAVE ?"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_8krtj")
+
+[node name="Control" type="Control" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1453314878]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="UI/TopBar" unique_id=1769965460]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/TopBar" unique_id=150170604]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer2" unique_id=2048934884]
+layout_mode = 2
+
+[node name="WinRateText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1331428193]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+mouse_filter = 2
+theme = ExtResource("1_8krtj")
+bbcode_enabled = true
+text = "[color=red][font top=-60 bt=-1000]0j WIN"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("16_8krtj")
+
+[node name="PurrencyText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1357203368]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "[font top=-50 bt=-30]d100"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="UI" unique_id=317528895]
+anchors_preset = -1
+anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Shop" unique_id=2079314250]
+[node name="LeftCorner" type="MarginContainer" parent="UI/BottomBar" unique_id=385707356]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+
+[node name="TowerButtonCont" type="HBoxContainer" parent="UI/BottomBar/LeftCorner" unique_id=790972568]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_8krtj")
+theme_override_constants/separation = 15
+
+[node name="Tower1" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=418678843 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Tower2" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="MiddleSpacer" type="Control" parent="UI/BottomBar" unique_id=74823527]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightCorner" type="MarginContainer" parent="UI/BottomBar" unique_id=880666078]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ShopContainer" type="HBoxContainer" parent="UI/BottomBar/RightCorner" unique_id=537047393]
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="Wheel" type="Control" parent="UI/Shop/HBoxContainer" unique_id=2006010629]
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Shop/HBoxContainer/Wheel" unique_id=711968835]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 30
-
-[node name="WheelButton" parent="UI/Shop/HBoxContainer/Wheel/MarginContainer" unique_id=1152125449 instance=ExtResource("14_fba2n")]
+[node name="WheelButton" parent="UI/BottomBar/RightCorner/ShopContainer" unique_id=892149661 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 script = ExtResource("29_e3lpd")
 price = 1000
 
-[node name="Panel" parent="UI/Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="0" unique_id=1586527438]
+[node name="Panel" parent="UI/BottomBar/RightCorner/ShopContainer/WheelButton" index="0" unique_id=1586527438]
 theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
 
-[node name="Text" parent="UI/Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/BottomBar/RightCorner/ShopContainer/WheelButton" index="1" unique_id=1745176857]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -446,34 +401,16 @@ text = "[font top=-40 bt=-5]TOWER
 "
 script = ExtResource("30_fydea")
 
-[node name="BuyOdds" type="Control" parent="UI/Shop/HBoxContainer" unique_id=1597518108]
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Shop/HBoxContainer/BuyOdds" unique_id=830813969]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 30
-
-[node name="OddsButton" parent="UI/Shop/HBoxContainer/BuyOdds/MarginContainer" unique_id=1300996425 instance=ExtResource("14_fba2n")]
+[node name="OddsButton" parent="UI/BottomBar/RightCorner/ShopContainer" unique_id=1170697133 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 script = ExtResource("29_e3lpd")
 price = 1000
 
-[node name="Panel" parent="UI/Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="0" unique_id=1586527438]
+[node name="Panel" parent="UI/BottomBar/RightCorner/ShopContainer/OddsButton" index="0" unique_id=1586527438]
 theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
 
-[node name="Text" parent="UI/Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/BottomBar/RightCorner/ShopContainer/OddsButton" index="1" unique_id=1745176857]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -484,7 +421,5 @@ text = "[font top=-40 bt=-5]k5i
 "
 script = ExtResource("31_fydea")
 
-[connection signal="win_rate_changed" from="." to="UI/WinRateCont/WinRateText" method="_on_game_win_rate_changed"]
-
-[editable path="UI/Shop/HBoxContainer/Wheel/MarginContainer/WheelButton"]
-[editable path="UI/Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton"]
+[editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
+[editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
