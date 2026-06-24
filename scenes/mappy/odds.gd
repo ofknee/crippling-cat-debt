@@ -6,7 +6,7 @@ var odds_change_queue: Array[int] = []
 func _ready():
 	scale = Vector2.ONE
 	text = "[color=red][font top=-30]0j WIN"
-	SignalBus.change_odds.connect(inc_odds)
+	SignalBus.change_odds.connect(queue_odds_change)
 
 
 func get_odds():

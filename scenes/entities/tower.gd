@@ -16,7 +16,10 @@ var popupped := false
 var range_shown := false
 var enemies_in_range: Array[Enemy] = []
 var _stats : TowerInfoResource = null
-var type : T = T.LOW
+var type : T = T.LOW :
+	set(val):
+		type = val
+		_update_stats()
 var cumulative_timer := 0.0
 var level : int = 0
 
@@ -24,6 +27,8 @@ var level : int = 0
 
 func _ready() -> void:
 	self.lock_rotation = true
+
+func _update_stats():
 	_stats = EntityDatabase.get_tower(self.type)
 
 func get_stats() -> TowerInfoResource:

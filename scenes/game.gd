@@ -34,8 +34,6 @@ func _ready() -> void:
 	)
 	SignalBus.win.connect(_on_win)
 	SignalBus.lose.connect(_on_lose)
-	#if OS.is_debug_build():
-		#add_towers_to_place(2)
 
 const WIN_CUTSCENE = preload("res://scenes/cutscenes/win_cutscene.tscn")
 func _on_win() -> void:
@@ -63,9 +61,9 @@ func add_towers_to_place(num:int) -> void:
 		tower_inventory.append(get_random_tower_type(i))
 	print("Towers: %s" % str(tower_inventory))
 	
-func get_random_tower_type(seed:int) -> T:
+func get_random_tower_type(_seed:int) -> T:
 	var rng = RandomNumberGenerator.new()
-	rng.seed = hash(seed * Time.get_ticks_msec())
+	rng.seed = hash(_seed * Time.get_ticks_msec())
 	var rand = rng.randf()
 	if rand > 1. - weights[T.HIGH]:
 		return T.HIGH

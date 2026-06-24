@@ -9,7 +9,6 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
 @onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
 @onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
-var map_ref : Map
 
 func _ready() -> void:
 	#Global.map_state_changed.connect(_on_map_state_changed)
@@ -26,8 +25,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_update_text()
-	var ts = Global.game_scene_ref.get_towers_to_place()
-	#print("Towers: %s" % str(ts))
+	var ts := Global.game_scene_ref.get_towers_to_place()
 	if ts.size() >= 2:
 		tower_1.show()
 		tower_1.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[0]).name.to_upper())
@@ -67,6 +65,7 @@ func _on_button_pressed(_name:String):
 			var inst = TOWER_SCENE.instantiate()
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[0]
+			print("Tower type: %s" % Global.selected_tower.type)
 			tower_1.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(0)
 		"tower2":
@@ -78,10 +77,3 @@ func _on_button_pressed(_name:String):
 			Global.selected_tower.type = ts[1]
 			tower_2.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(1)
-#func _on_map_state_changed(new_state:Global.MapStates) -> void:
-	#match new_state:
-		#Global.MapStates.PLACE:
-			#place_tower_ui.show()
-			#return
-	#
-	#place_tower_ui.hide()

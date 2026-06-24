@@ -69,6 +69,10 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
  - [ ] tutorial to tel people to click tower
  - [ ] tower hover change color to indicate YOU CAN CLICK THEM
  - [ ] Make the wheel spin even longer
+ - [ ] Paws (Pause) menu in gamme
+	 - [ ] Volume
+	 - [ ] Tutorial
+	 - [ ] Tutorial
 
 <!-- CONTACT -->
 ## Contact
