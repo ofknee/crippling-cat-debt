@@ -19,7 +19,7 @@ enum States {
 @export var angel: AudioStreamMP3
 
 var cutscene_state : States = States.START
-const GAME = preload("res://scenes/game.tscn")
+const GAME = preload("res://scenes/game/game.tscn")
 var ts : Array[Tweenable]
 var t : Tween
 
