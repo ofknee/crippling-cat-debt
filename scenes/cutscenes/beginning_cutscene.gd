@@ -27,14 +27,13 @@ func _ready():
 	jackpawt.visible = true
 	start_anim()
 
-## Call when the cutscene is finished and go to the game
-func end_cutscene() -> void:
-	if t and t.is_running(): t.kill()
-	Global.menu_manager.transition_to_scene(GAME)
-	Global.map_state = Global.MapStates.TUTORIAL 
+#func end_cutscene() -> void:
+	#if t and t.is_running(): t.kill()
+	#Global.menu_manager.transition_to_scene(GAME)
+	##Global.map_state = Global.MapStates.TUTORIAL 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("space"):
-		if cutscene_state != States.MAIN: return
+		if cutscene_state == States.END: return
 		if Global.state == Global.States.GAME: return
 		# now its defo main
 		if t and t.is_running(): t.kill()
