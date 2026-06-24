@@ -49,7 +49,6 @@ func get_leveled_tower(type:T, level:int) -> TowerInfoResource:
 	t.offset = stats.offset
 	return t
 
-#TODO Level enemies
 ## Function that gets the stats of a given enemy at the given level
 func get_leveled_enemy(type:E, level:int) -> EnemyInfoResource:
 	level = clampi(level, 0, 1000000000)
