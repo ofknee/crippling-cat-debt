@@ -24,6 +24,7 @@ enum MapStates {
 	UPGRADE,
 	WHEEL,
 	TUTORIAL,
+	PAUSE,
 }
 var map_state : MapStates = MapStates.PLAY :
 	set(val):
@@ -53,3 +54,5 @@ func register_enemy(enemy:Enemy):
 	)
 
 var game_scene_ref: Game
+
+var settings: PlayerSettings = PlayerSettings.new()
