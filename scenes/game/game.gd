@@ -17,6 +17,7 @@ var weights = {
 	T.HIGH : 0.1,
 }
 var purrency: int = 1000
+var pay_queue: Array[int] = []
 #DEBUG 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("w") and OS.is_debug_build():
@@ -43,9 +44,15 @@ func _on_lose() -> void:
 	Global.menu_manager.transition_to_scene(LOSE_CUTSCENE)
 
 func pay(amount:int) -> void:
-	#TODO deferred for race conditions?
-	if amount > purrency: return
-	purrency -= amount
+	pay_queue.append(amount)
+	call_deferred("pay_deferred")
+
+func pay_deferred() -> void:
+	while pay_queue.size() > 0:
+		var amount = pay_queue.pop_front()
+		if not amount : continue
+		if amount > purrency: return
+		purrency -= amount
 
 func picked_at_index(idx:int) -> void:
 	if tower_inventory.size() == 0: return
