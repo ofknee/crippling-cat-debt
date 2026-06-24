@@ -2,22 +2,26 @@ extends CanvasLayer
 class_name UI
 
 const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
-@onready var tower_button_cont: HBoxContainer = $MarginContainer/TowerButtonCont
+#@onready var tower_button_cont: HBoxContainer = $MarginContainer/TowerButtonCont
 #@onready var tower_button_cont: MarginContainer = $TowerButtonCont
 #@onready var wheel_button: DefaultButton = $"../Shop/HBoxContainer/Wheel/MarginContainer/WheelButton"
 #@onready var odds_button: DefaultButton = $"../Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton"
-@onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
-@onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
-@onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
-@export_subgroup("Nodes", "_")
-@export var _odds_button : PayButton
-@export var _wheel_button : PayButton
+#@onready var tower_1: DefaultButton = $MarginContainer/TowerButtonCont/Tower1
+#@onready var tower_2: DefaultButton = $MarginContainer/TowerButtonCont/Tower2
+#@onready var purrency_text: RichTextLabel = $Center/HBoxContainer/PurrencyText
+@export_subgroup("Nodes")
+@export var purrency_text: RichTextLabel
+@export var tower_button_cont: HBoxContainer
+@export var tower_1: DefaultButton 
+@export var tower_2: DefaultButton
+@export var odds_button : PayButton
+@export var wheel_button : PayButton
 
 func _ready() -> void:
-	_wheel_button.paid.connect(func():
+	wheel_button.paid.connect(func():
 		SignalBus.wheel_time.emit()
 	)
-	_odds_button.paid.connect(func():
+	odds_button.paid.connect(func():
 		SignalBus.change_odds.emit(5)
 	)
 	for but in tower_button_cont.get_children():
@@ -45,10 +49,10 @@ func _update_text() -> void:
 	purrency_text.text = "[font top=-50 bt=-30]d%s" % format_number(Global.game_scene_ref.purrency)
 	var spins = Global.game_scene_ref.wheel_spins
 	var p = exp(spins * .20002) * 1000
-	_wheel_button.price = p
+	wheel_button.price = p
 	var winrate_paid = Global.game_scene_ref.winrate_paid
 	var w = exp(winrate_paid * .19923) * 1000
-	_odds_button.price = w
+	odds_button.price = w
 	
 
 func format_number(n: int) -> String:

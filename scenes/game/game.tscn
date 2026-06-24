@@ -139,10 +139,14 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 371, 548, 367, 657, -9, 663, -4, 537, 356, 534, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("_odds_button", "_wheel_button")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button")]
 script = ExtResource("9_5q2xh")
-_odds_button = NodePath("Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton")
-_wheel_button = NodePath("Shop/HBoxContainer/Wheel/MarginContainer/WheelButton")
+purrency_text = NodePath("WinRateCont/WinRateText")
+tower_button_cont = NodePath("MarginContainer/TowerButtonCont")
+tower_1 = NodePath("MarginContainer/TowerButtonCont/Tower1")
+tower_2 = NodePath("MarginContainer/TowerButtonCont/Tower2")
+odds_button = NodePath("Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton")
+wheel_button = NodePath("Shop/HBoxContainer/Wheel/MarginContainer/WheelButton")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
