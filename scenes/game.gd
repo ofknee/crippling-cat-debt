@@ -1,19 +1,20 @@
 extends PixelMenu
 class_name Game
 
+const T = TowerInfoResource.TowerType
+
 signal win_rate_changed(new_rate:int)
 var win_rate := 0 :
 	set(val):
 		if win_rate == val: return
 		win_rate = val
 		win_rate_changed.emit(val)
-var tower_inventory: Array[TowerInfo.TowerType] = []
+var tower_inventory: Array[T] = []
 var wheel_spins: int = 0
-const Type = TowerInfo.TowerType
 var weights = {
-	Type.LOW : 0.6,
-	Type.MID : 0.3,
-	Type.HIGH : 0.1,
+	T.LOW : 0.6,
+	T.MID : 0.3,
+	T.HIGH : 0.1,
 }
 var purrency: int = 1000
 #DEBUG 
@@ -24,7 +25,7 @@ func _process(delta: float) -> void:
 		SignalBus.lose.emit()
 func _ready() -> void:
 	Global.game_scene_ref = self
-	tower_inventory = [TowerInfo.TowerType.LOW]
+	tower_inventory = [T.LOW]
 	SignalBus.wheel_time.connect(func():
 		wheel_spins += 1
 	)
@@ -62,18 +63,18 @@ func add_towers_to_place(num:int) -> void:
 		tower_inventory.append(get_random_tower_type(i))
 	print("Towers: %s" % str(tower_inventory))
 	
-func get_random_tower_type(seed:int) -> TowerInfo.TowerType:
+func get_random_tower_type(seed:int) -> T:
 	var rng = RandomNumberGenerator.new()
 	rng.seed = hash(seed * Time.get_ticks_msec())
 	var rand = rng.randf()
-	if rand > 1. - weights[Type.HIGH]:
-		return Type.HIGH
-	elif rand > 1. - weights[Type.HIGH] - weights[Type.MID]:
-		return Type.MID
+	if rand > 1. - weights[T.HIGH]:
+		return T.HIGH
+	elif rand > 1. - weights[T.HIGH] - weights[T.MID]:
+		return T.MID
 	else: 
-		return Type.LOW
+		return T.LOW
 
-func get_towers_to_place() -> Array[TowerInfo.TowerType]:
+func get_towers_to_place() -> Array[T]:
 	return tower_inventory
 
 

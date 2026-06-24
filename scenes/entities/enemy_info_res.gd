@@ -13,4 +13,5 @@ enum EnemyType {
 @export var health := 2.0
 @export var speed := 1.0
 @export var drop_price := 200
+@export var anim_name := "fly"
 @export var offset := Vector2i.ZERO

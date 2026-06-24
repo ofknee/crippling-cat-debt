@@ -1,5 +1,6 @@
 extends CanvasLayer
 class_name UI
+
 const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @onready var tower_button_cont: HBoxContainer = $MarginContainer/TowerButtonCont
 #@onready var tower_button_cont: MarginContainer = $TowerButtonCont
@@ -29,12 +30,12 @@ func _process(_delta: float) -> void:
 	#print("Towers: %s" % str(ts))
 	if ts.size() >= 2:
 		tower_1.show()
-		tower_1.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[0])["name"].to_upper())
+		tower_1.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[0]).name.to_upper())
 		tower_2.show()
-		tower_2.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[1])["name"].to_upper())
+		tower_2.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[1]).name.to_upper())
 	elif ts.size() == 1:
 		tower_1.show()
-		tower_1.set_text_label("[font_size=60]"+TowerInfo.stats.get(ts[0])["name"].to_upper())
+		tower_1.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[0]).name.to_upper())
 		tower_2.hide()
 	else:
 		tower_1.hide()

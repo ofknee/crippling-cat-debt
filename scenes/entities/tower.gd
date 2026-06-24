@@ -1,7 +1,10 @@
 extends RigidBody2D
 class_name Tower
+
+const T = TowerInfoResource.TowerType
 const BULLET = preload("res://scenes/entities/bullet.tscn")
 
+#var INFO = TowerInfo.stats
 var placeable := false
 var placed := false
 ## bool for when popup is selecting the tower 
@@ -12,16 +15,17 @@ var popupped := false
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var range_shown := false
 var enemies_in_range: Array[Enemy] = []
-var INFO = TowerInfo.stats
-var type : TowerInfo.TowerType = TowerInfo.TowerType.LOW
+var _stats : TowerInfoResource = null
+var type : T = T.LOW
 var cumulative_timer := 0.0
 var level : int = 0
 
 func _ready() -> void:
 	self.lock_rotation = true
+	_stats = EntityDatabase.get_tower(self.type)
 
-func _get_stats() -> Dictionary:
-	return TowerInfo.get_level_stats(type, level)
+#func _get_stats() -> Dictionary:
+	#return TowerInfo.get_level_stats(type, level)
 
 func _draw() -> void:
 	#TODO tween the range radius :D
@@ -30,7 +34,7 @@ func _draw() -> void:
 		if not placed and placeable: col = range_color
 		elif popupped or placed: col = range_color
 		else: col = range_color_error
-		draw_circle(Vector2.ZERO, _get_stats()["range"], col)
+		draw_circle(Vector2.ZERO, _stats.range, col)
 	#draw_circle(Vector2.ZERO, 40, Color.AQUAMARINE)
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
@@ -42,14 +46,13 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 
 func _process(delta: float) -> void:
 	self.input_pickable = self.placed
-	var stats = _get_stats()
 	
 	_update_in_range()
 	if not placed:
 		self.range_shown = true
 	else:
 		self.range_shown = true if Global.selected_tower == self or popupped else false
-		var cooldown = stats["attack_cooldown"]
+		var cooldown = _stats.attack_cooldown
 		if not cooldown: push_error("Attack cooldown doesn't exist in tower type")
 		if enemies_in_range.size() > 0 and enemies_in_range[0]:
 			cumulative_timer += delta
@@ -59,15 +62,15 @@ func _process(delta: float) -> void:
 				add_child(inst)
 				inst.bullet_init(
 					enemies_in_range[0], 
-					stats["bullet_speed"], 
-					stats["damage"],
+					_stats.bullet_speed, 
+					_stats.damage,
 					cumulative_timer,
 				)
 		else:
 			#cumulative_timer = 0.0
 			pass
-	sprite.animation = stats["animation"]
-	sprite.position = stats["offset"]
+	sprite.animation = _stats.animation
+	sprite.position = _stats.offset
 	if not sprite.is_playing(): sprite.play(sprite.animation)
 	queue_redraw()
 
@@ -75,8 +78,7 @@ func _update_in_range() -> void:
 	enemies_in_range.clear()
 	if Global.all_enemies.size() == 0:
 		return
-	var stats = _get_stats()
-	var _range: float = stats["range"] as float
+	var _range: float = _stats.range as float
 	for e in Global.all_enemies:
 		if e.global_position.distance_to(self.global_position) <= _range:
 			if enemies_in_range.find(e) != -1: continue

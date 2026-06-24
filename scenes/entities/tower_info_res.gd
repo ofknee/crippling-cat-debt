@@ -14,6 +14,6 @@ enum TowerType {
 @export var attack_cooldown := 0.5
 @export var bullet_speed := 10.0
 @export var range := 200.0
-@export var upgrade_proce := 1000
+@export var upgrade_price := 1000
 @export var animation := "low"
 @export var offset := Vector2i(27, 146)

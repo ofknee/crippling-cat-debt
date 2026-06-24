@@ -7,8 +7,8 @@ var speed := 100.0
 func _ready() -> void:
 	wave_yo_hand() # Replace with function body.
 
-func spawn_enemy(enemy_type: String = "fly") -> void:
-	var inst: Enemy = enemy_scene.instantiate()
+func spawn_enemy(enemy_type: EnemyInfoResource.EnemyType) -> void:
+	var inst: Enemy = enemy_scene.instantiate() as Enemy
 	inst.type = enemy_type
 	inst.path = self
 	inst.progression = 0.0
@@ -28,11 +28,11 @@ func wave_yo_hand():
 func spawn_wave() -> void:
 	for i in range(6+ceil(Global.wave*1.67)):
 		if randf() < 0.05:
-			spawn_enemy("blob")
+			spawn_enemy(EnemyInfoResource.EnemyType.BLOB)
 		elif randf() < 0.15:
-			spawn_enemy("beetle")
+			spawn_enemy(EnemyInfoResource.EnemyType.BEETLE)
 		else:
-			spawn_enemy("fly")
+			spawn_enemy(EnemyInfoResource.EnemyType.FLY)
 
 		await get_tree().create_timer(100/speed).timeout
 

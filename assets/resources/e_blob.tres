@@ -10,5 +10,6 @@ strength = 15.0
 health = 10.0
 speed = 0.6
 drop_price = 700
+anim_name = "blob"
 offset = Vector2i(241, 41)
 metadata/_custom_type_script = "uid://bx0ce47i0lw6"

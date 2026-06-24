@@ -10,5 +10,6 @@ strength = 10.0
 health = 4.0
 speed = 1.2
 drop_price = 400
+anim_name = "beetle"
 offset = Vector2i(0, 52)
 metadata/_custom_type_script = "uid://bx0ce47i0lw6"
