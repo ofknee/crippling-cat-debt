@@ -139,8 +139,10 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 371, 548, 367, 657, -9, 663, -4, 537, 356, 534, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("_odds_button", "_wheel_button")]
 script = ExtResource("9_5q2xh")
+_odds_button = NodePath("Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton")
+_wheel_button = NodePath("Shop/HBoxContainer/Wheel/MarginContainer/WheelButton")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
@@ -381,52 +383,55 @@ stream = ExtResource("28_qn4tv")
 [node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
 stream = ExtResource("28_qn4tv")
 
-[node name="Shop" type="MarginContainer" parent="." unique_id=1263594923]
-layout_mode = 1
+[node name="Shop" type="MarginContainer" parent="UI" unique_id=1263594923]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop" unique_id=2079314250]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Shop" unique_id=2079314250]
 custom_minimum_size = Vector2(400, 90)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="Wheel" type="Control" parent="Shop/HBoxContainer" unique_id=2006010629]
+[node name="Wheel" type="Control" parent="UI/Shop/HBoxContainer" unique_id=2006010629]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Shop/HBoxContainer/Wheel" unique_id=711968835]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Shop/HBoxContainer/Wheel" unique_id=711968835]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 
-[node name="WheelButton" parent="Shop/HBoxContainer/Wheel/MarginContainer" unique_id=1152125449 instance=ExtResource("14_fba2n")]
+[node name="WheelButton" parent="UI/Shop/HBoxContainer/Wheel/MarginContainer" unique_id=1152125449 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 script = ExtResource("29_e3lpd")
 price = 1000
 
-[node name="Panel" parent="Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="0" unique_id=1586527438]
+[node name="Panel" parent="UI/Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="0" unique_id=1586527438]
 theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
 
-[node name="Text" parent="Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="1" unique_id=1745176857]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -437,12 +442,13 @@ text = "[font top=-40 bt=-5]TOWER
 "
 script = ExtResource("30_fydea")
 
-[node name="BuyOdds" type="Control" parent="Shop/HBoxContainer" unique_id=1597518108]
+[node name="BuyOdds" type="Control" parent="UI/Shop/HBoxContainer" unique_id=1597518108]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Shop/HBoxContainer/BuyOdds" unique_id=830813969]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Shop/HBoxContainer/BuyOdds" unique_id=830813969]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -454,16 +460,16 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 
-[node name="OddsButton" parent="Shop/HBoxContainer/BuyOdds/MarginContainer" unique_id=1300996425 instance=ExtResource("14_fba2n")]
+[node name="OddsButton" parent="UI/Shop/HBoxContainer/BuyOdds/MarginContainer" unique_id=1300996425 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 script = ExtResource("29_e3lpd")
 price = 1000
 
-[node name="Panel" parent="Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="0" unique_id=1586527438]
+[node name="Panel" parent="UI/Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="0" unique_id=1586527438]
 theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
 
-[node name="Text" parent="Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="1" unique_id=1745176857]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -476,5 +482,5 @@ script = ExtResource("31_fydea")
 
 [connection signal="win_rate_changed" from="." to="UI/WinRateCont/WinRateText" method="_on_game_win_rate_changed"]
 
-[editable path="Shop/HBoxContainer/Wheel/MarginContainer/WheelButton"]
-[editable path="Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton"]
+[editable path="UI/Shop/HBoxContainer/Wheel/MarginContainer/WheelButton"]
+[editable path="UI/Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton"]

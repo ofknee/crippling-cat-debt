@@ -47,8 +47,8 @@ func _on_upgrade_pressed() -> void:
 func _update_ui() -> void:
 	#var t = Global.selected_tower
 	if not t: return
-	var stats = EntityDatabase.get_leveled_tower(t.type, t.level)
-	var up_price = int(roundf(stats["upgrade_price"]))
+	var stats := EntityDatabase.get_leveled_tower(t.type, t.level)
+	var up_price = int(roundf(stats.upgrade_price))
 	title.text = "[font top=-15 bt=-5]LEVEL %s" % (t.level+1)
 	price.text = "[font top=-20 bt=-20]UPGRADE\n%s COINS" % str(up_price)
 	but.price = up_price

@@ -11,6 +11,7 @@ var win_rate := 0 :
 		win_rate_changed.emit(val)
 var tower_inventory: Array[T] = []
 var wheel_spins: int = 0
+var winrate_paid: int = 0
 var weights = {
 	T.LOW : 0.6,
 	T.MID : 0.3,
@@ -29,6 +30,9 @@ func _ready() -> void:
 	tower_inventory = [T.LOW]
 	SignalBus.wheel_time.connect(func():
 		wheel_spins += 1
+	)
+	SignalBus.change_odds.connect(func():
+		winrate_paid += 1
 	)
 	SignalBus.killed_enemy.connect(func(drop_price:int):
 		self.purrency += abs(drop_price)

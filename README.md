@@ -72,8 +72,10 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
   - [ ] New enemies and towers
   - [ ] New tower tier system? Second wheel? 
 - [ ] Make it MORE OBVIOUS WHAT THE WINRATE DOES >:(
+- [ ] GAMESTATE?? so save files work
 ### UI
  - [X] indicate what teh winrate is
+ - [ ] Skip to next wave button / time until next wave ui
  - [ ] Show cat gambling in the corner with the winrate
   - [ ] Maybe show actual cat debt
   - [ ] getting the cat to bet more on higher winrates so that the cat can visually get out of debt
@@ -86,6 +88,7 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
  - [ ] tutorial to tel people to click tower
  - [ ] tower hover change color to indicate YOU CAN CLICK THEM
  - [ ] Event based Popup UI updates
+  - [ ] Event based Wheel and BuyOdds button text
   - [ ] Popup ui spawning so that it's not clipped by viewport
  - [ ] Deleting towers animation so you know which one died!
  - [ ] Tween the range radius circle on show
