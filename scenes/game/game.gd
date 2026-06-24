@@ -31,7 +31,7 @@ func _ready() -> void:
 	SignalBus.wheel_time.connect(func():
 		wheel_spins += 1
 	)
-	SignalBus.change_odds.connect(func():
+	SignalBus.change_odds.connect(func(_n:int):
 		winrate_paid += 1
 	)
 	SignalBus.killed_enemy.connect(func(drop_price:int):

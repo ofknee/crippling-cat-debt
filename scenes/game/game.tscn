@@ -321,6 +321,8 @@ mouse_filter = 2
 theme = ExtResource("1_8krtj")
 bbcode_enabled = true
 text = "[color=red][font top=-60 bt=-1000]0j WIN"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("16_8krtj")

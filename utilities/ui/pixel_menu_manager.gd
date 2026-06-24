@@ -32,7 +32,7 @@ func transition_to_scene(new_scene:PackedScene):
 	add_child(current_scene)
 	current_scene.start_anim()
 	print("Transitioning from [%s] to [%s]" % [
-			(str(previous_scene) if previous_scene == null else "nothing"),
+			(str(previous_scene) if previous_scene != null else "nothing"),
 			current_scene
 		]
 	)

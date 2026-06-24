@@ -29,6 +29,7 @@ func _ready():
 
 ## Call when the cutscene is finished and go to the game
 func end_cutscene() -> void:
+	if t and t.is_running(): t.kill()
 	Global.menu_manager.transition_to_scene(GAME)
 	Global.map_state = Global.MapStates.TUTORIAL 
 func _process(_delta: float) -> void:
@@ -51,14 +52,20 @@ func start_anim():
 	anim.scale = Vector2.ZERO
 	jackpawt.scale = Vector2.ZERO
 	await get_tree().create_timer(1.0).timeout
+	if cutscene_state == States.END: return
 	t = default_tween().set_ease(Tween.EASE_IN)
 	t.tween_property(anim, "scale", Vector2.ONE * 0.4, 1.0)
 	t.tween_property(jackpawt, "scale", Vector2.ONE * 0.4, 1.0)
 	await t.finished
+	if cutscene_state == States.END: return
 	await get_tree().create_timer(0.5).timeout
+	if cutscene_state == States.END: return
 	await _anim_slots()
+	if cutscene_state == States.END: return
 	await get_tree().create_timer(1.0).timeout
+	if cutscene_state == States.END: return
 	await _turning_cat()
+	if cutscene_state == States.END: return
 	Global.menu_manager.transition_to_scene(GAME)
 
 func _anim_slots():
@@ -70,9 +77,11 @@ func _anim_slots():
 	# vine boom
 	audio_player2.stream = vine_boom
 	await get_tree().create_timer(1).timeout
+	if cutscene_state == States.END: return
 	audio_player2.volume_db = 0
 	audio_player2.play()
 	await anim.animation_finished
+	if cutscene_state == States.END: return
 	sfx_tween_out(0.2, -20)
 	if t and t.is_running(): t.kill()
 	t = default_tween()
@@ -81,19 +90,23 @@ func _anim_slots():
 	t.tween_property(debt_text, "offset_transform_position:y", -50., 0.7)
 	t.tween_property(debt_text, "modulate:a", 0.0, 0.3).set_delay(0.4)
 	await t.finished
+	if cutscene_state == States.END: return
 	
 	t = default_tween()
 	t.tween_property(odds_text, "modulate:a", 1., 0.7)
 	t.tween_property(odds_text, "offset_transform_position:x", 200., 0.7)
 	await t.finished
+	if cutscene_state == States.END: return
 	
 	anim.play("cut_scene")
 	sfx_tween_in(0.2, -20)
 	audio_player2.stream = vine_boom
 	await get_tree().create_timer(1).timeout
+	if cutscene_state == States.END: return
 	audio_player2.volume_db = 0
 	audio_player2.play()
 	await anim.animation_finished
+	if cutscene_state == States.END: return
 	sfx_tween_out(0.2, -20)
 	if t and t.is_running(): t.kill()
 	t = default_tween()
@@ -112,17 +125,21 @@ func _turning_cat():
 	sfx_tween_in(0.2, 0)
 	anim.play("turning_cat")
 	await anim.animation_finished
+	if cutscene_state == States.END: return
 	await sfx_tween_out(0.05, 0)
+	if cutscene_state == States.END: return
 	anim.play("lever_cat")
 	audio_player.stream = lever_sfx
 	sfx_tween_in(0.2, 0)
 	await anim.animation_finished
+	if cutscene_state == States.END: return
 	sfx_tween_out(0.05, 0)
 	if t and t.is_running(): t.kill()
 	t = default_tween().set_trans(Tween.TRANS_CUBIC)
 	t.tween_property(anim, "scale", Vector2.ONE, 1.7)
 	t.tween_property(anim, "position", Vector2(624, 840), 1.7)
 	await t.finished
+	if cutscene_state == States.END: return
 	# Debt text final
 	if t and t.is_running(): t.kill()
 	t = default_tween()
@@ -133,7 +150,9 @@ func _turning_cat():
 	t.tween_property(debt_text_2, "offset_transform_position:y", -50., 0.7)
 	t.tween_property(debt_text_2, "modulate:a", 0.0, 0.3).set_delay(0.4)
 	await t.finished
+	if cutscene_state == States.END: return
 	await get_tree().create_timer(1.0).timeout
+	if cutscene_state == States.END: return
 
 func end_anim():
 	self.cutscene_state = States.END
