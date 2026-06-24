@@ -160,7 +160,6 @@ theme = ExtResource("1_8krtj")
 script = ExtResource("10_sikks")
 
 [node name="Popup" parent="UI/TowerSelection" unique_id=1696633443 instance=ExtResource("11_ah1mj")]
-visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 120.0

@@ -73,6 +73,7 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
   - [ ] New tower tier system? Second wheel? 
 - [ ] Make it MORE OBVIOUS WHAT THE WINRATE DOES >:(
 - [ ] GAMESTATE?? so save files work
+- [ ] Selling towers
 ### UI
  - [X] indicate what teh winrate is
  - [ ] Skip to next wave button / time until next wave ui

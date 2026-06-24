@@ -16,6 +16,5 @@ func _on_lose_tower() -> void:
 		push_warning("No towers to delete")
 		return
 	var die = tm.all_towers.pick_random()
-	tm.deregister_tower(die)
 	die.queue_free()
 	#tm.deregister_tower()

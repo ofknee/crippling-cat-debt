@@ -17,14 +17,16 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Popup" type="Panel" unique_id=1696633443 node_paths=PackedStringArray("but")]
-custom_minimum_size = Vector2(180, 120)
+[node name="Popup" type="Panel" unique_id=1696633443 node_paths=PackedStringArray("but", "title", "price")]
+custom_minimum_size = Vector2(180, 130)
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("1_qae8y")
 theme_override_styles/panel = SubResource("StyleBoxFlat_dinhu")
 script = ExtResource("1_f10om")
-but = NodePath("VBoxContainer/ButtonCont/DefaultButton")
+but = NodePath("VBoxContainer/ButtonCont/UpgradeButton")
+title = NodePath("VBoxContainer/Title")
+price = NodePath("VBoxContainer/ButtonCont/UpgradeButton/Text")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1827550476]
 layout_mode = 1
@@ -38,7 +40,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
-text = "[font top=-15 bt=-5]LEVEL 1"
+text = "[font top=-10 bt=-0]LEVEL 1"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -46,15 +48,17 @@ horizontal_alignment = 1
 [node name="ButtonCont" type="MarginContainer" parent="VBoxContainer" unique_id=933435393]
 layout_mode = 2
 theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
 
-[node name="DefaultButton" parent="VBoxContainer/ButtonCont" unique_id=418678843 instance=ExtResource("3_mxn1s")]
+[node name="UpgradeButton" parent="VBoxContainer/ButtonCont" unique_id=418678843 instance=ExtResource("3_mxn1s")]
 custom_minimum_size = Vector2(120, 65)
 layout_mode = 2
 script = ExtResource("4_mgqa1")
 price = 1000
 
-[node name="Text" parent="VBoxContainer/ButtonCont/DefaultButton" index="1" unique_id=1745176857]
+[node name="Text" parent="VBoxContainer/ButtonCont/UpgradeButton" index="1" unique_id=1745176857]
 anchors_preset = 15
 anchor_bottom = 1.0
 theme_override_font_sizes/normal_font_size = 50
@@ -62,4 +66,26 @@ text = "[font top=-20 bt=-20]UPGRADE
 2 COINS"
 vertical_alignment = 1
 
-[editable path="VBoxContainer/ButtonCont/DefaultButton"]
+[node name="Unused" type="MarginContainer" parent="VBoxContainer" unique_id=1350853816]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="SellButton" parent="VBoxContainer/Unused" unique_id=1683809550 instance=ExtResource("3_mxn1s")]
+custom_minimum_size = Vector2(120, 65)
+layout_mode = 2
+script = ExtResource("4_mgqa1")
+price = 1000
+
+[node name="Text" parent="VBoxContainer/Unused/SellButton" index="1" unique_id=1745176857]
+anchors_preset = 15
+anchor_bottom = 1.0
+theme_override_font_sizes/normal_font_size = 50
+text = "[font top=-20 bt=-20]SELL"
+vertical_alignment = 1
+
+[editable path="VBoxContainer/ButtonCont/UpgradeButton"]
+[editable path="VBoxContainer/Unused/SellButton"]

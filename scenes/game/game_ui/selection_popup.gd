@@ -2,8 +2,9 @@ class_name SelectionPopup
 extends Panel
 
 @export var but: PayButton
-@onready var title: RichTextLabel = $VBoxContainer/Title
-@onready var price: RichTextLabel = $VBoxContainer/ButtonCont/DefaultButton/Text
+@export var title: RichTextLabel
+#@onready var price: RichTextLabel = $VBoxContainer/ButtonCont/DefaultButton/Text
+@export var price: RichTextLabel
 var t : Tower
 
 func _ready() -> void:

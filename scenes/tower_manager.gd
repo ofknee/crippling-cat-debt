@@ -41,11 +41,13 @@ func _process(delta: float) -> void:
 			Global.selected_tower.global_position = lerp(pos, target, delta * 3)
 	if Input.is_action_just_pressed("l_click") and Global.selected_tower:
 		self.place_tower(Global.selected_tower)
+
 func register_tower(tower:Tower):
 	if all_towers.find(tower) >= 0: return
 	all_towers.append(tower)
 	tower.register_areas(all_areas)
+	tower.tree_exiting.connect(_deregister_tower.bind(tower))
 
-func deregister_tower(tower:Tower):
+func _deregister_tower(tower:Tower):
 	if all_towers.find(tower) >= 0:
 		all_towers.erase(tower)
