@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjdmdajxcytfv"
-path="res://.godot/imported/Screenshot from 2026-06-21 13-03-28.png-7b0c8a335b83ca22303f87d001696feb.ctex"
+uid="uid://crc5jtv6eqp58"
+path="res://.godot/imported/fly.png-4c0b86350287660f506ee6082fa30c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Screenshot from 2026-06-21 13-03-28.png"
-dest_files=["res://.godot/imported/Screenshot from 2026-06-21 13-03-28.png-7b0c8a335b83ca22303f87d001696feb.ctex"]
+source_file="res://assets/placeholders/fly.png"
+dest_files=["res://.godot/imported/fly.png-4c0b86350287660f506ee6082fa30c22.ctex"]
 
 [params]
 

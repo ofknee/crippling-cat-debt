@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv3y0ee6q3fcy"]
 
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_iwfan"]
-[ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/mappy/odds.gd" id="2_dx48l"]
+[ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/game/game_ui/odds.gd" id="2_dx48l"]
 
 [node name="Odds" type="Control" unique_id=1552162676]
 layout_mode = 3

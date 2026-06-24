@@ -1,41 +1,41 @@
 [gd_scene format=3 uid="uid://cofh27rs2ua7i"]
 
-[ext_resource type="Script" uid="uid://iam7i4reha3f" path="res://scenes/game.gd" id="1_uwrxv"]
-[ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://cd66jvv5sslkr" path="res://assets/map/path/path1.png" id="3_gee14"]
-[ext_resource type="Texture2D" uid="uid://4a7tecqbkr2m" path="res://assets/map/path/path2.png" id="4_0tnpc"]
-[ext_resource type="Script" uid="uid://dwt0hrviivxvr" path="res://scenes/tower_manager.gd" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="5_iywne"]
-[ext_resource type="Script" uid="uid://d3phsvh5opaxu" path="res://scenes/ui.gd" id="5_p57ef"]
-[ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="5_vtaks"]
-[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/path_2d.gd" id="6_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="7_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dw345li7k5rae" path="res://scenes/game/selection_popup.tscn" id="11_kvuet"]
-[ext_resource type="Script" uid="uid://c4bg1pvcgpkom" path="res://scenes/tower_selection.gd" id="12_dinhu"]
-[ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/mappy/odds.gd" id="12_kvuet"]
-[ext_resource type="Script" uid="uid://d2f8rfgi71rot" path="res://scenes/inventorylabel.gd" id="13_qouja"]
-[ext_resource type="Script" uid="uid://bkk13dbfc3wqc" path="res://utilities/ui/menus/pay_button.gd" id="14_bhx41"]
-[ext_resource type="Script" uid="uid://c08501tuym1uv" path="res://scenes/wheel/wheelies.gd" id="14_pl11u"]
-[ext_resource type="Texture2D" uid="uid://du6uav32idug1" path="res://assets/cutscenes/wheels/popup/kaboomkablowripmygrannyshegothitbyabazooka.png" id="15_bhx41"]
-[ext_resource type="Script" uid="uid://blin1iuh35frg" path="res://scenes/wheel/wheel_price_text.gd" id="15_qnb83"]
-[ext_resource type="Texture2D" uid="uid://ctsbvloq15oue" path="res://assets/cutscenes/wheels/popup/spin.png" id="16_qnb83"]
-[ext_resource type="Script" uid="uid://dioin75eafoim" path="res://scenes/wave_label.gd" id="16_sww3w"]
-[ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/odds_price_text.gd" id="17_sgl2t"]
-[ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/cutscenes/wheels/popup/that.png" id="17_sww3w"]
-[ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/cutscenes/wheels/popup/wheel.png" id="18_suyxu"]
-[ext_resource type="AudioStream" uid="uid://dvjj4ktdpnf6x" path="res://assets/cutscenes/wheels/popup/jetspraysfx.mp3" id="19_sgl2t"]
-[ext_resource type="Texture2D" uid="uid://on5v7naay6cf" path="res://assets/cutscenes/wheels/tower_wheel.png" id="20_qouja"]
-[ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/cutscenes/wheels/pointer.png" id="21_wljb1"]
-[ext_resource type="AudioStream" uid="uid://doxcbkrxpv2yf" path="res://assets/sfx/kenney_interface-sounds/Audio/tick_002.ogg" id="22_v2yb1"]
-[ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/cutscenes/wheels/info_popup/panel1.png" id="23_js0lu"]
-[ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/cutscenes/wheels/info_popup/panel2.png" id="24_gxtfn"]
-[ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/cutscenes/wheels/info_popup/duolingo-correct.mp3" id="25_twgab"]
-[ext_resource type="Texture2D" uid="uid://bi3prre3jeahv" path="res://assets/map/inventorylabel.png" id="29_suyxu"]
+[ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="1_8krtj"]
+[ext_resource type="Script" uid="uid://iam7i4reha3f" path="res://scenes/game/game.gd" id="2_fydea"]
+[ext_resource type="Texture2D" uid="uid://cd66jvv5sslkr" path="res://assets/map/path/path1.png" id="3_af6p5"]
+[ext_resource type="Texture2D" uid="uid://4a7tecqbkr2m" path="res://assets/map/path/path2.png" id="4_mumkj"]
+[ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="5_2vph8"]
+[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/path_2d.gd" id="6_8krtj"]
+[ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="7_6ehwc"]
+[ext_resource type="Script" uid="uid://dwt0hrviivxvr" path="res://scenes/tower_manager.gd" id="8_tyhjx"]
+[ext_resource type="Script" uid="uid://d3phsvh5opaxu" path="res://scenes/game/game_ui/ui.gd" id="9_5q2xh"]
+[ext_resource type="Script" uid="uid://c4bg1pvcgpkom" path="res://scenes/tower_selection.gd" id="10_sikks"]
+[ext_resource type="PackedScene" uid="uid://dw345li7k5rae" path="res://scenes/game/game_ui/selection_popup.tscn" id="11_ah1mj"]
+[ext_resource type="Texture2D" uid="uid://bi3prre3jeahv" path="res://assets/map/inventorylabel.png" id="12_t5owt"]
+[ext_resource type="Script" uid="uid://d2f8rfgi71rot" path="res://scenes/game/game_ui/inventorylabel.gd" id="13_8krtj"]
+[ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="14_fba2n"]
+[ext_resource type="Script" uid="uid://dioin75eafoim" path="res://scenes/game/game_ui/wave_label.gd" id="15_8krtj"]
+[ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/game/game_ui/odds.gd" id="16_8krtj"]
+[ext_resource type="Script" uid="uid://c08501tuym1uv" path="res://scenes/game/wheel/wheelies.gd" id="17_8krtj"]
+[ext_resource type="Texture2D" uid="uid://du6uav32idug1" path="res://assets/cutscenes/wheels/popup/kaboomkablowripmygrannyshegothitbyabazooka.png" id="18_35t1a"]
+[ext_resource type="Texture2D" uid="uid://ctsbvloq15oue" path="res://assets/cutscenes/wheels/popup/spin.png" id="19_ye7x0"]
+[ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/cutscenes/wheels/popup/that.png" id="20_oepbe"]
+[ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/cutscenes/wheels/popup/wheel.png" id="21_3322e"]
+[ext_resource type="AudioStream" uid="uid://dvjj4ktdpnf6x" path="res://assets/cutscenes/wheels/popup/jetspraysfx.mp3" id="22_mge0u"]
+[ext_resource type="Texture2D" uid="uid://on5v7naay6cf" path="res://assets/cutscenes/wheels/tower_wheel.png" id="23_uw24m"]
+[ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/cutscenes/wheels/pointer.png" id="24_kuo75"]
+[ext_resource type="AudioStream" uid="uid://doxcbkrxpv2yf" path="res://assets/sfx/kenney_interface-sounds/Audio/tick_002.ogg" id="25_jiu3o"]
+[ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/cutscenes/wheels/info_popup/panel1.png" id="26_vbi6r"]
+[ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/cutscenes/wheels/info_popup/panel2.png" id="27_twah4"]
+[ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/cutscenes/wheels/info_popup/duolingo-correct.mp3" id="28_qn4tv"]
+[ext_resource type="Script" uid="uid://bkk13dbfc3wqc" path="res://utilities/ui/menus/pay_button.gd" id="29_e3lpd"]
+[ext_resource type="Script" uid="uid://blin1iuh35frg" path="res://scenes/game/wheel/wheel_price_text.gd" id="30_fydea"]
+[ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/game/game_ui/odds_price_text.gd" id="31_fydea"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
-frame_0/texture = ExtResource("3_gee14")
-frame_1/texture = ExtResource("4_0tnpc")
+frame_0/texture = ExtResource("3_af6p5")
+frame_1/texture = ExtResource("4_mumkj")
 frame_1/duration = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_kvuet"]
@@ -61,10 +61,10 @@ func set_curve_action() -> void:
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_js0lu")
+"texture": ExtResource("26_vbi6r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_gxtfn")
+"texture": ExtResource("27_twah4")
 }],
 "loop": 1,
 "name": &"default",
@@ -91,8 +91,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
-script = ExtResource("1_uwrxv")
+theme = ExtResource("1_8krtj")
+script = ExtResource("2_fydea")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="bg" type="TextureRect" parent="." unique_id=1381358444]
@@ -110,15 +110,15 @@ texture = SubResource("AnimatedTexture_snxfc")
 expand_mode = 2
 
 [node name="Map" type="Node2D" parent="." unique_id=1184898053]
-script = ExtResource("5_vtaks")
+script = ExtResource("5_2vph8")
 metadata/_custom_type_script = "uid://dc8pj8afuhk7n"
 
 [node name="Path2D" type="Path2D" parent="Map" unique_id=1602443772]
 position = Vector2(-19.239075, 0)
 scale = Vector2(1.0167441, 1)
 curve = SubResource("Curve2D_kvuet")
-script = ExtResource("6_kvpfn")
-enemy_scene = ExtResource("7_dinhu")
+script = ExtResource("6_8krtj")
+enemy_scene = ExtResource("7_6ehwc")
 
 [node name="Line2D" type="Line2D" parent="Map" unique_id=784722599 node_paths=PackedStringArray("target_path")]
 visible = false
@@ -127,7 +127,7 @@ script = SubResource("GDScript_gkedh")
 target_path = NodePath("../Path2D")
 
 [node name="TowerManager" type="Node2D" parent="." unique_id=273477013]
-script = ExtResource("4_lbhrr")
+script = ExtResource("8_tyhjx")
 
 [node name="Placeable" type="Node2D" parent="TowerManager" unique_id=625070807]
 
@@ -140,7 +140,7 @@ position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 371, 548, 367, 657, -9, 663, -4, 537, 356, 534, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=659363911]
-script = ExtResource("5_p57ef")
+script = ExtResource("9_5q2xh")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
@@ -150,10 +150,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
-script = ExtResource("12_dinhu")
+theme = ExtResource("1_8krtj")
+script = ExtResource("10_sikks")
 
-[node name="Popup" parent="UI/TowerSelection" unique_id=1696633443 instance=ExtResource("11_kvuet")]
+[node name="Popup" parent="UI/TowerSelection" unique_id=1696633443 instance=ExtResource("11_ah1mj")]
 visible = false
 layout_mode = 0
 offset_right = 180.0
@@ -175,22 +175,22 @@ theme_override_constants/margin_bottom = 30
 position = Vector2(120, 33.544006)
 rotation = -0.06898296
 scale = Vector2(0.18, 0.18)
-texture = ExtResource("29_suyxu")
-script = ExtResource("13_qouja")
+texture = ExtResource("12_t5owt")
+script = ExtResource("13_8krtj")
 
 [node name="TowerButtonCont" type="HBoxContainer" parent="UI/MarginContainer" unique_id=790972568]
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
+theme = ExtResource("1_8krtj")
 theme_override_constants/separation = 15
 
-[node name="Tower1" parent="UI/MarginContainer/TowerButtonCont" unique_id=418678843 instance=ExtResource("5_iywne")]
+[node name="Tower1" parent="UI/MarginContainer/TowerButtonCont" unique_id=418678843 instance=ExtResource("14_fba2n")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="Tower2" parent="UI/MarginContainer/TowerButtonCont" unique_id=1483575337 instance=ExtResource("5_iywne")]
+[node name="Tower2" parent="UI/MarginContainer/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -205,7 +205,7 @@ offset_top = 8.0
 offset_bottom = 89.0
 grow_horizontal = 0
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
+theme = ExtResource("1_8krtj")
 
 [node name="Control2" type="Control" parent="UI/WinRateCont" unique_id=2140586493]
 layout_mode = 2
@@ -222,7 +222,7 @@ text = "[font top=-20]WAVE ?"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("16_sww3w")
+script = ExtResource("15_8krtj")
 
 [node name="VSeparator2" type="VSeparator" parent="UI/WinRateCont" unique_id=1144717883]
 modulate = Color(1, 1, 1, 0)
@@ -234,12 +234,12 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 offset_transform_enabled = true
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
+theme = ExtResource("1_8krtj")
 bbcode_enabled = true
 text = "[color=red][font top=-30]0j WIN"
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("12_kvuet")
+script = ExtResource("16_8krtj")
 
 [node name="VSeparator" type="VSeparator" parent="UI/WinRateCont" unique_id=1498359931]
 modulate = Color(1, 1, 1, 0)
@@ -257,7 +257,7 @@ offset_bottom = 19.199997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
+theme = ExtResource("1_8krtj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Center" unique_id=2001009230]
 layout_mode = 1
@@ -307,43 +307,43 @@ color = Color(1, 1, 1, 0.627451)
 
 [node name="wheelies" type="Node2D" parent="UI/WheelCont" unique_id=809728694]
 visible = false
-script = ExtResource("14_pl11u")
+script = ExtResource("17_8krtj")
 
 [node name="spikey" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1227185140]
 position = Vector2(26, 0)
 scale = Vector2(0.52, 0.52)
 
 [node name="bg" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey" unique_id=123775071]
-texture = ExtResource("15_bhx41")
+texture = ExtResource("18_35t1a")
 
 [node name="words" type="Node2D" parent="UI/WheelCont/wheelies/spikey" unique_id=710590603]
 
 [node name="spin" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=734851753]
-texture = ExtResource("16_qnb83")
+texture = ExtResource("19_ye7x0")
 
 [node name="that" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=735096681]
-texture = ExtResource("17_sww3w")
+texture = ExtResource("20_oepbe")
 
 [node name="wheel" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=2052698666]
-texture = ExtResource("18_suyxu")
+texture = ExtResource("21_3322e")
 
 [node name="jetspray" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/spikey" unique_id=1508169248]
-stream = ExtResource("19_sgl2t")
+stream = ExtResource("22_mge0u")
 volume_db = 1.21
 
 [node name="gambler" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1431440185]
 scale = Vector2(0.23999876, 0.23999876)
 
 [node name="wheelfr" type="Sprite2D" parent="UI/WheelCont/wheelies/gambler" unique_id=333527502]
-texture = ExtResource("20_qouja")
+texture = ExtResource("23_uw24m")
 
 [node name="pointer" type="Sprite2D" parent="UI/WheelCont/wheelies/gambler" unique_id=1174370362]
 position = Vector2(-8.333376, -1020.8387)
 rotation = 0.112182245
-texture = ExtResource("21_wljb1")
+texture = ExtResource("24_kuo75")
 
 [node name="tick" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/gambler" unique_id=1376411349]
-stream = ExtResource("22_v2yb1")
+stream = ExtResource("25_jiu3o")
 
 [node name="ResultInfo" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1929040020]
 scale = Vector2(0.6, 0.6)
@@ -365,7 +365,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-theme = ExtResource("1_yqjtg")
+theme = ExtResource("1_8krtj")
 theme_override_constants/line_separation = -50
 bbcode_enabled = true
 text = "text
@@ -376,10 +376,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DuoCorrect" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1430934771]
-stream = ExtResource("25_twgab")
+stream = ExtResource("28_qn4tv")
 
 [node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
-stream = ExtResource("25_twgab")
+stream = ExtResource("28_qn4tv")
 
 [node name="Shop" type="MarginContainer" parent="." unique_id=1263594923]
 layout_mode = 1
@@ -417,10 +417,10 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 
-[node name="WheelButton" parent="Shop/HBoxContainer/Wheel/MarginContainer" unique_id=1152125449 instance=ExtResource("5_iywne")]
+[node name="WheelButton" parent="Shop/HBoxContainer/Wheel/MarginContainer" unique_id=1152125449 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
-script = ExtResource("14_bhx41")
+script = ExtResource("29_e3lpd")
 price = 1000
 
 [node name="Panel" parent="Shop/HBoxContainer/Wheel/MarginContainer/WheelButton" index="0" unique_id=1586527438]
@@ -435,7 +435,7 @@ offset_bottom = 36.0
 text = "[font top=-40 bt=-5]TOWER
 [font top=-30 bt=-5][font_size=50]COSTS r1000
 "
-script = ExtResource("15_qnb83")
+script = ExtResource("30_fydea")
 
 [node name="BuyOdds" type="Control" parent="Shop/HBoxContainer" unique_id=1597518108]
 custom_minimum_size = Vector2(220, 0)
@@ -454,10 +454,10 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 
-[node name="OddsButton" parent="Shop/HBoxContainer/BuyOdds/MarginContainer" unique_id=1300996425 instance=ExtResource("5_iywne")]
+[node name="OddsButton" parent="Shop/HBoxContainer/BuyOdds/MarginContainer" unique_id=1300996425 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
-script = ExtResource("14_bhx41")
+script = ExtResource("29_e3lpd")
 price = 1000
 
 [node name="Panel" parent="Shop/HBoxContainer/BuyOdds/MarginContainer/OddsButton" index="0" unique_id=1586527438]
@@ -472,7 +472,7 @@ offset_bottom = 28.5
 text = "[font top=-40 bt=-5]k5i
 [font top=-30 bt=-5][font_size=50]COSTS r1000
 "
-script = ExtResource("17_sgl2t")
+script = ExtResource("31_fydea")
 
 [connection signal="win_rate_changed" from="." to="UI/WinRateCont/WinRateText" method="_on_game_win_rate_changed"]
 

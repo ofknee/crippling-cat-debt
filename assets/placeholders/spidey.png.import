@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3r4if2sw3g2b"
-path="res://.godot/imported/spidey.png-8b52475ca9485e8b2ef861b37f21fe24.ctex"
+path="res://.godot/imported/spidey.png-ce40af29346274d64dcbf59f770ff65c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lil_guys/spidey.png"
-dest_files=["res://.godot/imported/spidey.png-8b52475ca9485e8b2ef861b37f21fe24.ctex"]
+source_file="res://assets/placeholders/spidey.png"
+dest_files=["res://.godot/imported/spidey.png-ce40af29346274d64dcbf59f770ff65c.ctex"]
 
 [params]
 

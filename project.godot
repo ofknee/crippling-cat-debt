@@ -42,11 +42,9 @@ folder_colors={
 "res://addons/": "gray",
 "res://assets/": "pink",
 "res://assets/fonts/": "teal",
-"res://assets/lil_guys/": "purple",
 "res://assets/placeholders/": "orange",
 "res://assets/resources/": "yellow",
 "res://scenes/": "blue",
-"res://shaders/": "purple",
 "res://standalones/": "green",
 "res://utilities/": "teal"
 }
