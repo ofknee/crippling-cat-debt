@@ -63,21 +63,41 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
 <!-- AI Usage -->
 ## Roadmap
 
+ - [ ] Sounds
+  - [ ] Enemy death
+  - [ ] Tower shoot
+  - [ ] Tower deletion
+ - [ ] Make the wheel spin even longer
+ - [ ] Rebalance
+  - [ ] New enemies and towers
+  - [ ] New tower tier system? Second wheel? 
+- [ ] Make it MORE OBVIOUS WHAT THE WINRATE DOES >:(
+### UI
+ - [X] indicate what teh winrate is
+ - [ ] Show cat gambling in the corner with the winrate
+  - [ ] Maybe show actual cat debt
+  - [ ] getting the cat to bet more on higher winrates so that the cat can visually get out of debt
+    - [ ] Add "BAIL OUT" button to spend all money to give to cat to fix debt instaed of winrate
  - [ ] make tower inventory arrow disappear when no towers
  - [ ] fix wheel ui
- - [ ] indicate what teh winrate is
+  - [ ] Skip wheel ui button / key? Maybe just speedup?
+ - [ ] Green winrate text when closer to winning
+  - [ ] Progress bar / some way to tell how close to winning/losing
  - [ ] tutorial to tel people to click tower
  - [ ] tower hover change color to indicate YOU CAN CLICK THEM
+ - [ ] Event based Popup UI updates
+  - [ ] Popup ui spawning so that it's not clipped by viewport
  - [ ] Deleting towers animation so you know which one died!
- - [ ] Sounds
-	 - [ ] Enemy death
-	 - [ ] Tower shoot
-	 - [ ] Tower deletion
- - [ ] Make the wheel spin even longer
+ - [ ] Tween the range radius circle on show
+  - [ ] Double check the radius (breaks when other ui shows up during state change)
  - [ ] Paws (Pause) menu in gamme
-	 - [ ] Volume
-	 - [ ] Tutorial
-	 - [ ] Tutorial
+  - [ ] Volume
+    - [ ] Total volume control
+    - [ ] Tower sounds
+    - [ ] Enemy sounds
+    - [ ] Cutscene sounds
+  - [ ] Tutorial
+  - [ ] Save file??
 
 <!-- CONTACT -->
 ## Contact
