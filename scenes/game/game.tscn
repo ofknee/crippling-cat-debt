@@ -85,7 +85,20 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fydea"]
+bg_color = Color(1, 1, 1, 0.74509805)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [node name="Game" type="Control" unique_id=1894770430]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -427,12 +440,101 @@ text = "[font top=-40 bt=-5]k5i
 script = ExtResource("31_fydea")
 
 [node name="PauseScreen" type="Control" parent="UI" unique_id=285293332]
+process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("32_fydea")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
+
+[node name="overlay" type="ColorRect" parent="UI/PauseScreen" unique_id=1296427414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(1, 1, 1, 0.627451)
+
+[node name="Panel" type="Panel" parent="UI/PauseScreen" unique_id=1985466340]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.05
+anchor_right = 0.8
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_fydea")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseScreen/Panel" unique_id=1206598046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/Panel/MarginContainer" unique_id=1143346603]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer" unique_id=280695312]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "m GAMBLING BREAK m"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer" unique_id=675876758]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=2130425203]
+layout_mode = 2
+
+[node name="VolumeSlider" type="HBoxContainer" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=229923810]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VolumeText" type="RichTextLabel" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=509748955]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
+text = "VOLUME"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=283878982]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="DefaultButton" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1537136015 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DefaultButton2" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1411866266 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DefaultButton3" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]

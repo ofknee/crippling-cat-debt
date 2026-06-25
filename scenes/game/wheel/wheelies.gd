@@ -149,6 +149,7 @@ func spin_to_win():
 			SignalBus.lose_tower.emit()
 	
 
+#TODO Check conditions
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("l_click") and is_finished:
 		_reset()

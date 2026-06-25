@@ -1,11 +1,32 @@
 extends PixelMenu
 class_name PauseScreen
 
+const MS = Global.MapStates
+
 func _ready() -> void:
 	Global.map_state_changed.connect(_on_map_state_changed)
+	self.hide()
 
-func _on_map_state_changed(new_state:Global.MapStates) -> void:
-	pass
+#DEBUG p for pause
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("p") and OS.is_debug_build() and Global.map_state == MS.PLAY:
+		Global.map_state = MS.PAUSE
+		get_tree().paused = true
+		print("PAUSED")
+	elif Input.is_action_just_pressed("p") and OS.is_debug_build() and Global.map_state == MS.PAUSE:
+		Global.map_state = MS.PLAY
+		get_tree().paused = false
+		print("PLAYING")
 
-func start_anim() -> void: pass
-func end_anim() -> void: pass
+func _on_map_state_changed(new_state:MS) -> void:
+	if new_state == MS.PAUSE:
+		start_anim()
+		return
+	if new_state == MS.PLAY and self.visible:
+		end_anim()
+		return
+
+func start_anim() -> void: 
+	self.show()
+func end_anim() -> void: 
+	self.hide()

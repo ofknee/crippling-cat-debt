@@ -1,5 +1,8 @@
 extends Node
 
+func _ready() -> void:
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+
 @warning_ignore("unused_signal")
 signal wave_finished(num:int)
 @warning_ignore("unused_signal")
