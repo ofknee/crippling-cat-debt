@@ -59,8 +59,6 @@ script = ExtResource("4_mgqa1")
 price = 1000
 
 [node name="Text" parent="VBoxContainer/ButtonCont/UpgradeButton" index="1" unique_id=1745176857]
-anchors_preset = 15
-anchor_bottom = 1.0
 theme_override_font_sizes/normal_font_size = 50
 text = "[font top=-20 bt=-20]UPGRADE
 2 COINS"
@@ -81,8 +79,6 @@ script = ExtResource("4_mgqa1")
 price = 1000
 
 [node name="Text" parent="VBoxContainer/Unused/SellButton" index="1" unique_id=1745176857]
-anchors_preset = 15
-anchor_bottom = 1.0
 theme_override_font_sizes/normal_font_size = 50
 text = "[font top=-20 bt=-20]SELL"
 vertical_alignment = 1

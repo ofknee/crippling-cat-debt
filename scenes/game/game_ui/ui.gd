@@ -16,6 +16,7 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @export var tower_2: DefaultButton
 @export var odds_button : PayButton
 @export var wheel_button : PayButton
+const TOWER_TEXT_HEADER = "[font_size=60][font bt=-40]"
 
 func _ready() -> void:
 	wheel_button.paid.connect(func():
@@ -30,16 +31,19 @@ func _ready() -> void:
 		button.pressed.connect(_on_button_pressed.bind(button.name))
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("2") and OS.is_debug_build():
+		#DEBUG test two towers
+		Global.game_scene_ref.tower_inventory = [Global.game_scene_ref.get_random_tower_type(1),Global.game_scene_ref.get_random_tower_type(2)]
 	_update_text()
 	var ts := Global.game_scene_ref.get_towers_to_place()
 	if ts.size() >= 2:
 		tower_1.show()
-		tower_1.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[0]).name.to_upper())
+		tower_1.set_text_label(TOWER_TEXT_HEADER+EntityDatabase.get_tower(ts[0]).name.to_upper())
 		tower_2.show()
-		tower_2.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[1]).name.to_upper())
+		tower_2.set_text_label(TOWER_TEXT_HEADER+EntityDatabase.get_tower(ts[1]).name.to_upper())
 	elif ts.size() == 1:
 		tower_1.show()
-		tower_1.set_text_label("[font_size=60]"+EntityDatabase.get_tower(ts[0]).name.to_upper())
+		tower_1.set_text_label(TOWER_TEXT_HEADER+EntityDatabase.get_tower(ts[0]).name.to_upper())
 		tower_2.hide()
 	else:
 		tower_1.hide()
@@ -75,7 +79,7 @@ func _on_button_pressed(_name:String):
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[0]
 			print("Tower type: %s" % Global.selected_tower.type)
-			tower_1.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
+			tower_1.set_text_label(TOWER_TEXT_HEADER+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(0)
 		"tower2":
 			if Global.selected_tower and not Global.selected_tower.placed:
@@ -85,5 +89,5 @@ func _on_button_pressed(_name:String):
 			Global.select_tower(inst, Global.SelectionType.SPAWN)
 			Global.selected_tower.type = ts[1]
 			print("Tower type: %s" % Global.selected_tower.type)
-			tower_2.set_text_label("[font_size=60][font bt=-40]"+Global.selected_tower.get_stats().name.to_upper())
+			tower_2.set_text_label(TOWER_TEXT_HEADER+Global.selected_tower.get_stats().name.to_upper())
 			Global.game_scene_ref.picked_at_index(1)

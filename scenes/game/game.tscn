@@ -380,6 +380,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
+[node name="Text" parent="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1" index="1" unique_id=1745176857]
+text = "[font_size=80][font bt=-20]Text"
+
 [node name="Tower2" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -442,6 +445,7 @@ script = ExtResource("31_fydea")
 
 [node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,6 +552,7 @@ theme_override_font_sizes/normal_font_size = 80
 text = "[font top=-15]BACK TO GAMBLING"
 vertical_alignment = 1
 
+[editable path="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
 [editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]
