@@ -9,6 +9,7 @@ var t : Tween
 @export var start_menu:StartMenu
 
 func _ready() -> void:
+	volume_slider.value = Global.settings.master_volume 
 	volume_slider.value_changed.connect(func(new_val:float):
 		Global.settings.master_volume = clampf(new_val, 0.0, 2.0)
 	)

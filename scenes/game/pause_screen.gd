@@ -8,6 +8,7 @@ const MS = Global.MapStates
 func _ready() -> void:
 	Global.map_state_changed.connect(_on_map_state_changed)
 	self.hide()
+	volume_slider.value = Global.settings.master_volume 
 	volume_slider.value_changed.connect(func(new_val:float):
 		Global.settings.master_volume = clampf(new_val, 0.0, 2.0)
 	)
