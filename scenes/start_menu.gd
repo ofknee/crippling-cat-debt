@@ -1,12 +1,19 @@
 extends PixelMenu
 class_name StartMenu
 
+enum States {
+	START,
+	SETTINGS,
+}
+
 const BEGINNING_CUTSCENE = preload("res://scenes/cutscenes/beginning_cutscene.tscn")
 @onready var declined := $QuitText
 
 @export var buttons : Array[Button]
 var ts : Array[Tweenable]
 var t : Tween
+var start_menu_state : States = States.START
+@export var settings_menu: SettingsMenu
 
 var audio_players: Array[AudioStreamPlayer]=[]
 @export var gary_meow: AudioStreamMP3
@@ -22,20 +29,29 @@ func _ready() -> void:
 		button.pressed.connect(Callable(_on_button_pressed)\
 			.bind(button.name))
 
+func go_to_state(new_state:States) -> void:
+	if new_state == start_menu_state: return
+	start_menu_state = new_state
+	match new_state:
+		States.START:
+			settings_menu.end_anim()
+		States.SETTINGS:
+			settings_menu.start_anim()
 
 func _on_button_pressed(button_name:String) -> void:
 	play_sfx(gary_meow)
 	match button_name.to_lower():
 		"play":
-			pass
 			Global.menu_manager.transition_to_scene(BEGINNING_CUTSCENE)
+		"settings":
+			if self.start_menu_state == States.START:
+				go_to_state(States.SETTINGS)
 		"quit":
 			var tween := create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_property(declined, "position:y", 60, 0.3)
 			tween.tween_interval(1.0)
 			tween.tween_property(declined, "position:y", -100, 0.3)
-
 			
 
 func start_anim():

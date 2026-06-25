@@ -5,17 +5,33 @@
 [ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="3_fcv5n"]
 [ext_resource type="AudioStream" uid="uid://b8ynlni27xkmy" path="res://assets/sfx/gary_meow.mp3" id="3_h61rw"]
 [ext_resource type="AudioStream" uid="uid://bhwaoei8gucor" path="res://assets/sfx/miau.mp3" id="4_fcv5n"]
+[ext_resource type="Script" uid="uid://yl8f8ck3i6ib" path="res://scenes/settings_menu.gd" id="6_u4qax"]
+[ext_resource type="PackedScene" uid="uid://b1d0wstawfcy2" path="res://utilities/ui/menus/default_slider.tscn" id="8_e58y3"]
 
-[node name="StartMenu" type="Control" unique_id=1864635507 node_paths=PackedStringArray("buttons")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fydea"]
+bg_color = Color(1, 1, 1, 0.74509805)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="StartMenu" type="Control" unique_id=1864635507 node_paths=PackedStringArray("buttons", "settings_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 theme = ExtResource("1_m7x51")
 script = ExtResource("2_h61rw")
-buttons = [NodePath("VBoxContainer/Control/VBoxContainer/Play"), NodePath("VBoxContainer/Control/VBoxContainer/Quit")]
+buttons = [NodePath("VBoxContainer/Control/VBoxContainer/Play"), NodePath("VBoxContainer/Control/VBoxContainer/Settings"), NodePath("VBoxContainer/Control/VBoxContainer/Quit")]
+settings_menu = NodePath("SettingsMenu")
 gary_meow = ExtResource("3_h61rw")
 miau = ExtResource("4_fcv5n")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
@@ -30,7 +46,6 @@ anchor_bottom = 0.92
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "z"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 2
@@ -118,9 +133,23 @@ mouse_filter = 1
 
 [node name="Text" parent="VBoxContainer/Control/VBoxContainer/Play" index="1" unique_id=1745176857]
 mouse_filter = 1
-text = "u PLAY u"
+text = "[font top=-15]u PLAY u"
 
 [node name="Tweenable" parent="VBoxContainer/Control/VBoxContainer/Play" index="2" unique_id=348270875]
+dir = Vector2(0, 0)
+speed = 0.0
+
+[node name="Settings" parent="VBoxContainer/Control/VBoxContainer" unique_id=1515316318 instance=ExtResource("3_fcv5n")]
+layout_mode = 2
+
+[node name="Panel" parent="VBoxContainer/Control/VBoxContainer/Settings" index="0" unique_id=1586527438]
+mouse_filter = 1
+
+[node name="Text" parent="VBoxContainer/Control/VBoxContainer/Settings" index="1" unique_id=1745176857]
+mouse_filter = 1
+text = "[font top=-15][font_size=90]  SETTINGS q"
+
+[node name="Tweenable" parent="VBoxContainer/Control/VBoxContainer/Settings" index="2" unique_id=348270875]
 dir = Vector2(0, 0)
 speed = 0.0
 
@@ -132,7 +161,7 @@ mouse_filter = 1
 
 [node name="Text" parent="VBoxContainer/Control/VBoxContainer/Quit" index="1" unique_id=1745176857]
 mouse_filter = 1
-text = "s QUIT  "
+text = "[font top=-15]s QUIT  "
 
 [node name="Tweenable" parent="VBoxContainer/Control/VBoxContainer/Quit" index="2" unique_id=348270875]
 dir = Vector2(0, 0)
@@ -155,5 +184,115 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556415708]
 
+[node name="SettingsMenu" type="Control" parent="." unique_id=1365728173 node_paths=PackedStringArray("volume_slider", "back_button", "start_menu")]
+layout_mode = 1
+anchor_left = -1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+mouse_filter = 1
+script = ExtResource("6_u4qax")
+volume_slider = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider/DefaultSlider")
+back_button = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back")
+start_menu = NodePath("..")
+
+[node name="overlay" type="ColorRect" parent="SettingsMenu" unique_id=23535872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(1, 1, 1, 0.627451)
+
+[node name="Panel" type="Panel" parent="SettingsMenu" unique_id=736522527]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.05
+anchor_right = 0.8
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_fydea")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsMenu/Panel" unique_id=897095690]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu/Panel/MarginContainer" unique_id=915409029]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer" unique_id=680386844]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "m DEBT SETTINGS m"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer" unique_id=972556273]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=276390665]
+layout_mode = 2
+
+[node name="VolumeSlider" type="HBoxContainer" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=952505733]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VolumeText" type="RichTextLabel" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=1540432187]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[font top=-10]VOLUME"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefaultSlider" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=2005709463 instance=ExtResource("8_e58y3")]
+layout_mode = 2
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="DefaultButton" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1492337615 instance=ExtResource("3_fcv5n")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DefaultButton2" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2023543739 instance=ExtResource("3_fcv5n")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Back" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1025356889 instance=ExtResource("3_fcv5n")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back" index="1" unique_id=1745176857]
+theme_override_font_sizes/normal_font_size = 80
+text = "[font top=-15]BACK TO DEBT"
+vertical_alignment = 1
+
 [editable path="VBoxContainer/Control/VBoxContainer/Play"]
+[editable path="VBoxContainer/Control/VBoxContainer/Settings"]
 [editable path="VBoxContainer/Control/VBoxContainer/Quit"]
+[editable path="SettingsMenu/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]
