@@ -32,6 +32,7 @@
 [ext_resource type="Script" uid="uid://blin1iuh35frg" path="res://scenes/game/wheel/wheel_price_text.gd" id="30_fydea"]
 [ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/game/game_ui/odds_price_text.gd" id="31_fydea"]
 [ext_resource type="Script" uid="uid://45eekn2av2a8" path="res://scenes/game/pause_screen.gd" id="32_fydea"]
+[ext_resource type="Script" uid="uid://dxtjoiuajlnoc" path="res://utilities/ui/menus/default_slider.gd" id="33_af6p5"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -523,6 +524,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+script = ExtResource("33_af6p5")
 
 [node name="DefaultButton" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1537136015 instance=ExtResource("14_fba2n")]
 layout_mode = 2

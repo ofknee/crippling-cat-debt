@@ -61,7 +61,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 expand_margin_left = 8.0
 expand_margin_top = 8.0
-expand_margin_right = 8.0
+expand_margin_right = 3.0
 expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7x51"]
@@ -82,9 +82,9 @@ Button/styles/hover = SubResource("StyleBoxEmpty_qew4h")
 Button/styles/normal = SubResource("StyleBoxEmpty_81pgw")
 Button/styles/pressed = SubResource("StyleBoxEmpty_cs2sx")
 HSlider/icons/grabber = SubResource("GradientTexture1D_gkedh")
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = null
-HSlider/icons/tick = null
+HSlider/icons/grabber_disabled = SubResource("GradientTexture1D_gkedh")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture1D_gkedh")
+HSlider/icons/tick = SubResource("GradientTexture1D_gkedh")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_81pgw")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cs2sx")
 HSlider/styles/slider = SubResource("StyleBoxFlat_vkpim")
