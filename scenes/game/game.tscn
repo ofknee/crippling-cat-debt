@@ -440,7 +440,7 @@ text = "[font top=-40 bt=-5]k5i
 "
 script = ExtResource("31_fydea")
 
-[node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider")]
+[node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -450,6 +450,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("32_fydea")
 volume_slider = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider/DefaultSlider")
+back_button = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="overlay" type="ColorRect" parent="UI/PauseScreen" unique_id=1296427414]
@@ -529,21 +530,24 @@ step = 0.01
 value = 1.0
 
 [node name="DefaultButton" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1537136015 instance=ExtResource("14_fba2n")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="DefaultButton2" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1411866266 instance=ExtResource("14_fba2n")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Play" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
+[node name="Back" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Text" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back" index="1" unique_id=1745176857]
 theme_override_font_sizes/normal_font_size = 80
-text = "BACK TO GAMBLING"
+text = "[font top=-15]BACK TO GAMBLING"
+vertical_alignment = 1
 
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
-[editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play"]
+[editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]
