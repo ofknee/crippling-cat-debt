@@ -79,7 +79,7 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
  - [ ] Skip to next wave button / time until next wave ui
  - [ ] Show cat gambling in the corner with the winrate
   - [ ] Maybe show actual cat debt
-  - [ ] getting the cat to bet more on higher winrates so that the cat can visually get out of debt
+  - [ ] getting the cat to bet msfore on higher winrates so that the cat can visually get out of debt
     - [ ] Add "BAIL OUT" button to spend all money to give to cat to fix debt instaed of winrate
  - [ ] make tower inventory arrow disappear when no towers
  - [ ] fix wheel ui
@@ -94,9 +94,9 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
  - [ ] Deleting towers animation so you know which one died!
  - [ ] Tween the range radius circle on show
   - [ ] Double check the radius (breaks when other ui shows up during state change)
- - [ ] Paws (Pause) menu in gamme
-  - [ ] Volume
-    - [ ] Total volume control
+ - [X] Paws (Pause) menu in gamme
+  - [X] Volume
+    - [X] Total volume control
     - [ ] Tower sounds
     - [ ] Enemy sounds
     - [ ] Cutscene sounds
