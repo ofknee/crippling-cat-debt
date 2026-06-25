@@ -32,7 +32,7 @@
 [ext_resource type="Script" uid="uid://blin1iuh35frg" path="res://scenes/game/wheel/wheel_price_text.gd" id="30_fydea"]
 [ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/game/game_ui/odds_price_text.gd" id="31_fydea"]
 [ext_resource type="Script" uid="uid://45eekn2av2a8" path="res://scenes/game/pause_screen.gd" id="32_fydea"]
-[ext_resource type="Script" uid="uid://dxtjoiuajlnoc" path="res://utilities/ui/menus/default_slider.gd" id="33_af6p5"]
+[ext_resource type="PackedScene" uid="uid://b1d0wstawfcy2" path="res://utilities/ui/menus/default_slider.tscn" id="33_af6p5"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -440,7 +440,7 @@ text = "[font top=-40 bt=-5]k5i
 "
 script = ExtResource("31_fydea")
 
-[node name="PauseScreen" type="Control" parent="UI" unique_id=285293332]
+[node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -449,6 +449,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("32_fydea")
+volume_slider = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider/DefaultSlider")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
 [node name="overlay" type="ColorRect" parent="UI/PauseScreen" unique_id=1296427414]
@@ -511,20 +512,21 @@ size_flags_vertical = 3
 [node name="VolumeText" type="RichTextLabel" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=509748955]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.4
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
-text = "VOLUME"
+bbcode_enabled = true
+text = "[font top=-10]VOLUME"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=283878982]
+[node name="DefaultSlider" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=2005709463 instance=ExtResource("33_af6p5")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-script = ExtResource("33_af6p5")
+max_value = 2.0
+step = 0.01
+value = 1.0
 
 [node name="DefaultButton" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1537136015 instance=ExtResource("14_fba2n")]
 layout_mode = 2
@@ -534,9 +536,14 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DefaultButton3" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
+[node name="Play" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Text" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play" index="1" unique_id=1745176857]
+theme_override_font_sizes/normal_font_size = 80
+text = "BACK TO GAMBLING"
+
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
+[editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Play"]

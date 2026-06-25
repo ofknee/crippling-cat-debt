@@ -19,7 +19,7 @@ func _hover() -> void:
 	if t and t.is_running(): t.kill()
 	t = create_tween().set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_QUINT).set_parallel(true)
-	t.tween_property(self, "scale", Vector2.ONE * 1.1, 0.7)
+	t.tween_property(self, "scale", Vector2.ONE * 1.05, 0.7)
 	#t.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
 	#t.tween_property(self, "offset_transform_rotation", 0.1, 0.2)
 	#t.tween_property(self, "offset_transform_rotation", -0.1, 0.2).set_delay(0.2)

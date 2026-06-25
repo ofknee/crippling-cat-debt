@@ -2,10 +2,14 @@ extends PixelMenu
 class_name PauseScreen
 
 const MS = Global.MapStates
+@export var volume_slider : DefaultSlider
 
 func _ready() -> void:
 	Global.map_state_changed.connect(_on_map_state_changed)
 	self.hide()
+	volume_slider.value_changed.connect(func(new_val:float):
+		Global.settings.master_volume = clampf(new_val, 0.0, 2.0)
+	)
 
 #DEBUG p for pause
 func _process(_delta: float) -> void:
