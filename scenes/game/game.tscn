@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://on5v7naay6cf" path="res://assets/cutscenes/wheels/tower_wheel.png" id="23_uw24m"]
 [ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/cutscenes/wheels/pointer.png" id="24_kuo75"]
 [ext_resource type="AudioStream" uid="uid://doxcbkrxpv2yf" path="res://assets/sfx/kenney_interface-sounds/Audio/tick_002.ogg" id="25_jiu3o"]
+[ext_resource type="Texture2D" uid="uid://6ees3b7g0rsm" path="res://assets/icons/paws-button.png" id="26_mumkj"]
 [ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/cutscenes/wheels/info_popup/panel1.png" id="26_vbi6r"]
 [ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/cutscenes/wheels/info_popup/panel2.png" id="27_twah4"]
 [ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/cutscenes/wheels/info_popup/duolingo-correct.mp3" id="28_qn4tv"]
@@ -155,7 +156,7 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 360, 539, 360, 659, -9, 663, -5, 529, 347, 528, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button")]
 script = ExtResource("9_5q2xh")
 purrency_text = NodePath("TopBar/MarginContainer2/VBoxContainer/PurrencyText")
 tower_button_cont = NodePath("BottomBar/LeftCorner/TowerButtonCont")
@@ -163,6 +164,7 @@ tower_1 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower1")
 tower_2 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower2")
 odds_button = NodePath("BottomBar/RightCorner/ShopContainer/OddsButton")
 wheel_button = NodePath("BottomBar/RightCorner/ShopContainer/WheelButton")
+pause_button = NodePath("RightSide/MarginContainer3/PauseButton")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
@@ -443,6 +445,36 @@ text = "[font top=-40 bt=-5]k5i
 "
 script = ExtResource("31_fydea")
 
+[node name="RightSide" type="VBoxContainer" parent="UI" unique_id=941054719]
+anchors_preset = -1
+anchor_left = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="UI/RightSide" unique_id=932684512]
+layout_mode = 2
+
+[node name="PauseButton" parent="UI/RightSide/MarginContainer3" unique_id=1663972997 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer3/PauseButton" unique_id=712036254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_mumkj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" parent="UI/RightSide/MarginContainer3/PauseButton" index="2" unique_id=1745176857]
+text = ""
+
 [node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
 process_mode = 3
 visible = false
@@ -555,4 +587,5 @@ vertical_alignment = 1
 [editable path="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
+[editable path="UI/RightSide/MarginContainer3/PauseButton"]
 [editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]

@@ -16,9 +16,13 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @export var tower_2: DefaultButton
 @export var odds_button : PayButton
 @export var wheel_button : PayButton
+@export var pause_button : DefaultButton
 const TOWER_TEXT_HEADER = "[font_size=60][font bt=-40]"
 
 func _ready() -> void:
+	pause_button.pressed.connect(func():
+		SignalBus.pause.emit(true)
+	)
 	wheel_button.paid.connect(func():
 		SignalBus.wheel_time.emit()
 	)
