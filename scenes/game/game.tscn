@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cd66jvv5sslkr" path="res://assets/map/path/path1.png" id="3_af6p5"]
 [ext_resource type="Texture2D" uid="uid://4a7tecqbkr2m" path="res://assets/map/path/path2.png" id="4_mumkj"]
 [ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="5_2vph8"]
-[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/path_2d.gd" id="6_8krtj"]
+[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/spawn_manager.gd" id="6_8krtj"]
 [ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="7_6ehwc"]
 [ext_resource type="Script" uid="uid://dwt0hrviivxvr" path="res://scenes/tower_manager.gd" id="8_tyhjx"]
 [ext_resource type="Script" uid="uid://d3phsvh5opaxu" path="res://scenes/game/game_ui/ui.gd" id="9_5q2xh"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/game/game_ui/odds.gd" id="16_8krtj"]
 [ext_resource type="Script" uid="uid://c08501tuym1uv" path="res://scenes/game/wheel/wheelies.gd" id="17_8krtj"]
 [ext_resource type="Texture2D" uid="uid://du6uav32idug1" path="res://assets/cutscenes/wheels/popup/kaboomkablowripmygrannyshegothitbyabazooka.png" id="18_35t1a"]
+[ext_resource type="Script" uid="uid://6xhigxibwwgr" path="res://scenes/game/skip_button.gd" id="19_6ehwc"]
 [ext_resource type="Texture2D" uid="uid://ctsbvloq15oue" path="res://assets/cutscenes/wheels/popup/spin.png" id="19_ye7x0"]
 [ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/cutscenes/wheels/popup/that.png" id="20_oepbe"]
 [ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/cutscenes/wheels/popup/wheel.png" id="21_3322e"]
@@ -145,7 +146,7 @@ process_mode = 1
 script = ExtResource("5_2vph8")
 metadata/_custom_type_script = "uid://dc8pj8afuhk7n"
 
-[node name="Path2D" type="Path2D" parent="Map" unique_id=1602443772]
+[node name="SpawnManager" type="Path2D" parent="Map" unique_id=1602443772]
 position = Vector2(-19.239075, 0)
 scale = Vector2(1.0167441, 1)
 curve = SubResource("Curve2D_kvuet")
@@ -156,7 +157,7 @@ enemy_scene = ExtResource("7_6ehwc")
 visible = false
 points = PackedVector2Array(-28, 189, 61, 106, 137, 57, 234, 61, 304, 109, 321, 225, 295, 321, 275, 403, 315, 436, 393, 481, 478, 548, 571, 556, 653, 534, 703, 477, 704, 418, 648, 377, 578, 334, 565, 262, 616, 196, 737, 165, 831, 181, 910, 248, 927, 330, 932, 419, 948, 479, 999, 525, 1066, 545, 1147, 533)
 script = SubResource("GDScript_gkedh")
-target_path = NodePath("../Path2D")
+target_path = NodePath("../SpawnManager")
 
 [node name="TowerManager" type="Node2D" parent="." unique_id=273477013]
 script = ExtResource("8_tyhjx")
@@ -411,6 +412,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
+script = ExtResource("19_6ehwc")
 
 [node name="SkipButton" parent="UI/MainUI/RightSide/SkipCont" unique_id=136596813 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(0, 80)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7uajkq0c2ssf"]
 
 [ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="1_l8quq"]
-[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/path_2d.gd" id="2_l8quq"]
+[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/spawn_manager.gd" id="2_l8quq"]
 [ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="3_okf3d"]
 
 [sub_resource type="Curve2D" id="Curve2D_paxxb"]

@@ -69,3 +69,5 @@ func reset() -> void:
 	map_state = MapStates.PLAY
 
 var settings: PlayerSettings = PlayerSettings.new()
+
+var spawn_manager : SpawnManager

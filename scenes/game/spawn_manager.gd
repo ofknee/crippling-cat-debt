@@ -1,14 +1,20 @@
 extends Path2D
+class_name SpawnManager
 
 @export var enemy_scene: PackedScene
 var speed := 70.0
 var wave_spawning_in_progress : bool = false
 var skip_wait : bool = false
+var can_skip := false
 var waves_began := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SignalBus.begin_waves.connect(wave_yo_hand)
+	Global.spawn_manager = self
+	SignalBus.begin_waves.connect(func():
+		await get_tree().create_timer(2.0).timeout
+		wave_yo_hand()
+	)
 	SignalBus.skip_wave.connect(skip_between_waves)
 	
 #func _process(delta: float) -> void:
@@ -23,7 +29,7 @@ func spawn_enemy(enemy_type: EnemyInfoResource.EnemyType) -> void:
 	inst.progression = 0.0
 	inst.scale *= randf_range(1.8,2.5)
 	inst.offset += randf_range(-20.0,20.0)
-	inst.speed = speed
+	inst.speed = randfn(speed, 0.2)
 	add_child(inst)
 	
 func wave_yo_hand():
@@ -34,6 +40,7 @@ func wave_yo_hand():
 	
 	
 	while true:
+		can_skip = false
 		await spawn_wave()
 		SignalBus.wave_finished.emit(Global.wave)
 		Global.wave += 1
@@ -42,6 +49,7 @@ func wave_yo_hand():
 		skip_wait = false
 		var timer := get_tree().create_timer(6.67)
 		while timer.time_left > 0.0 and !skip_wait:
+			can_skip = true
 			while Global.map_state == Global.MapStates.PAUSE:
 				await get_tree().process_frame
 			await get_tree().process_frame

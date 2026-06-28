@@ -59,6 +59,7 @@ func do_tutorial() -> void:
 	place_tower.show()
 	if not visible: return
 	await Global.selected_tower_cleared
+	await next_section
 	place_tower.hide()
 	
 	# Pause/Skip buttons
