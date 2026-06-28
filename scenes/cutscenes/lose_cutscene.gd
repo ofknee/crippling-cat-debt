@@ -15,6 +15,10 @@ func _ready():
 	sad_text.modulate.a = 0
 	start_anim()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("space"):
+		get_tree().paused = false
+		Global.menu_manager.transition_to_scene(START_MENU)
 
 const START_MENU = preload("res://scenes/start_menu.tscn")
 func start_anim():
