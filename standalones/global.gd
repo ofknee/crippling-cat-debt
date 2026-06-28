@@ -58,5 +58,9 @@ func register_enemy(enemy:Enemy):
 	)
 
 var game_scene_ref: Game
+func reset() -> void:
+	selected_tower = null
+	all_enemies.clear()
+	map_state = MapStates.PLAY
 
 var settings: PlayerSettings = PlayerSettings.new()

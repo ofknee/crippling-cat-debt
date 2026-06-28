@@ -117,6 +117,7 @@ func get_towers_to_place() -> Array[T]:
 
 func start_anim(): 
 	Global.state = Global.States.GAME
+	Global.reset()
 	cutscenes.show()
 
 func end_anim(): 

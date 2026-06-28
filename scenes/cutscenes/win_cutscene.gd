@@ -25,6 +25,7 @@ func _ready():
 func _on_button(_name:String) -> void:
 	match _name.to_lower():
 		"no":
+			get_tree().paused = false
 			Global.menu_manager.transition_to_scene(START_MENU)
 		"yes":
 			get_tree().paused = false
@@ -45,6 +46,7 @@ func start_anim():
 
 func end_anim():
 	Global.menu_manager.toggle_music(true)
+	get_tree().paused = false
 	queue_free()
 
 func _anim_pain():
