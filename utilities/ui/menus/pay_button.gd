@@ -11,7 +11,7 @@ signal price_changed(new_price:int)
 
 func _can_pay() -> bool:
 	var p = Global.game_scene_ref.purrency
-	if p >= price: return true
+	if p >= price and Global.state == Global.States.GAME and Global.map_state != Global.MapStates.WHEEL: return true
 	return false
 
 
