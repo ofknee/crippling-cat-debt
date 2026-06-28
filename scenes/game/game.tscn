@@ -203,9 +203,11 @@ alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/TopBar" unique_id=2033805679]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer" unique_id=621789245]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="WaveLabel" type="RichTextLabel" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1702195054]
 custom_minimum_size = Vector2(200, 0)
@@ -222,16 +224,20 @@ script = ExtResource("15_8krtj")
 [node name="Control" type="Control" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1453314878]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Spacer" type="Control" parent="UI/TopBar" unique_id=1769965460]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI/TopBar" unique_id=150170604]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer2" unique_id=2048934884]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="WinRateText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1331428193]
 custom_minimum_size = Vector2(300, 0)
@@ -252,6 +258,7 @@ script = ExtResource("16_8krtj")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
 text = "[font top=-50 bt=-30]d100"
