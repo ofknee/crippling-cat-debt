@@ -8,7 +8,7 @@ var skip_wait : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(2.67)
+	await get_tree().create_timer(3.67)
 	wave_yo_hand() # Replace with function body. # spawn a wave
 	SignalBus.skip_wave.connect(skip_between_waves)
 	

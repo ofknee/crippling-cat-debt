@@ -147,7 +147,7 @@ func spin_to_win():
 			Global.game_scene_ref.add_towers_to_place(0)
 		"-1":
 			if Global.tower_manager.all_towers.size() <= 1:
-				show_result("YOU ALMOST LOST A TOWER... BUT GOD'S GOD SMILES UPON YOU!")
+				show_result("YOU ALMOST LOST A TOWER...\nBUT GOD'S GOD SMILES UPON YOU!")
 				$ResultInfo/DuoWrong.play()
 			else:
 				show_result("YOU GET TO LOSE A TOWER!")
