@@ -23,11 +23,11 @@ func start_anim():
 	anim.position = Vector2(605, 350)
 	get_tree().paused = true
 	await _anim_pain()
+	get_tree().paused = false
 	Global.menu_manager.transition_to_scene(START_MENU)
 
 func end_anim():
 	Global.menu_manager.toggle_music(true)
-	get_tree().paused = false
 	queue_free()
 
 func _anim_pain():
