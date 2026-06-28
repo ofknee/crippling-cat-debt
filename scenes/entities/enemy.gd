@@ -32,10 +32,7 @@ func _on_death() -> void:
 func _update_stats(stats:EnemyInfoResource):
 	health_component.max_health = stats.health
 	health_component.health = stats.health
-	if Global.wave >= 2:
-		self.speed = 150. * stats.speed
-	else:
-		self.speed = 100. * stats.speed
+	self.speed = 150. * stats.speed
 	self.drop_price = randfn(stats.drop_price, 200)
 	anim.offset = stats.offset
 	anim.play(stats.anim_name)
