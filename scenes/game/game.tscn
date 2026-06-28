@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/game/game_ui/odds_price_text.gd" id="31_fydea"]
 [ext_resource type="Script" uid="uid://45eekn2av2a8" path="res://scenes/game/pause_screen.gd" id="32_fydea"]
 [ext_resource type="PackedScene" uid="uid://b1d0wstawfcy2" path="res://utilities/ui/menus/default_slider.tscn" id="33_af6p5"]
+[ext_resource type="Texture2D" uid="uid://cncmke5m76yyu" path="res://assets/icons/skip-button.png" id="34_mumkj"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -156,7 +157,7 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 360, 539, 360, 659, -9, 663, -5, 529, 347, 528, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button", "skip_button")]
 script = ExtResource("9_5q2xh")
 purrency_text = NodePath("TopBar/MarginContainer2/VBoxContainer/PurrencyText")
 tower_button_cont = NodePath("BottomBar/LeftCorner/TowerButtonCont")
@@ -164,7 +165,8 @@ tower_1 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower1")
 tower_2 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower2")
 odds_button = NodePath("BottomBar/RightCorner/ShopContainer/OddsButton")
 wheel_button = NodePath("BottomBar/RightCorner/ShopContainer/WheelButton")
-pause_button = NodePath("RightSide/MarginContainer3/PauseButton")
+pause_button = NodePath("RightSide/MarginContainer/PauseButton")
+skip_button = NodePath("RightSide/MarginContainer2/SkipButton")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
@@ -447,21 +449,31 @@ script = ExtResource("31_fydea")
 
 [node name="RightSide" type="VBoxContainer" parent="UI" unique_id=941054719]
 anchors_preset = -1
-anchor_left = 0.9
+anchor_left = 0.87
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="UI/RightSide" unique_id=932684512]
+[node name="MarginContainer" type="MarginContainer" parent="UI/RightSide" unique_id=932684512]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="PauseButton" parent="UI/RightSide/MarginContainer3" unique_id=1663972997 instance=ExtResource("14_fba2n")]
+[node name="PauseButton" parent="UI/RightSide/MarginContainer" unique_id=1663972997 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer3/PauseButton" unique_id=712036254]
+[node name="Panel" parent="UI/RightSide/MarginContainer/PauseButton" index="0" unique_id=1586527438]
+visible = false
+
+[node name="Text" parent="UI/RightSide/MarginContainer/PauseButton" index="1" unique_id=1745176857]
+text = ""
+
+[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer/PauseButton" unique_id=712036254]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -472,8 +484,31 @@ texture = ExtResource("26_mumkj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Text" parent="UI/RightSide/MarginContainer3/PauseButton" index="2" unique_id=1745176857]
+[node name="MarginContainer2" type="MarginContainer" parent="UI/RightSide" unique_id=365654958]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="SkipButton" parent="UI/RightSide/MarginContainer2" unique_id=1195833215 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" parent="UI/RightSide/MarginContainer2/SkipButton" index="0" unique_id=1586527438]
+visible = false
+
+[node name="Text" parent="UI/RightSide/MarginContainer2/SkipButton" index="1" unique_id=1745176857]
 text = ""
+
+[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer2/SkipButton" unique_id=589889786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_mumkj")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
 process_mode = 3
@@ -587,5 +622,6 @@ vertical_alignment = 1
 [editable path="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
-[editable path="UI/RightSide/MarginContainer3/PauseButton"]
+[editable path="UI/RightSide/MarginContainer/PauseButton"]
+[editable path="UI/RightSide/MarginContainer2/SkipButton"]
 [editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]
