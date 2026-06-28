@@ -69,7 +69,7 @@ func add_towers_to_place(num:int) -> void:
 	if num == 0: return
 		
 	for i in range(num):
-		tower_inventory.insert(get_random_tower_type(i), 0)
+		tower_inventory.push_front(get_random_tower_type(i))
 	while tower_inventory.size() > 2:
 		tower_inventory.pop_back()
 	

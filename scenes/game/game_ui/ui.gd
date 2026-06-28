@@ -59,7 +59,7 @@ func _update_text() -> void:
 	var p = exp(spins * .20002) * 1000
 	wheel_button.price = int(roundf(p))
 	var winrate_paid = Global.game_scene_ref.winrate_paid
-	var w = exp(winrate_paid * .19923) * 1000
+	var w = exp(winrate_paid * .5) * 5000
 	odds_button.price = int(roundf(w))
 	
 
