@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/game/game_ui/odds_price_text.gd" id="31_fydea"]
 [ext_resource type="Script" uid="uid://45eekn2av2a8" path="res://scenes/game/pause_screen.gd" id="32_fydea"]
 [ext_resource type="PackedScene" uid="uid://b1d0wstawfcy2" path="res://utilities/ui/menus/default_slider.tscn" id="33_af6p5"]
+[ext_resource type="Texture2D" uid="uid://cncmke5m76yyu" path="res://assets/icons/skip-button.png" id="34_mumkj"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -157,15 +158,16 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 360, 539, 360, 659, -9, 663, -5, 529, 347, 528, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button", "skip_button")]
 script = ExtResource("9_5q2xh")
-purrency_text = NodePath("MainUI/TopBar/MarginContainer2/VBoxContainer/PurrencyText")
-tower_button_cont = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont")
-tower_1 = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower1")
-tower_2 = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower2")
-odds_button = NodePath("MainUI/BottomBar/RightCorner/ShopContainer/OddsButton")
-wheel_button = NodePath("MainUI/BottomBar/RightCorner/ShopContainer/WheelButton")
+purrency_text = NodePath("TopBar/MarginContainer2/VBoxContainer/PurrencyText")
+tower_button_cont = NodePath("BottomBar/LeftCorner/TowerButtonCont")
+tower_1 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower1")
+tower_2 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower2")
+odds_button = NodePath("BottomBar/RightCorner/ShopContainer/OddsButton")
+wheel_button = NodePath("BottomBar/RightCorner/ShopContainer/WheelButton")
 pause_button = NodePath("MainUI/RightSide/PauseCont/PauseButton")
+skip_button = NodePath("RightSide/MarginContainer2/SkipButton")
 
 [node name="MainUI" type="Control" parent="UI" unique_id=438236503]
 layout_mode = 3
@@ -508,7 +510,235 @@ stream = ExtResource("28_qn4tv")
 [node name="DuoWrong" type="AudioStreamPlayer" parent="UI/Overlays/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
 stream = ExtResource("28_qn4tv")
 
-[node name="PauseScreen" type="Control" parent="UI/Overlays" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
+[node name="Inventorylabel" type="Sprite2D" parent="UI" unique_id=54512464 node_paths=PackedStringArray("tower_button1", "tower_button2")]
+position = Vector2(120, 561)
+rotation = -0.06898296
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("12_t5owt")
+script = ExtResource("13_8krtj")
+tower_button1 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower1")
+tower_button2 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower2")
+
+[node name="TopBar" type="HBoxContainer" parent="UI" unique_id=725220614]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TopBar" unique_id=2033805679]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer" unique_id=621789245]
+layout_mode = 2
+
+[node name="WaveLabel" type="RichTextLabel" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1702195054]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-60 bt=-1000]WAVE ?"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_8krtj")
+
+[node name="Control" type="Control" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1453314878]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="UI/TopBar" unique_id=1769965460]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/TopBar" unique_id=150170604]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer2" unique_id=2048934884]
+layout_mode = 2
+
+[node name="WinRateText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1331428193]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+mouse_filter = 2
+theme = ExtResource("1_8krtj")
+bbcode_enabled = true
+text = "[color=red][font top=-60 bt=-1000]0j WIN"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("16_8krtj")
+
+[node name="PurrencyText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1357203368]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "[font top=-50 bt=-30]d100"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="UI" unique_id=317528895]
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LeftCorner" type="MarginContainer" parent="UI/BottomBar" unique_id=385707356]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+
+[node name="TowerButtonCont" type="HBoxContainer" parent="UI/BottomBar/LeftCorner" unique_id=790972568]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_8krtj")
+theme_override_constants/separation = 15
+
+[node name="Tower1" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=418678843 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Text" parent="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1" index="1" unique_id=1745176857]
+text = "[font_size=80][font bt=-20]Text"
+
+[node name="Tower2" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="MiddleSpacer" type="Control" parent="UI/BottomBar" unique_id=74823527]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightCorner" type="MarginContainer" parent="UI/BottomBar" unique_id=880666078]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ShopContainer" type="HBoxContainer" parent="UI/BottomBar/RightCorner" unique_id=537047393]
+custom_minimum_size = Vector2(400, 90)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="WheelButton" parent="UI/BottomBar/RightCorner/ShopContainer" unique_id=892149661 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(220, 90)
+layout_mode = 2
+script = ExtResource("29_e3lpd")
+price = 1000
+
+[node name="Panel" parent="UI/BottomBar/RightCorner/ShopContainer/WheelButton" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
+
+[node name="Text" parent="UI/BottomBar/RightCorner/ShopContainer/WheelButton" index="1" unique_id=1745176857]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -36.0
+offset_bottom = 36.0
+text = "[font top=-40 bt=-5]TOWER
+[font top=-30 bt=-5][font_size=50]COSTS r1000
+"
+script = ExtResource("30_fydea")
+
+[node name="OddsButton" parent="UI/BottomBar/RightCorner/ShopContainer" unique_id=1170697133 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(220, 90)
+layout_mode = 2
+script = ExtResource("29_e3lpd")
+price = 1000
+
+[node name="Panel" parent="UI/BottomBar/RightCorner/ShopContainer/OddsButton" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
+
+[node name="Text" parent="UI/BottomBar/RightCorner/ShopContainer/OddsButton" index="1" unique_id=1745176857]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -28.5
+offset_bottom = 28.5
+text = "[font top=-40 bt=-5]k5i
+[font top=-30 bt=-5][font_size=50]COSTS r1000
+"
+script = ExtResource("31_fydea")
+
+[node name="RightSide" type="VBoxContainer" parent="UI" unique_id=941054719]
+anchors_preset = -1
+anchor_left = 0.87
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/RightSide" unique_id=932684512]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="PauseButton" parent="UI/RightSide/MarginContainer" unique_id=1663972997 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" parent="UI/RightSide/MarginContainer/PauseButton" index="0" unique_id=1586527438]
+visible = false
+
+[node name="Text" parent="UI/RightSide/MarginContainer/PauseButton" index="1" unique_id=1745176857]
+text = ""
+
+[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer/PauseButton" unique_id=712036254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_mumkj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/RightSide" unique_id=365654958]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="SkipButton" parent="UI/RightSide/MarginContainer2" unique_id=1195833215 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" parent="UI/RightSide/MarginContainer2/SkipButton" index="0" unique_id=1586527438]
+visible = false
+
+[node name="Text" parent="UI/RightSide/MarginContainer2/SkipButton" index="1" unique_id=1745176857]
+text = ""
+
+[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer2/SkipButton" unique_id=589889786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_mumkj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -624,4 +854,5 @@ process_mode = 3
 [editable path="UI/MainUI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/MainUI/BottomBar/RightCorner/ShopContainer/OddsButton"]
 [editable path="UI/MainUI/RightSide/PauseCont/PauseButton"]
+[editable path="UI/MainUI/RightSide/MarginContainer2/SkipButton"]
 [editable path="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]
