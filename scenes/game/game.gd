@@ -67,7 +67,7 @@ const LOSE_CUTSCENE = preload("res://scenes/cutscenes/lose_cutscene.tscn")
 func _on_lose() -> void:
 	if curr_cutscene:
 		curr_cutscene.end_anim()
-	var inst = WIN_CUTSCENE.instantiate() as PixelMenu
+	var inst = LOSE_CUTSCENE.instantiate() as PixelMenu
 	cutscenes.add_child(inst)
 	inst.start_anim()
 	curr_cutscene = inst
