@@ -22,6 +22,12 @@ var current_scene: PixelMenu
 var previous_scene: PixelMenu
 
 
+func transition_to_existing_scene(scene:PackedScene):
+	if previous_scene.get_class() == (scene.instantiate() as PixelMenu).get_class():
+		var temp = previous_scene
+		previous_scene = current_scene
+		current_scene = temp
+
 func transition_to_scene(new_scene:PackedScene):
 	if previous_scene:
 		previous_scene.queue_free()

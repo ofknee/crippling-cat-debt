@@ -56,10 +56,10 @@ func _process(_delta: float) -> void:
 func _update_text() -> void:
 	purrency_text.text = "[font top=-50 bt=-30]d%s" % format_number(Global.game_scene_ref.purrency)
 	var spins = Global.game_scene_ref.wheel_spins
-	var p = exp(spins * .20002) * 1000
+	var p = exp(spins * .42523) * 1000
 	wheel_button.price = int(roundf(p))
 	var winrate_paid = Global.game_scene_ref.winrate_paid
-	var w = exp(winrate_paid * .5) * 5000
+	var w = exp(winrate_paid * .52346) * 5000
 	odds_button.price = int(roundf(w))
 	
 

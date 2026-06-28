@@ -165,7 +165,7 @@ tower_1 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower1")
 tower_2 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower2")
 odds_button = NodePath("BottomBar/RightCorner/ShopContainer/OddsButton")
 wheel_button = NodePath("BottomBar/RightCorner/ShopContainer/WheelButton")
-pause_button = NodePath("RightSide/MarginContainer3/PauseButton")
+pause_button = NodePath("RightSide/PauseCont/PauseButton")
 
 [node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
 layout_mode = 3
@@ -360,14 +360,14 @@ grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="UI/RightSide" unique_id=932684512]
+[node name="PauseCont" type="MarginContainer" parent="UI/RightSide" unique_id=932684512]
 layout_mode = 2
 
-[node name="PauseButton" parent="UI/RightSide/MarginContainer3" unique_id=1663972997 instance=ExtResource("14_fba2n")]
+[node name="PauseButton" parent="UI/RightSide/PauseCont" unique_id=1663972997 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/RightSide/MarginContainer3/PauseButton" unique_id=712036254]
+[node name="TextureRect" type="TextureRect" parent="UI/RightSide/PauseCont/PauseButton" unique_id=712036254]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,7 +378,7 @@ texture = ExtResource("26_mumkj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Text" parent="UI/RightSide/MarginContainer3/PauseButton" index="2" unique_id=1745176857]
+[node name="Text" parent="UI/RightSide/PauseCont/PauseButton" index="2" unique_id=1745176857]
 text = ""
 
 [node name="WheelCont" type="Control" parent="UI" unique_id=1703027372]
@@ -588,8 +588,11 @@ theme_override_font_sizes/normal_font_size = 80
 text = "[font top=-15]BACK TO GAMBLING"
 vertical_alignment = 1
 
+[node name="Cutscenes" type="CanvasLayer" parent="." unique_id=589423347]
+process_mode = 3
+
 [editable path="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
 [editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
-[editable path="UI/RightSide/MarginContainer3/PauseButton"]
+[editable path="UI/RightSide/PauseCont/PauseButton"]
 [editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]

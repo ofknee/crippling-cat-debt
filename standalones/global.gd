@@ -17,6 +17,7 @@ var state: States = States.START :
 		state = val
 		state_changed.emit(val)
 
+
 var menu_manager : PixelMenuManager
 
 var map : Map

@@ -5,6 +5,11 @@ class_name WinCutscene
 @onready var sad_text: RichTextLabel = $SadText
 @onready var audio_player1: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_player2: AudioStreamPlayer = $AudioStreamPlayer2
+@onready var continue_screen: Control = $Continue
+@export var buttons : Array[DefaultButton]
+
+const START_MENU = preload("res://scenes/start_menu.tscn")
+const GAME = preload("res://scenes/game/game.tscn")
 
 @export var happy: AudioStreamMP3
 @export var vine_boom: AudioStreamMP3
@@ -14,13 +19,29 @@ var t : Tween
 func _ready():
 	sad_text.modulate.a = 0
 	start_anim()
+	for but in buttons:
+		but.pressed.connect(_on_button.bind(but.name))
+	
+func _on_button(_name:String) -> void:
+	match _name.to_lower():
+		"no":
+			Global.menu_manager.transition_to_scene(START_MENU)
+		"yes":
+			get_tree().paused = false
+			end_anim()
 
-const START_MENU = preload("res://scenes/start_menu.tscn")
 func start_anim():
+	continue_screen.modulate.a = 0
+	continue_screen.hide()
 	Global.menu_manager.toggle_music(false)
 	anim.scale = Vector2.ONE * 0.3
 	await _anim_pain()
-	Global.menu_manager.transition_to_scene(START_MENU)
+	if t and t.is_running(): t.kill()
+	t = default_tween()
+	continue_screen.show()
+	t.tween_property(continue_screen, "modulate:a", 1.0, 0.7)
+	await t.finished
+	
 
 func end_anim():
 	Global.menu_manager.toggle_music(true)

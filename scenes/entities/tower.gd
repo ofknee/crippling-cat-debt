@@ -57,7 +57,10 @@ func _process(delta: float) -> void:
 	if not placed:
 		self.range_shown = true
 	else:
-		self.range_shown = true if Global.selected_tower == self or popupped else false
+		self.range_shown = true \
+			if Global.selected_tower == self or \
+			(popupped and Global.selected_tower == null) \
+			else false
 		var cooldown = _stats.attack_cooldown
 		if not cooldown: push_error("Attack cooldown doesn't exist in tower type")
 		if enemies_in_range.size() > 0 and enemies_in_range[0]:
