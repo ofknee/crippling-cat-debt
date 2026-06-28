@@ -39,7 +39,8 @@ func _process(delta: float) -> void:
 			Global.selected_tower.apply_central_force(dir.normalized() * 1000 * sqrt(dir.length()))
 		else:
 			Global.selected_tower.global_position = lerp(pos, target, delta * 3)
-	if Input.is_action_just_pressed("l_click") and Global.selected_tower:
+	if Input.is_action_just_pressed("l_click") and Global.selected_tower\
+		and not Global.selected_tower.placed:
 		self.place_tower(Global.selected_tower)
 
 func register_tower(tower:Tower):
