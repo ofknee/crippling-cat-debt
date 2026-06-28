@@ -100,6 +100,8 @@ func spin_to_win():
 	
 	var to_be_rotated = randf()*360*2 + 360*3
 	var to_be_finally = wheelfr.rotation_degrees + to_be_rotated
+	
+	
 	#position.y+=1000
 	$gambler.show()
 	
@@ -144,10 +146,13 @@ func spin_to_win():
 			$ResultInfo/DuoWrong.play()
 			Global.game_scene_ref.add_towers_to_place(0)
 		"-1":
-			show_result("YOU GET TO LOSE A TOWER!")
-			$ResultInfo/DuoWrong.play()
-			SignalBus.lose_tower.emit()
-	
+			if Global.tower_manager.all_towers.size() <= 1:
+				show_result("YOU ALMOST LOST A TOWER... BUT GOD'S GOD SMILES UPON YOU!")
+				$ResultInfo/DuoWrong.play()
+			else:
+				show_result("YOU GET TO LOSE A TOWER!")
+				$ResultInfo/DuoWrong.play()
+				SignalBus.lose_tower.emit()
 
 #TODO Check conditions
 func _input(event: InputEvent) -> void:
