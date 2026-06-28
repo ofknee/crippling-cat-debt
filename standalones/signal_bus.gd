@@ -6,6 +6,8 @@ func _ready() -> void:
 @warning_ignore("unused_signal")
 signal wave_finished(num:int)
 @warning_ignore("unused_signal")
+signal skip_wave()
+@warning_ignore("unused_signal")
 signal lose_tower()
 @warning_ignore("unused_signal")
 signal upgrade_selected_tower(new_level:int, price:int)
