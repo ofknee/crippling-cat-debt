@@ -338,7 +338,7 @@ script = ExtResource("30_fydea")
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 script = ExtResource("29_e3lpd")
-price = 5000
+price = 2000
 
 [node name="Panel" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer/OddsButton" index="0" unique_id=1586527438]
 theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
@@ -350,7 +350,7 @@ anchor_bottom = 0.5
 offset_top = -28.5
 offset_bottom = 28.5
 text = "[font top=-40 bt=-5]k5i
-[font top=-30 bt=-5][font_size=50]COSTS r5000
+[font top=-30 bt=-5][font_size=50]COSTS r2000
 "
 script = ExtResource("31_fydea")
 
