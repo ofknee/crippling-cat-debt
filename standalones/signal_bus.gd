@@ -25,3 +25,5 @@ signal lose()
 signal toggle_music(on:bool)
 @warning_ignore("unused_signal")
 signal pause(pause:bool)
+@warning_ignore("unused_signal")
+signal begin_waves

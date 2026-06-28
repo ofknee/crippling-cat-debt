@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://45eekn2av2a8" path="res://scenes/game/pause_screen.gd" id="32_fydea"]
 [ext_resource type="PackedScene" uid="uid://b1d0wstawfcy2" path="res://utilities/ui/menus/default_slider.tscn" id="33_af6p5"]
 [ext_resource type="Texture2D" uid="uid://cncmke5m76yyu" path="res://assets/icons/skip-button.png" id="34_mumkj"]
+[ext_resource type="Script" uid="uid://b8jag7yuy0h8r" path="res://scenes/game/tutorial.gd" id="36_0gkf7"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -64,6 +65,18 @@ func set_curve_action() -> void:
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl11u"]
 bg_color = Color(1, 1, 1, 0.9137255)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gkf7"]
+bg_color = Color(1, 1, 1, 0.8784314)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -158,7 +171,7 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 360, 539, 360, 659, -9, 663, -5, 529, 347, 528, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button", "skip_button")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button", "skip_button", "tutorial")]
 script = ExtResource("9_5q2xh")
 purrency_text = NodePath("MainUI/TopBar/MarginContainer2/VBoxContainer/PurrencyText")
 tower_button_cont = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont")
@@ -168,6 +181,7 @@ odds_button = NodePath("MainUI/BottomBar/RightCorner/ShopContainer/OddsButton")
 wheel_button = NodePath("MainUI/BottomBar/RightCorner/ShopContainer/WheelButton")
 pause_button = NodePath("MainUI/RightSide/PauseCont/PauseButton")
 skip_button = NodePath("MainUI/RightSide/SkipCont/SkipButton")
+tutorial = NodePath("Overlays/Tutorial")
 
 [node name="MainUI" type="Control" parent="UI" unique_id=438236503]
 layout_mode = 3
@@ -428,6 +442,223 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Tutorial" type="Control" parent="UI/Overlays" unique_id=1224525446 node_paths=PackedStringArray("skip_but", "tower_but", "click_tower", "place_tower", "pause_skip", "odds", "odds_show", "tower_wheel", "wheel_but")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("36_0gkf7")
+skip_but = NodePath("MarginContainer/Skip")
+tower_but = NodePath("../../MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower1")
+click_tower = NodePath("ClickTower")
+place_tower = NodePath("PlaceTower")
+pause_skip = NodePath("PauseSkip")
+odds = NodePath("Odds")
+odds_show = [NodePath("../../MainUI/BottomBar/RightCorner/ShopContainer/OddsButton"), NodePath("../../MainUI/TopBar/MarginContainer2/VBoxContainer/WinRateText")]
+tower_wheel = NodePath("Tower")
+wheel_but = NodePath("../../MainUI/BottomBar/RightCorner/ShopContainer/WheelButton")
+
+[node name="bg" type="ColorRect" parent="UI/Overlays/Tutorial" unique_id=992482619]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.87058824)
+
+[node name="ClickTower" type="Control" parent="UI/Overlays/Tutorial" unique_id=1339487914]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ClickTower" type="RichTextLabel" parent="UI/Overlays/Tutorial/ClickTower" unique_id=1904292714]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.66
+anchor_right = 0.324
+anchor_bottom = 0.808
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-25 bt=-20][shake][font_size=80]PICK UP A TOWER
+CLICK HERE"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlaceTower" type="Control" parent="UI/Overlays/Tutorial" unique_id=1077528662]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Overlays/Tutorial/PlaceTower" unique_id=1592980401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[shake]PLACE THE TOWER!
+
+[font_size=50]LEFT CLICK u"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseSkip" type="Control" parent="UI/Overlays/Tutorial" unique_id=188050557]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Overlays/Tutorial/PauseSkip" unique_id=1557470770]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.784
+anchor_right = 0.939
+anchor_bottom = 0.728
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-20 ][shake]PAUSE!
+[font_size=50]SKIP TO NEXT WAVE
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UI/Overlays/Tutorial/PauseSkip" unique_id=577446116]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.784
+anchor_top = 0.512
+anchor_right = 1.0
+anchor_bottom = 0.653
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[color=red][font top=-20 bt=-20][font_size=60][shake]LEFT CLICK IF YOU UNDERSTAND"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tower" type="Control" parent="UI/Overlays/Tutorial" unique_id=96491076]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Tower1" type="RichTextLabel" parent="UI/Overlays/Tutorial/Tower" unique_id=210864289]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.577
+anchor_top = 0.66
+anchor_right = 0.807
+anchor_bottom = 0.808
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-25 bt=-20][shake][font_size=70]GET NEW TOWERS BY SPINNING"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Odds" type="Control" parent="UI/Overlays/Tutorial" unique_id=1808779944]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OddsText" type="RichTextLabel" parent="UI/Overlays/Tutorial/Odds" unique_id=1693876637]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.793
+anchor_top = 0.653
+anchor_right = 0.986
+anchor_bottom = 0.826
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-20 bt=-0][shake][color=red][font_size=60]PAY TO FIX THE WIN RATE
+[font_size=40]100i TO WIN"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OddsText2" type="RichTextLabel" parent="UI/Overlays/Tutorial/Odds" unique_id=192506144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.685
+anchor_top = 0.122
+anchor_right = 0.986
+anchor_bottom = 0.328
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-20 bt=-0][shake][font_size=50]ABOVE IS THE WIN RATE OF THE CAT FROM THE CUTSCENE..."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Overlays/Tutorial" unique_id=1318702989]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.244
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skip" parent="UI/Overlays/Tutorial/MarginContainer" unique_id=397839981 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+
+[node name="Panel" parent="UI/Overlays/Tutorial/MarginContainer/Skip" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gkf7")
+
+[node name="Text" parent="UI/Overlays/Tutorial/MarginContainer/Skip" index="1" unique_id=1745176857]
+text = "SKIP TUTORIAL"
+
 [node name="TowerSelection" type="Control" parent="UI/Overlays" unique_id=1435858607]
 layout_mode = 1
 anchors_preset = 15
@@ -660,4 +891,5 @@ process_mode = 3
 [editable path="UI/MainUI/BottomBar/RightCorner/ShopContainer/OddsButton"]
 [editable path="UI/MainUI/RightSide/PauseCont/PauseButton"]
 [editable path="UI/MainUI/RightSide/SkipCont/SkipButton"]
+[editable path="UI/Overlays/Tutorial/MarginContainer/Skip"]
 [editable path="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]

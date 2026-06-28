@@ -4,11 +4,11 @@ extends Path2D
 var speed := 70.0
 var wave_spawning_in_progress : bool = false
 var skip_wait : bool = false
+var waves_began := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(3.67).timeout
-	wave_yo_hand() # Replace with function body. # spawn a wave
+	SignalBus.begin_waves.connect(wave_yo_hand)
 	SignalBus.skip_wave.connect(skip_between_waves)
 	
 #func _process(delta: float) -> void:

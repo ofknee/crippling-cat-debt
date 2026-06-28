@@ -18,7 +18,8 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @export var wheel_button : PayButton
 @export var pause_button : DefaultButton
 @export var skip_button : DefaultButton
-const TOWER_TEXT_HEADER = "[font_size=60][font bt=-40]"
+@export var tutorial: Tutorial
+const TOWER_TEXT_HEADER = "[font_size=60][font top=8 bt=-10]"
 
 func _ready() -> void:
 	pause_button.pressed.connect(func():
@@ -33,6 +34,9 @@ func _ready() -> void:
 	)
 	odds_button.paid.connect(func():
 		SignalBus.change_odds.emit(5)
+	)
+	tutorial.tutorial_ended.connect(func():
+		SignalBus.begin_waves.emit()
 	)
 	for but in tower_button_cont.get_children():
 		var button = but as DefaultButton

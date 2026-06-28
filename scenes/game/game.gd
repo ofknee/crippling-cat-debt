@@ -39,7 +39,6 @@ func _on_pause(_pause:bool):
 	is_paused = _pause
 func _ready() -> void:
 	Global.game_scene_ref = self
-	tower_inventory = [T.LOW]
 	SignalBus.wheel_time.connect(func():
 		wheel_spins += 1
 	)
@@ -52,6 +51,7 @@ func _ready() -> void:
 	SignalBus.win.connect(_on_win)
 	SignalBus.lose.connect(_on_lose)
 	SignalBus.pause.connect(_on_pause)
+	
 
 var curr_cutscene : PixelMenu = null
 const WIN_CUTSCENE = preload("res://scenes/cutscenes/win_cutscene.tscn")
@@ -116,9 +116,14 @@ func get_towers_to_place() -> Array[T]:
 
 
 func start_anim(): 
-	Global.state = Global.States.GAME
+	tower_inventory = [T.LOW]
+	print("STARTING GAME SCENE")
 	Global.reset()
 	cutscenes.show()
+	await get_tree().process_frame
+	Global.state = Global.States.GAME
+	print("State: %s" % Global.state)
+	Global.map_state = Global.MapStates.TUTORIAL
 
 func end_anim(): 
 	self.hide()

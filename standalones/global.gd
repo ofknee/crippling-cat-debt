@@ -16,6 +16,7 @@ var state: States = States.START :
 		if state != val: return
 		state = val
 		state_changed.emit(val)
+		print("NEW STATE: %s" % state)
 
 
 var menu_manager : PixelMenuManager
@@ -49,6 +50,8 @@ func select_tower(tower:Tower, selection_type:SelectionType=SelectionType.NULL):
 func clear_selected_tower() -> void: 
 	print_debug("Clearing selected tower")
 	selected_tower = null
+	selected_tower_cleared.emit()
+signal selected_tower_cleared
 var tower_manager: TowerManager
 
 var all_enemies: Array[Enemy]
