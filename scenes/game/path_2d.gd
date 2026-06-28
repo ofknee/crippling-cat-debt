@@ -1,4 +1,3 @@
-
 extends Path2D
 
 @export var enemy_scene: PackedScene
@@ -8,7 +7,7 @@ var skip_wait : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(3.67)
+	await get_tree().create_timer(3.67).timeout
 	wave_yo_hand() # Replace with function body. # spawn a wave
 	SignalBus.skip_wave.connect(skip_between_waves)
 	
@@ -43,10 +42,15 @@ func wave_yo_hand():
 		skip_wait = false
 		var timer := get_tree().create_timer(6.67)
 		while timer.time_left > 0.0 and !skip_wait:
+			while Global.map_state == Global.MapStates.PAUSE:
+				await get_tree().process_frame
 			await get_tree().process_frame
 			
 func spawn_wave() -> void:
 	for i in range(2+ceil(Global.wave*1.67)): # number of enemies to spawn
+		while Global.map_state == Global.MapStates.PAUSE:
+			await get_tree().process_frame
+
 		var r := randf()
 		if r < 0.05:
 			spawn_enemy(EnemyInfoResource.EnemyType.BLOB)
@@ -55,7 +59,11 @@ func spawn_wave() -> void:
 		else:
 			spawn_enemy(EnemyInfoResource.EnemyType.FLY)
 
-		await get_tree().create_timer(70/(speed)).timeout
+		var timer := get_tree().create_timer(70/(speed))
+		while timer.time_left > 0.0:
+			while Global.map_state == Global.MapStates.PAUSE:
+				await get_tree().process_frame
+			await get_tree().process_frame
 
 func skip_between_waves():
 	skip_wait = true
