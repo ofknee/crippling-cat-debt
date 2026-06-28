@@ -359,18 +359,25 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.9
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.738
+offset_left = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = -12
 alignment = 1
 
 [node name="PauseCont" type="MarginContainer" parent="UI/MainUI/RightSide" unique_id=932684512]
 layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="PauseButton" parent="UI/MainUI/RightSide/PauseCont" unique_id=1663972997 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="Panel" parent="UI/MainUI/RightSide/PauseCont/PauseButton" index="0" unique_id=1586527438]
+visible = false
 
 [node name="Text" parent="UI/MainUI/RightSide/PauseCont/PauseButton" index="1" unique_id=1745176857]
 text = ""
@@ -388,10 +395,15 @@ stretch_mode = 5
 
 [node name="SkipCont" type="MarginContainer" parent="UI/MainUI/RightSide" unique_id=1972163181]
 layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="SkipButton" parent="UI/MainUI/RightSide/SkipCont" unique_id=136596813 instance=ExtResource("14_fba2n")]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="Panel" parent="UI/MainUI/RightSide/SkipCont/SkipButton" index="0" unique_id=1586527438]
+visible = false
 
 [node name="Text" parent="UI/MainUI/RightSide/SkipCont/SkipButton" index="1" unique_id=1745176857]
 text = ""
