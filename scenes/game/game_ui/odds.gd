@@ -2,6 +2,7 @@ extends RichTextLabel
 @export var odds = Global.odds
 var t: Tween
 var odds_change_queue: Array[int] = []
+var won := false
 
 func _ready():
 	scale = Vector2.ONE
@@ -18,7 +19,8 @@ func _set_odds(amount: int):
 	if odds <= -50:
 		print("GAME LOST")
 		SignalBus.lose.emit()
-	elif odds == 100:
+	elif odds >= 100 and not won:
+		won = true
 		print("GAME WON")
 		SignalBus.win.emit()
 
