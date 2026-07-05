@@ -5,19 +5,14 @@
   <ol>
 	<li><a href="#about-the-project">About The Project</a></li>
 	<li><a href="#play">Play</a></li>
-	<li><a href="#screenshots">Screenshots</a></li>
-	<li><a href="#built-with">Built With</a></li>
+	<li><a href="#Motivation">Screenshots</a></li>
 	<li><a href="#roadmap">Roadmap</a></li>
-	<li><a href="#license">License</a></li>
-	<li><a href="#contact">Contact</a></li>
-	<li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-> [!WARNING]
 ### Abstract
 Defend the gambling machines from the bugs so you can help your feline devotee get out of debt! Tower defense meets gambling in Cat Debt ™️.
 
@@ -103,9 +98,3 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
   - [ ] Tutorial
   - [ ] Save file??
 
-<!-- CONTACT -->
-## Contact
-
-Project Link: [https://github.com/PixelSaver/cat-debt](https://github.com/PixelSaver/cat-debt)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
