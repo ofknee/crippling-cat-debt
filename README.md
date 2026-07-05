@@ -69,6 +69,9 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
 - [ ] Make it MORE OBVIOUS WHAT THE WINRATE DOES >:(
 - [ ] GAMESTATE?? so save files work
 - [ ] Selling towers
+- [ ] Level enemies up
+- [ ] AOE for towers
+- [ ] Lengthen waves so clumps are less
 ### UI
  - [X] indicate what teh winrate is
  - [ ] Skip to next wave button / time until next wave ui

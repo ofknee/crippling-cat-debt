@@ -12,18 +12,31 @@ const TOWER_SCENE = preload("res://scenes/entities/tower.tscn")
 @export_subgroup("Nodes")
 @export var purrency_text: RichTextLabel
 @export var tower_button_cont: HBoxContainer
-@export var tower_1: DefaultButton 
+@export var tower_1: DefaultButton
 @export var tower_2: DefaultButton
 @export var odds_button : PayButton
 @export var wheel_button : PayButton
-const TOWER_TEXT_HEADER = "[font_size=60][font bt=-40]"
+@export var pause_button : DefaultButton
+@export var skip_button : DefaultButton
+@export var tutorial: Tutorial
+const TOWER_TEXT_HEADER = "[font_size=60][font top=8 bt=-10]"
 
 func _ready() -> void:
+	pause_button.pressed.connect(func():
+		SignalBus.pause.emit(true)
+	)
+	skip_button.pressed.connect(func():
+		SignalBus.skip_wave.emit()
+	)
+
 	wheel_button.paid.connect(func():
 		SignalBus.wheel_time.emit()
 	)
 	odds_button.paid.connect(func():
 		SignalBus.change_odds.emit(5)
+	)
+	tutorial.tutorial_ended.connect(func():
+		SignalBus.begin_waves.emit()
 	)
 	for but in tower_button_cont.get_children():
 		var button = but as DefaultButton
@@ -52,12 +65,12 @@ func _process(_delta: float) -> void:
 func _update_text() -> void:
 	purrency_text.text = "[font top=-50 bt=-30]d%s" % format_number(Global.game_scene_ref.purrency)
 	var spins = Global.game_scene_ref.wheel_spins
-	var p = exp(spins * .20002) * 1000
+	var p = exp(spins * .42523) * 1000
 	wheel_button.price = int(roundf(p))
 	var winrate_paid = Global.game_scene_ref.winrate_paid
-	var w = exp(winrate_paid * .19923) * 1000
+	var w = exp(winrate_paid * .2035198) * 2000
 	odds_button.price = int(roundf(w))
-	
+
 
 func format_number(n: int) -> String:
 	var s := str(n)

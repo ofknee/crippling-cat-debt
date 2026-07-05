@@ -11,7 +11,12 @@ signal price_changed(new_price:int)
 
 func _can_pay() -> bool:
 	var p = Global.game_scene_ref.purrency
-	if p >= price: return true
+	#print("Game state: %s\nMap State: %s\nprice: %s" % [Global.state, Global.map_state, p])
+	#HACK FIgure out why Global.state is always Global.States.START and not Global.States.GAME
+	if p >= price and \
+		#(Global.state == Global.States.GAME) and \
+		Global.map_state != Global.MapStates.WHEEL: 
+			return true
 	return false
 
 

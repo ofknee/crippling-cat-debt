@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bn5oktdhgox74" path="res://assets/sfx/lets-go-gambling.mp3" id="2_02aqd"]
 [ext_resource type="Theme" uid="uid://djxds56cenfds" path="res://assets/default_theme.tres" id="48_0u6ag"]
 [ext_resource type="Texture2D" uid="uid://de3tt8a8jnpns" path="res://assets/cutscenes/win_scene/frame_053.png" id="54_ilm2p"]
+[ext_resource type="PackedScene" uid="uid://bk1srw633oqx8" path="res://utilities/ui/menus/default_button.tscn" id="54_vopej"]
 [ext_resource type="Texture2D" uid="uid://b1ugw1486nfqk" path="res://assets/cutscenes/win_scene/frame_054.png" id="55_q7pxs"]
 [ext_resource type="Texture2D" uid="uid://bo6hdyasu1tgm" path="res://assets/cutscenes/win_scene/frame_055.png" id="56_b6xcb"]
 [ext_resource type="Texture2D" uid="uid://d3qht585jlo7q" path="res://assets/cutscenes/win_scene/frame_056.png" id="57_u08l7"]
@@ -325,7 +326,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="WinScene" type="Control" unique_id=1867390076]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfmj8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="WinScene" type="Control" unique_id=1867390076 node_paths=PackedStringArray("buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,6 +347,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2o2as")
+buttons = [NodePath("Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer/NO"), NodePath("Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer2/YES")]
 happy = ExtResource("2_02aqd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91319889]
@@ -364,3 +379,87 @@ vertical_alignment = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1950730558]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1023982493]
+
+[node name="Continue" type="Control" parent="." unique_id=491378150]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="Continue" unique_id=307598260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.7764706)
+
+[node name="ContinuePanel" type="Panel" parent="Continue" unique_id=236796152]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfmj8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Continue/ContinuePanel" unique_id=513042802]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Continue/ContinuePanel/VBoxContainer" unique_id=940769706]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+bbcode_enabled = true
+text = "CONTINUE GAMBLING? u"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Continue/ContinuePanel/VBoxContainer" unique_id=1795433213]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Continue/ContinuePanel/VBoxContainer/HBoxContainer" unique_id=2001636040]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="NO" parent="Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer" unique_id=418678843 instance=ExtResource("54_vopej")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" parent="Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer/NO" index="1" unique_id=1745176857]
+text = "[font top=20]s [color=red]NO"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Continue/ContinuePanel/VBoxContainer/HBoxContainer" unique_id=765762043]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="YES" parent="Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1380221059 instance=ExtResource("54_vopej")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" parent="Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer2/YES" index="1" unique_id=1745176857]
+text = "[font top=20]q [color=dark_green]YES "
+
+[editable path="Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer/NO"]
+[editable path="Continue/ContinuePanel/VBoxContainer/HBoxContainer/MarginContainer2/YES"]

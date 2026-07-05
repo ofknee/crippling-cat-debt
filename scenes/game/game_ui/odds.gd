@@ -2,6 +2,7 @@ extends RichTextLabel
 @export var odds = Global.odds
 var t: Tween
 var odds_change_queue: Array[int] = []
+var won := false
 
 func _ready():
 	scale = Vector2.ONE
@@ -15,10 +16,11 @@ func get_odds():
 func _set_odds(amount: int):
 	odds = clampi(amount, -100, 100)
 	self.text = "[color=red][font top=-30]" + str(odds) + "j WIN"
-	if odds <= -50:
+	if odds <= -100:
 		print("GAME LOST")
 		SignalBus.lose.emit()
-	elif odds == 100:
+	elif odds >= 100 and not won:
+		won = true
 		print("GAME WON")
 		SignalBus.win.emit()
 
@@ -31,6 +33,12 @@ func queue_odds_change(amount:int) -> void:
 ## Runs once per frame at max, since call_deferred called 1074091873 times per frame
 ## still means it runs once :D
 func inc_odds():
+	var total = odds
+	for delta in odds_change_queue:
+		total += delta
+	odds_change_queue.clear()
+	_set_odds(total)
+	
 	self.scale = Vector2.ONE
 	if t and t.is_running(): t.kill()
 	t = create_tween().set_ease(Tween.EASE_OUT)
@@ -41,10 +49,6 @@ func inc_odds():
 	await t.finished
 	t = create_tween().set_ease(Tween.EASE_OUT)
 	t.set_parallel(true).set_trans(Tween.TRANS_QUINT)
-	var total = odds
-	for delta in odds_change_queue:
-		total += delta
-	_set_odds(total)
 	t.tween_property(self, "scale", Vector2.ONE, 0.2)
 	t.tween_property(self, "offset_transform_position", Vector2.ZERO, 0.2)
 	await t.finished

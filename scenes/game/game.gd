@@ -1,6 +1,8 @@
 extends PixelMenu
 class_name Game
 
+@onready var cutscenes: CanvasLayer = $Cutscenes
+
 const T = TowerInfoResource.TowerType
 
 signal win_rate_changed(new_rate:int)
@@ -19,15 +21,24 @@ var weights = {
 }
 var purrency: int = 1000
 var pay_queue: Array[int] = []
+var is_paused:= false
 #DEBUG 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("w") and OS.is_debug_build():
 		SignalBus.win.emit()
 	if Input.is_action_just_pressed("s") and OS.is_debug_build():
 		SignalBus.lose.emit()
+	
+	if visible: return
+	for child in Global.menu_manager.get_children():
+		if child == self: continue
+		if child.is_class("Game") and child.visible:
+			self.queue_free()
+
+func _on_pause(_pause:bool):
+	is_paused = _pause
 func _ready() -> void:
 	Global.game_scene_ref = self
-	tower_inventory = [T.LOW]
 	SignalBus.wheel_time.connect(func():
 		wheel_spins += 1
 	)
@@ -39,13 +50,29 @@ func _ready() -> void:
 	)
 	SignalBus.win.connect(_on_win)
 	SignalBus.lose.connect(_on_lose)
+	SignalBus.pause.connect(_on_pause)
+	
 
+var curr_cutscene : PixelMenu = null
 const WIN_CUTSCENE = preload("res://scenes/cutscenes/win_cutscene.tscn")
 func _on_win() -> void:
-	Global.menu_manager.transition_to_scene(WIN_CUTSCENE)
+	if curr_cutscene:
+		curr_cutscene.end_anim()
+	var inst = WIN_CUTSCENE.instantiate() as PixelMenu
+	cutscenes.add_child(inst)
+	inst.start_anim()
+	curr_cutscene = inst
+	get_tree().paused = true
 const LOSE_CUTSCENE = preload("res://scenes/cutscenes/lose_cutscene.tscn")
 func _on_lose() -> void:
-	Global.menu_manager.transition_to_scene(LOSE_CUTSCENE)
+	if curr_cutscene:
+		curr_cutscene.end_anim()
+	var inst = LOSE_CUTSCENE.instantiate() as PixelMenu
+	cutscenes.add_child(inst)
+	inst.start_anim()
+	curr_cutscene = inst
+	get_tree().paused = true
+		
 
 func pay(amount:int) -> void:
 	pay_queue.append(amount)
@@ -65,11 +92,13 @@ func picked_at_index(idx:int) -> void:
 
 func add_towers_to_place(num:int) -> void:
 	num = clampi(num, 0, 2)
-	tower_inventory.clear()
+	#tower_inventory.clear()
 	if num == 0: return
 		
 	for i in range(num):
-		tower_inventory.append(get_random_tower_type(i))
+		tower_inventory.push_front(get_random_tower_type(i))
+	while tower_inventory.size() > 2:
+		tower_inventory.pop_back()
 	
 func get_random_tower_type(_seed:int) -> T:
 	var rng = RandomNumberGenerator.new()
@@ -87,8 +116,16 @@ func get_towers_to_place() -> Array[T]:
 
 
 func start_anim(): 
+	tower_inventory = [T.LOW]
+	print("STARTING GAME SCENE")
+	Global.reset()
+	cutscenes.show()
+	await get_tree().process_frame
 	Global.state = Global.States.GAME
+	print("State: %s" % Global.state)
+	Global.map_state = Global.MapStates.TUTORIAL
 
 func end_anim(): 
 	self.hide()
+	cutscenes.hide()
 	queue_free()

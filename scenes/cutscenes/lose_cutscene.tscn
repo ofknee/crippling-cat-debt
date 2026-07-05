@@ -240,6 +240,16 @@ script = ExtResource("1_u213a")
 sad_meow = ExtResource("2_mxkxl")
 vine_boom = ExtResource("3_4c0st")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1115260512]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0
+anchor_top = -2.0
+anchor_right = 3.0
+anchor_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91319889]
 position = Vector2(730, 373)
 scale = Vector2(0.39661455, 0.39999995)
@@ -269,3 +279,18 @@ vertical_alignment = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1950730558]
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1023982493]
+
+[node name="SkipText" type="RichTextLabel" parent="." unique_id=1484514892]
+modulate = Color(1, 1, 1, 0.1882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[color=gray]SPACE TO SKIP"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2

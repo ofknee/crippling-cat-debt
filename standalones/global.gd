@@ -16,6 +16,8 @@ var state: States = States.START :
 		if state != val: return
 		state = val
 		state_changed.emit(val)
+		print("NEW STATE: %s" % state)
+
 
 var menu_manager : PixelMenuManager
 
@@ -45,7 +47,11 @@ var selected_tower : Tower = null
 func select_tower(tower:Tower, selection_type:SelectionType=SelectionType.NULL):
 	selected_tower = tower
 	tower_selected.emit(tower, selection_type)
-func clear_selected_tower() -> void: selected_tower = null
+func clear_selected_tower() -> void: 
+	print_debug("Clearing selected tower")
+	selected_tower = null
+	selected_tower_cleared.emit()
+signal selected_tower_cleared
 var tower_manager: TowerManager
 
 var all_enemies: Array[Enemy]
@@ -57,5 +63,11 @@ func register_enemy(enemy:Enemy):
 	)
 
 var game_scene_ref: Game
+func reset() -> void:
+	selected_tower = null
+	all_enemies.clear()
+	map_state = MapStates.PLAY
 
 var settings: PlayerSettings = PlayerSettings.new()
+
+var spawn_manager : SpawnManager

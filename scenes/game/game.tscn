@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cd66jvv5sslkr" path="res://assets/map/path/path1.png" id="3_af6p5"]
 [ext_resource type="Texture2D" uid="uid://4a7tecqbkr2m" path="res://assets/map/path/path2.png" id="4_mumkj"]
 [ext_resource type="Script" uid="uid://dc8pj8afuhk7n" path="res://scenes/mappy/map.gd" id="5_2vph8"]
-[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/path_2d.gd" id="6_8krtj"]
+[ext_resource type="Script" uid="uid://bh7khxsci7ej6" path="res://scenes/game/spawn_manager.gd" id="6_8krtj"]
 [ext_resource type="PackedScene" uid="uid://dj16vkhwrn5to" path="res://scenes/entities/enemy.tscn" id="7_6ehwc"]
 [ext_resource type="Script" uid="uid://dwt0hrviivxvr" path="res://scenes/tower_manager.gd" id="8_tyhjx"]
 [ext_resource type="Script" uid="uid://d3phsvh5opaxu" path="res://scenes/game/game_ui/ui.gd" id="9_5q2xh"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cjxd1csle5q73" path="res://scenes/game/game_ui/odds.gd" id="16_8krtj"]
 [ext_resource type="Script" uid="uid://c08501tuym1uv" path="res://scenes/game/wheel/wheelies.gd" id="17_8krtj"]
 [ext_resource type="Texture2D" uid="uid://du6uav32idug1" path="res://assets/cutscenes/wheels/popup/kaboomkablowripmygrannyshegothitbyabazooka.png" id="18_35t1a"]
+[ext_resource type="Script" uid="uid://6xhigxibwwgr" path="res://scenes/game/skip_button.gd" id="19_6ehwc"]
 [ext_resource type="Texture2D" uid="uid://ctsbvloq15oue" path="res://assets/cutscenes/wheels/popup/spin.png" id="19_ye7x0"]
 [ext_resource type="Texture2D" uid="uid://blqu5x1gujjwv" path="res://assets/cutscenes/wheels/popup/that.png" id="20_oepbe"]
 [ext_resource type="Texture2D" uid="uid://5egucrk6xwgr" path="res://assets/cutscenes/wheels/popup/wheel.png" id="21_3322e"]
@@ -25,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://on5v7naay6cf" path="res://assets/cutscenes/wheels/tower_wheel.png" id="23_uw24m"]
 [ext_resource type="Texture2D" uid="uid://drle6eg5r2r5o" path="res://assets/cutscenes/wheels/pointer.png" id="24_kuo75"]
 [ext_resource type="AudioStream" uid="uid://doxcbkrxpv2yf" path="res://assets/sfx/kenney_interface-sounds/Audio/tick_002.ogg" id="25_jiu3o"]
+[ext_resource type="Texture2D" uid="uid://6ees3b7g0rsm" path="res://assets/icons/paws-button.png" id="26_mumkj"]
 [ext_resource type="Texture2D" uid="uid://dwtxxijwcv4s1" path="res://assets/cutscenes/wheels/info_popup/panel1.png" id="26_vbi6r"]
 [ext_resource type="Texture2D" uid="uid://dkqnqipkcx116" path="res://assets/cutscenes/wheels/info_popup/panel2.png" id="27_twah4"]
 [ext_resource type="AudioStream" uid="uid://btt5uai81ck8w" path="res://assets/cutscenes/wheels/info_popup/duolingo-correct.mp3" id="28_qn4tv"]
@@ -33,6 +35,8 @@
 [ext_resource type="Script" uid="uid://cwt5qytgcfk0u" path="res://scenes/game/game_ui/odds_price_text.gd" id="31_fydea"]
 [ext_resource type="Script" uid="uid://45eekn2av2a8" path="res://scenes/game/pause_screen.gd" id="32_fydea"]
 [ext_resource type="PackedScene" uid="uid://b1d0wstawfcy2" path="res://utilities/ui/menus/default_slider.tscn" id="33_af6p5"]
+[ext_resource type="Texture2D" uid="uid://cncmke5m76yyu" path="res://assets/icons/skip-button.png" id="34_mumkj"]
+[ext_resource type="Script" uid="uid://b8jag7yuy0h8r" path="res://scenes/game/tutorial.gd" id="36_0gkf7"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_snxfc"]
 frames = 2
@@ -60,6 +64,30 @@ func set_curve_action() -> void:
 		target_path.curve.add_point(point)
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl11u"]
+bg_color = Color(1, 1, 1, 0.9137255)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gkf7"]
+bg_color = Color(1, 1, 1, 0.8784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_02fa5"]
 animations = [{
 "frames": [{
@@ -73,18 +101,6 @@ animations = [{
 "name": &"default",
 "speed": 2.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl11u"]
-bg_color = Color(1, 1, 1, 0.9137255)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fydea"]
 bg_color = Color(1, 1, 1, 0.74509805)
@@ -126,10 +142,11 @@ texture = SubResource("AnimatedTexture_snxfc")
 expand_mode = 2
 
 [node name="Map" type="Node2D" parent="." unique_id=1184898053]
+process_mode = 1
 script = ExtResource("5_2vph8")
 metadata/_custom_type_script = "uid://dc8pj8afuhk7n"
 
-[node name="Path2D" type="Path2D" parent="Map" unique_id=1602443772]
+[node name="SpawnManager" type="Path2D" parent="Map" unique_id=1602443772]
 position = Vector2(-19.239075, 0)
 scale = Vector2(1.0167441, 1)
 curve = SubResource("Curve2D_kvuet")
@@ -140,7 +157,7 @@ enemy_scene = ExtResource("7_6ehwc")
 visible = false
 points = PackedVector2Array(-28, 189, 61, 106, 137, 57, 234, 61, 304, 109, 321, 225, 295, 321, 275, 403, 315, 436, 393, 481, 478, 548, 571, 556, 653, 534, 703, 477, 704, 418, 648, 377, 578, 334, 565, 262, 616, 196, 737, 165, 831, 181, 910, 248, 927, 330, 932, 419, 948, 479, 999, 525, 1066, 545, 1147, 533)
 script = SubResource("GDScript_gkedh")
-target_path = NodePath("../Path2D")
+target_path = NodePath("../SpawnManager")
 
 [node name="TowerManager" type="Node2D" parent="." unique_id=273477013]
 script = ExtResource("8_tyhjx")
@@ -155,17 +172,497 @@ collision_mask = 8
 position = Vector2(1, 0)
 polygon = PackedVector2Array(-19, 126, 101, 26, 277, 26, 369, 114, 371, 252, 336, 383, 361, 417, 423, 435, 463, 468, 530, 508, 582, 514, 634, 490, 657, 443, 625, 413, 521, 361, 503, 298, 534, 214, 593, 159, 734, 124, 882, 150, 976, 257, 984, 396, 1003, 474, 1094, 510, 1192, 476, 1193, 580, 1030, 597, 897, 526, 861, 392, 867, 267, 746, 204, 621, 258, 619, 323, 655, 355, 763, 401, 773, 493, 697, 572, 530, 621, 457, 611, 405, 581, 360, 539, 360, 659, -9, 663, -5, 529, 347, 528, 296, 501, 206, 444, 205, 394, 277, 207, 236, 113, 146, 104, 60, 157, -39, 311)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=659363911 node_paths=PackedStringArray("purrency_text", "tower_button_cont", "tower_1", "tower_2", "odds_button", "wheel_button", "pause_button", "skip_button", "tutorial")]
 script = ExtResource("9_5q2xh")
-purrency_text = NodePath("TopBar/MarginContainer2/VBoxContainer/PurrencyText")
-tower_button_cont = NodePath("BottomBar/LeftCorner/TowerButtonCont")
-tower_1 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower1")
-tower_2 = NodePath("BottomBar/LeftCorner/TowerButtonCont/Tower2")
-odds_button = NodePath("BottomBar/RightCorner/ShopContainer/OddsButton")
-wheel_button = NodePath("BottomBar/RightCorner/ShopContainer/WheelButton")
+purrency_text = NodePath("MainUI/TopBar/MarginContainer2/VBoxContainer/PurrencyText")
+tower_button_cont = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont")
+tower_1 = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower1")
+tower_2 = NodePath("MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower2")
+odds_button = NodePath("MainUI/BottomBar/RightCorner/ShopContainer/OddsButton")
+wheel_button = NodePath("MainUI/BottomBar/RightCorner/ShopContainer/WheelButton")
+pause_button = NodePath("MainUI/RightSide/PauseCont/PauseButton")
+skip_button = NodePath("MainUI/RightSide/SkipCont/SkipButton")
+tutorial = NodePath("Overlays/Tutorial")
 
-[node name="TowerSelection" type="Control" parent="UI" unique_id=1435858607]
+[node name="MainUI" type="Control" parent="UI" unique_id=438236503]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Inventorylabel" type="Sprite2D" parent="UI/MainUI" unique_id=54512464 node_paths=PackedStringArray("tower_button1", "tower_button2")]
+position = Vector2(120, 561)
+rotation = -0.06898296
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("12_t5owt")
+script = ExtResource("13_8krtj")
+tower_button1 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower1")
+tower_button2 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower2")
+
+[node name="TopBar" type="HBoxContainer" parent="UI/MainUI" unique_id=725220614]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MainUI/TopBar" unique_id=2033805679]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainUI/TopBar/MarginContainer" unique_id=621789245]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WaveLabel" type="RichTextLabel" parent="UI/MainUI/TopBar/MarginContainer/VBoxContainer" unique_id=1702195054]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-60 bt=-1000]WAVE ?"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_8krtj")
+
+[node name="Control" type="Control" parent="UI/MainUI/TopBar/MarginContainer/VBoxContainer" unique_id=1453314878]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="UI/MainUI/TopBar" unique_id=1769965460]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/MainUI/TopBar" unique_id=150170604]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainUI/TopBar/MarginContainer2" unique_id=2048934884]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WinRateText" type="RichTextLabel" parent="UI/MainUI/TopBar/MarginContainer2/VBoxContainer" unique_id=1331428193]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+mouse_filter = 2
+theme = ExtResource("1_8krtj")
+bbcode_enabled = true
+text = "[color=red][font top=-60 bt=-1000]0j WIN"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("16_8krtj")
+
+[node name="PurrencyText" type="RichTextLabel" parent="UI/MainUI/TopBar/MarginContainer2/VBoxContainer" unique_id=1357203368]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "[font top=-50 bt=-30]d100"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="UI/MainUI" unique_id=317528895]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="LeftCorner" type="MarginContainer" parent="UI/MainUI/BottomBar" unique_id=385707356]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+
+[node name="TowerButtonCont" type="HBoxContainer" parent="UI/MainUI/BottomBar/LeftCorner" unique_id=790972568]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_8krtj")
+theme_override_constants/separation = 15
+
+[node name="Tower1" parent="UI/MainUI/BottomBar/LeftCorner/TowerButtonCont" unique_id=418678843 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Text" parent="UI/MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower1" index="1" unique_id=1745176857]
+text = "[font_size=80][font bt=-20]Text"
+
+[node name="Tower2" parent="UI/MainUI/BottomBar/LeftCorner/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="MiddleSpacer" type="Control" parent="UI/MainUI/BottomBar" unique_id=74823527]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightCorner" type="MarginContainer" parent="UI/MainUI/BottomBar" unique_id=880666078]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ShopContainer" type="HBoxContainer" parent="UI/MainUI/BottomBar/RightCorner" unique_id=537047393]
+custom_minimum_size = Vector2(400, 90)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="WheelButton" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer" unique_id=892149661 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(220, 90)
+layout_mode = 2
+script = ExtResource("29_e3lpd")
+price = 1000
+
+[node name="Panel" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer/WheelButton" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
+
+[node name="Text" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer/WheelButton" index="1" unique_id=1745176857]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -36.0
+offset_bottom = 36.0
+text = "[font top=-40 bt=-5]TOWER
+[font top=-30 bt=-5][font_size=50]COSTS r1000
+"
+script = ExtResource("30_fydea")
+
+[node name="OddsButton" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer" unique_id=1170697133 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(220, 90)
+layout_mode = 2
+script = ExtResource("29_e3lpd")
+price = 2000
+
+[node name="Panel" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer/OddsButton" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
+
+[node name="Text" parent="UI/MainUI/BottomBar/RightCorner/ShopContainer/OddsButton" index="1" unique_id=1745176857]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -28.5
+offset_bottom = 28.5
+text = "[font top=-40 bt=-5]k5i
+[font top=-30 bt=-5][font_size=50]COSTS r2000
+"
+script = ExtResource("31_fydea")
+
+[node name="RightSide" type="VBoxContainer" parent="UI/MainUI" unique_id=941054719]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_right = 1.0
+anchor_bottom = 0.738
+offset_left = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = -12
+alignment = 1
+
+[node name="PauseCont" type="MarginContainer" parent="UI/MainUI/RightSide" unique_id=932684512]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="PauseButton" parent="UI/MainUI/RightSide/PauseCont" unique_id=1663972997 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" parent="UI/MainUI/RightSide/PauseCont/PauseButton" index="0" unique_id=1586527438]
+visible = false
+
+[node name="Text" parent="UI/MainUI/RightSide/PauseCont/PauseButton" index="1" unique_id=1745176857]
+text = ""
+
+[node name="TextureRect" type="TextureRect" parent="UI/MainUI/RightSide/PauseCont/PauseButton" unique_id=712036254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_mumkj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkipCont" type="MarginContainer" parent="UI/MainUI/RightSide" unique_id=1972163181]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("19_6ehwc")
+
+[node name="SkipButton" parent="UI/MainUI/RightSide/SkipCont" unique_id=136596813 instance=ExtResource("14_fba2n")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Panel" parent="UI/MainUI/RightSide/SkipCont/SkipButton" index="0" unique_id=1586527438]
+visible = false
+
+[node name="Text" parent="UI/MainUI/RightSide/SkipCont/SkipButton" index="1" unique_id=1745176857]
+text = ""
+
+[node name="TextureRect" type="TextureRect" parent="UI/MainUI/RightSide/SkipCont/SkipButton" unique_id=425320516]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_mumkj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Overlays" type="Control" parent="UI" unique_id=1494850912]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Tutorial" type="Control" parent="UI/Overlays" unique_id=1224525446 node_paths=PackedStringArray("skip_but", "tower_but", "click_tower", "place_tower", "pause_skip", "odds", "odds_show", "tower_wheel", "wheel_but")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("36_0gkf7")
+skip_but = NodePath("MarginContainer/Skip")
+tower_but = NodePath("../../MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower1")
+click_tower = NodePath("ClickTower")
+place_tower = NodePath("PlaceTower")
+pause_skip = NodePath("PauseSkip")
+odds = NodePath("Odds")
+odds_show = [NodePath("../../MainUI/BottomBar/RightCorner/ShopContainer/OddsButton"), NodePath("../../MainUI/TopBar/MarginContainer2/VBoxContainer/WinRateText")]
+tower_wheel = NodePath("Tower")
+wheel_but = NodePath("../../MainUI/BottomBar/RightCorner/ShopContainer/WheelButton")
+
+[node name="bg" type="ColorRect" parent="UI/Overlays/Tutorial" unique_id=992482619]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.87058824)
+
+[node name="ClickTower" type="Control" parent="UI/Overlays/Tutorial" unique_id=1339487914]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ClickTower" type="RichTextLabel" parent="UI/Overlays/Tutorial/ClickTower" unique_id=1904292714]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.66
+anchor_right = 0.324
+anchor_bottom = 0.808
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-25 bt=-20][shake][font_size=80]PICK UP A TOWER
+CLICK HERE"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlaceTower" type="Control" parent="UI/Overlays/Tutorial" unique_id=1077528662]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Overlays/Tutorial/PlaceTower" unique_id=1592980401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[shake]PLACE THE TOWER!
+
+[font_size=50]LEFT CLICK u"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseSkip" type="Control" parent="UI/Overlays/Tutorial" unique_id=188050557]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Overlays/Tutorial/PauseSkip" unique_id=1557470770]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.784
+anchor_right = 0.939
+anchor_bottom = 0.728
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-20 ][shake]PAUSE!
+[font_size=50]SKIP TO NEXT WAVE
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UI/Overlays/Tutorial/PauseSkip" unique_id=577446116]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.784
+anchor_top = 0.512
+anchor_right = 1.0
+anchor_bottom = 0.653
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[color=red][font top=-20 bt=-20][font_size=60][shake]LEFT CLICK IF YOU UNDERSTAND"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tower" type="Control" parent="UI/Overlays/Tutorial" unique_id=96491076]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Tower1" type="RichTextLabel" parent="UI/Overlays/Tutorial/Tower" unique_id=210864289]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.577
+anchor_top = 0.66
+anchor_right = 0.807
+anchor_bottom = 0.808
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-25 bt=-20][shake][font_size=70]GET NEW TOWERS BY SPINNING"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Odds" type="Control" parent="UI/Overlays/Tutorial" unique_id=1808779944]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OddsText" type="RichTextLabel" parent="UI/Overlays/Tutorial/Odds" unique_id=1693876637]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.793
+anchor_top = 0.653
+anchor_right = 0.986
+anchor_bottom = 0.826
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-20 bt=-0][shake][color=red][font_size=60]PAY TO FIX THE WIN RATE
+[font_size=40]100i TO WIN"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OddsText2" type="RichTextLabel" parent="UI/Overlays/Tutorial/Odds" unique_id=192506144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.685
+anchor_top = 0.122
+anchor_right = 0.986
+anchor_bottom = 0.328
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font top=-20 bt=-0][shake][font_size=50]ABOVE IS THE WIN RATE OF THE CAT FROM THE CUTSCENE..."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Overlays/Tutorial" unique_id=1318702989]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.244
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skip" parent="UI/Overlays/Tutorial/MarginContainer" unique_id=397839981 instance=ExtResource("14_fba2n")]
+layout_mode = 2
+
+[node name="Panel" parent="UI/Overlays/Tutorial/MarginContainer/Skip" index="0" unique_id=1586527438]
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gkf7")
+
+[node name="Text" parent="UI/Overlays/Tutorial/MarginContainer/Skip" index="1" unique_id=1745176857]
+text = "SKIP TUTORIAL"
+
+[node name="TowerSelection" type="Control" parent="UI/Overlays" unique_id=1435858607]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -175,13 +672,14 @@ mouse_filter = 2
 theme = ExtResource("1_8krtj")
 script = ExtResource("10_sikks")
 
-[node name="Popup" parent="UI/TowerSelection" unique_id=1696633443 instance=ExtResource("11_ah1mj")]
+[node name="Popup" parent="UI/Overlays/TowerSelection" unique_id=1696633443 instance=ExtResource("11_ah1mj")]
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 120.0
+mouse_filter = 2
 
-[node name="WheelCont" type="Control" parent="UI" unique_id=1703027372]
-layout_mode = 3
+[node name="WheelCont" type="Control" parent="UI/Overlays" unique_id=1703027372]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -189,7 +687,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="overlay" type="ColorRect" parent="UI/WheelCont" unique_id=1644620310]
+[node name="overlay" type="ColorRect" parent="UI/Overlays/WheelCont" unique_id=1644620310]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -202,54 +700,54 @@ size_flags_vertical = 3
 mouse_filter = 2
 color = Color(1, 1, 1, 0.627451)
 
-[node name="wheelies" type="Node2D" parent="UI/WheelCont" unique_id=809728694]
+[node name="wheelies" type="Node2D" parent="UI/Overlays/WheelCont" unique_id=809728694]
 visible = false
 script = ExtResource("17_8krtj")
 
-[node name="spikey" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1227185140]
+[node name="spikey" type="Node2D" parent="UI/Overlays/WheelCont/wheelies" unique_id=1227185140]
 position = Vector2(26, 0)
 scale = Vector2(0.52, 0.52)
 
-[node name="bg" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey" unique_id=123775071]
+[node name="bg" type="Sprite2D" parent="UI/Overlays/WheelCont/wheelies/spikey" unique_id=123775071]
 texture = ExtResource("18_35t1a")
 
-[node name="words" type="Node2D" parent="UI/WheelCont/wheelies/spikey" unique_id=710590603]
+[node name="words" type="Node2D" parent="UI/Overlays/WheelCont/wheelies/spikey" unique_id=710590603]
 
-[node name="spin" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=734851753]
+[node name="spin" type="Sprite2D" parent="UI/Overlays/WheelCont/wheelies/spikey/words" unique_id=734851753]
 texture = ExtResource("19_ye7x0")
 
-[node name="that" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=735096681]
+[node name="that" type="Sprite2D" parent="UI/Overlays/WheelCont/wheelies/spikey/words" unique_id=735096681]
 texture = ExtResource("20_oepbe")
 
-[node name="wheel" type="Sprite2D" parent="UI/WheelCont/wheelies/spikey/words" unique_id=2052698666]
+[node name="wheel" type="Sprite2D" parent="UI/Overlays/WheelCont/wheelies/spikey/words" unique_id=2052698666]
 texture = ExtResource("21_3322e")
 
-[node name="jetspray" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/spikey" unique_id=1508169248]
+[node name="jetspray" type="AudioStreamPlayer" parent="UI/Overlays/WheelCont/wheelies/spikey" unique_id=1508169248]
 stream = ExtResource("22_mge0u")
 volume_db = 1.21
 
-[node name="gambler" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1431440185]
+[node name="gambler" type="Node2D" parent="UI/Overlays/WheelCont/wheelies" unique_id=1431440185]
 scale = Vector2(0.23999876, 0.23999876)
 
-[node name="wheelfr" type="Sprite2D" parent="UI/WheelCont/wheelies/gambler" unique_id=333527502]
+[node name="wheelfr" type="Sprite2D" parent="UI/Overlays/WheelCont/wheelies/gambler" unique_id=333527502]
 texture = ExtResource("23_uw24m")
 
-[node name="pointer" type="Sprite2D" parent="UI/WheelCont/wheelies/gambler" unique_id=1174370362]
+[node name="pointer" type="Sprite2D" parent="UI/Overlays/WheelCont/wheelies/gambler" unique_id=1174370362]
 position = Vector2(-8.333376, -1020.8387)
 rotation = 0.112182245
 texture = ExtResource("24_kuo75")
 
-[node name="tick" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/gambler" unique_id=1376411349]
+[node name="tick" type="AudioStreamPlayer" parent="UI/Overlays/WheelCont/wheelies/gambler" unique_id=1376411349]
 stream = ExtResource("25_jiu3o")
 
-[node name="ResultInfo" type="Node2D" parent="UI/WheelCont/wheelies" unique_id=1929040020]
+[node name="ResultInfo" type="Node2D" parent="UI/Overlays/WheelCont/wheelies" unique_id=1929040020]
 scale = Vector2(0.6, 0.6)
 
-[node name="ResultPanel" type="AnimatedSprite2D" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1833328917]
+[node name="ResultPanel" type="AnimatedSprite2D" parent="UI/Overlays/WheelCont/wheelies/ResultInfo" unique_id=1833328917]
 sprite_frames = SubResource("SpriteFrames_02fa5")
 autoplay = "default"
 
-[node name="ResultLabel" type="RichTextLabel" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=790917366]
+[node name="ResultLabel" type="RichTextLabel" parent="UI/Overlays/WheelCont/wheelies/ResultInfo" unique_id=790917366]
 custom_minimum_size = Vector2(500, 60)
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,181 +770,16 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DuoCorrect" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1430934771]
+[node name="DuoCorrect" type="AudioStreamPlayer" parent="UI/Overlays/WheelCont/wheelies/ResultInfo" unique_id=1430934771]
 stream = ExtResource("28_qn4tv")
 
-[node name="DuoWrong" type="AudioStreamPlayer" parent="UI/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
+[node name="DuoWrong" type="AudioStreamPlayer" parent="UI/Overlays/WheelCont/wheelies/ResultInfo" unique_id=1280564648]
 stream = ExtResource("28_qn4tv")
 
-[node name="Inventorylabel" type="Sprite2D" parent="UI" unique_id=54512464 node_paths=PackedStringArray("tower_button1", "tower_button2")]
-position = Vector2(120, 561)
-rotation = -0.06898296
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("12_t5owt")
-script = ExtResource("13_8krtj")
-tower_button1 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower1")
-tower_button2 = NodePath("../BottomBar/LeftCorner/TowerButtonCont/Tower2")
-
-[node name="TopBar" type="HBoxContainer" parent="UI" unique_id=725220614]
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.25
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/TopBar" unique_id=2033805679]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer" unique_id=621789245]
-layout_mode = 2
-
-[node name="WaveLabel" type="RichTextLabel" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1702195054]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-bbcode_enabled = true
-text = "[font top=-60 bt=-1000]WAVE ?"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("15_8krtj")
-
-[node name="Control" type="Control" parent="UI/TopBar/MarginContainer/VBoxContainer" unique_id=1453314878]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Spacer" type="Control" parent="UI/TopBar" unique_id=1769965460]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="UI/TopBar" unique_id=150170604]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopBar/MarginContainer2" unique_id=2048934884]
-layout_mode = 2
-
-[node name="WinRateText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1331428193]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_vertical = 3
-offset_transform_enabled = true
-mouse_filter = 2
-theme = ExtResource("1_8krtj")
-bbcode_enabled = true
-text = "[color=red][font top=-60 bt=-1000]0j WIN"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
-vertical_alignment = 1
-script = ExtResource("16_8krtj")
-
-[node name="PurrencyText" type="RichTextLabel" parent="UI/TopBar/MarginContainer2/VBoxContainer" unique_id=1357203368]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 74
-bbcode_enabled = true
-text = "[font top=-50 bt=-30]d100"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="BottomBar" type="HBoxContainer" parent="UI" unique_id=317528895]
-anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="LeftCorner" type="MarginContainer" parent="UI/BottomBar" unique_id=385707356]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.25
-
-[node name="TowerButtonCont" type="HBoxContainer" parent="UI/BottomBar/LeftCorner" unique_id=790972568]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("1_8krtj")
-theme_override_constants/separation = 15
-
-[node name="Tower1" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=418678843 instance=ExtResource("14_fba2n")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 1
-
-[node name="Text" parent="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1" index="1" unique_id=1745176857]
-text = "[font_size=80][font bt=-20]Text"
-
-[node name="Tower2" parent="UI/BottomBar/LeftCorner/TowerButtonCont" unique_id=1483575337 instance=ExtResource("14_fba2n")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 1
-
-[node name="MiddleSpacer" type="Control" parent="UI/BottomBar" unique_id=74823527]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RightCorner" type="MarginContainer" parent="UI/BottomBar" unique_id=880666078]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ShopContainer" type="HBoxContainer" parent="UI/BottomBar/RightCorner" unique_id=537047393]
-custom_minimum_size = Vector2(400, 90)
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 10
-
-[node name="WheelButton" parent="UI/BottomBar/RightCorner/ShopContainer" unique_id=892149661 instance=ExtResource("14_fba2n")]
-custom_minimum_size = Vector2(220, 90)
-layout_mode = 2
-script = ExtResource("29_e3lpd")
-price = 1000
-
-[node name="Panel" parent="UI/BottomBar/RightCorner/ShopContainer/WheelButton" index="0" unique_id=1586527438]
-theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
-
-[node name="Text" parent="UI/BottomBar/RightCorner/ShopContainer/WheelButton" index="1" unique_id=1745176857]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -36.0
-offset_bottom = 36.0
-text = "[font top=-40 bt=-5]TOWER
-[font top=-30 bt=-5][font_size=50]COSTS r1000
-"
-script = ExtResource("30_fydea")
-
-[node name="OddsButton" parent="UI/BottomBar/RightCorner/ShopContainer" unique_id=1170697133 instance=ExtResource("14_fba2n")]
-custom_minimum_size = Vector2(220, 90)
-layout_mode = 2
-script = ExtResource("29_e3lpd")
-price = 1000
-
-[node name="Panel" parent="UI/BottomBar/RightCorner/ShopContainer/OddsButton" index="0" unique_id=1586527438]
-theme_override_styles/panel = SubResource("StyleBoxFlat_pl11u")
-
-[node name="Text" parent="UI/BottomBar/RightCorner/ShopContainer/OddsButton" index="1" unique_id=1745176857]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -28.5
-offset_bottom = 28.5
-text = "[font top=-40 bt=-5]k5i
-[font top=-30 bt=-5][font_size=50]COSTS r1000
-"
-script = ExtResource("31_fydea")
-
-[node name="PauseScreen" type="Control" parent="UI" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
+[node name="PauseScreen" type="Control" parent="UI/Overlays" unique_id=285293332 node_paths=PackedStringArray("volume_slider", "back_button")]
 process_mode = 3
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -457,7 +790,7 @@ volume_slider = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VB
 back_button = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back")
 metadata/_custom_type_script = "uid://e0s6oeo4pcwr"
 
-[node name="overlay" type="ColorRect" parent="UI/PauseScreen" unique_id=1296427414]
+[node name="overlay" type="ColorRect" parent="UI/Overlays/PauseScreen" unique_id=1296427414]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -469,7 +802,7 @@ size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 1, 1, 0.627451)
 
-[node name="Panel" type="Panel" parent="UI/PauseScreen" unique_id=1985466340]
+[node name="Panel" type="Panel" parent="UI/Overlays/PauseScreen" unique_id=1985466340]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -481,7 +814,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_fydea")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PauseScreen/Panel" unique_id=1206598046]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Overlays/PauseScreen/Panel" unique_id=1206598046]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -489,32 +822,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/Panel/MarginContainer" unique_id=1143346603]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Overlays/PauseScreen/Panel/MarginContainer" unique_id=1143346603]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer" unique_id=280695312]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer" unique_id=280695312]
 layout_mode = 2
 mouse_filter = 1
 bbcode_enabled = true
-text = "m GAMBLING BREAK m"
+text = "m GAME PAWSED m"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer" unique_id=675876758]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer" unique_id=675876758]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=2130425203]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=2130425203]
 layout_mode = 2
 
-[node name="VolumeSlider" type="HBoxContainer" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=229923810]
+[node name="VolumeSlider" type="HBoxContainer" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=229923810]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VolumeText" type="RichTextLabel" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=509748955]
+[node name="VolumeText" type="RichTextLabel" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=509748955]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
@@ -527,32 +860,38 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DefaultSlider" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=2005709463 instance=ExtResource("33_af6p5")]
+[node name="DefaultSlider" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VolumeSlider" unique_id=2005709463 instance=ExtResource("33_af6p5")]
 layout_mode = 2
 max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="DefaultButton" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1537136015 instance=ExtResource("14_fba2n")]
+[node name="DefaultButton" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1537136015 instance=ExtResource("14_fba2n")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DefaultButton2" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1411866266 instance=ExtResource("14_fba2n")]
+[node name="DefaultButton2" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1411866266 instance=ExtResource("14_fba2n")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Back" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
+[node name="Back" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=561698725 instance=ExtResource("14_fba2n")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Text" parent="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back" index="1" unique_id=1745176857]
+[node name="Text" parent="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back" index="1" unique_id=1745176857]
 theme_override_font_sizes/normal_font_size = 80
 text = "[font top=-15]BACK TO GAMBLING"
 vertical_alignment = 1
 
-[editable path="UI/BottomBar/LeftCorner/TowerButtonCont/Tower1"]
-[editable path="UI/BottomBar/RightCorner/ShopContainer/WheelButton"]
-[editable path="UI/BottomBar/RightCorner/ShopContainer/OddsButton"]
-[editable path="UI/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]
+[node name="Cutscenes" type="CanvasLayer" parent="." unique_id=589423347]
+process_mode = 3
+
+[editable path="UI/MainUI/BottomBar/LeftCorner/TowerButtonCont/Tower1"]
+[editable path="UI/MainUI/BottomBar/RightCorner/ShopContainer/WheelButton"]
+[editable path="UI/MainUI/BottomBar/RightCorner/ShopContainer/OddsButton"]
+[editable path="UI/MainUI/RightSide/PauseCont/PauseButton"]
+[editable path="UI/MainUI/RightSide/SkipCont/SkipButton"]
+[editable path="UI/Overlays/Tutorial/MarginContainer/Skip"]
+[editable path="UI/Overlays/PauseScreen/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Back"]

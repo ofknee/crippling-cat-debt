@@ -22,11 +22,25 @@ var type : T = T.LOW :
 		_update_stats()
 var cumulative_timer := 0.0
 var level : int = 0
-
+var t : Tween
 
 
 func _ready() -> void:
 	self.lock_rotation = true
+	self.mouse_entered.connect(func(): 
+		if not placed: return
+		if t and t.is_running(): t.kill()
+		t = create_tween().set_parallel(true)
+		t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		t.tween_property(self, "modulate", Color.SKY_BLUE, 0.7)
+	)
+	self.mouse_exited.connect(func(): 
+		if not placed: return
+		if t and t.is_running(): t.kill()
+		t = create_tween().set_parallel(true)
+		t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		t.tween_property(self, "modulate", Color.WHITE, 0.7)
+	)
 
 func _update_stats():
 	_stats = EntityDatabase.get_tower(self.type)
@@ -45,19 +59,26 @@ func _draw() -> void:
 	#draw_circle(Vector2.ZERO, 40, Color.AQUAMARINE)
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if Global.selected_tower and not Global.selected_tower.placed: return
+	
 	if event.is_action_pressed("l_click") and Input.is_action_just_pressed("l_click"):
 		Global.select_tower(self, Global.SelectionType.INFO)
 		print("Tower selected: %s" % Global.selected_tower)
-		pass
+		get_viewport().set_input_as_handled()
+
+
 
 func _process(delta: float) -> void:
 	self.input_pickable = self.placed
+	
 	
 	_update_in_range()
 	if not placed:
 		self.range_shown = true
 	else:
-		self.range_shown = true if Global.selected_tower == self or popupped else false
+		self.range_shown = true \
+			if Global.selected_tower == self \
+			else false
 		var cooldown = _stats.attack_cooldown
 		if not cooldown: push_error("Attack cooldown doesn't exist in tower type")
 		if enemies_in_range.size() > 0 and enemies_in_range[0]:
