@@ -53,8 +53,20 @@ If you'd like to build it yourself, we used Godot 4.7. There is a pre-built web 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- SCREENSHOTS →
+<!-- SCREENSHOTS -->
+### Screenshots
+They’re fairly large, so I’ve tucked them into expandable sections:
 
+<details>
+    <summary><strong>Gameplay</strong></summary>
+    <img src="assets/screenshots/gameplay_3.png" alt="Screenshot of some gambling happening">
+    <img src="assets/screenshots/gameplay_4.png" alt="Screenshot of the gameplay">
+</details>
+<details>
+    <summary><strong>Losing Cutscene</strong></summary>
+    <img src="assets/screenshots/gameplay_1.png" alt="Screenshot of the losing cutscene">
+    <img src="assets/screenshots/gameplay_2.png" alt="Screenshot of the losing cutscene again">
+</details>
 <!-- AI Usage -->
 ## Roadmap
 
